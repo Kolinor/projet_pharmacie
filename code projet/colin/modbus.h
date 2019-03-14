@@ -1,11 +1,11 @@
 //---------------------------------------------------------------------------
 
-#ifndef TAPIRISH
-#define TAPIRISH
+#ifndef MODBUSH
+#define MODBUSH
 #include <windows.h>
 
 /*******************************************************
-Nom ......... : tapiris.h
+Nom ......... : modbus.h
 Role ........ : gérer l'automate 
 Auteur ...... : Colin.B
 Version ..... : V1.1 du 14/03/2019
@@ -14,11 +14,15 @@ Compilation : c++ builder
 ********************************************************/
 
 //---------------------------------------------------------------------------
-class tapiris
+class modbus
 {
+    private:
+        char word;
 	public:
-        tapiris();
-        bool getCapteur(int capteur);
+        bool writeWord(unsigned char word);
+        void readWord(unsigned char word);
+        bool connected(string adress,unsigned short port);
+        void disconnected();
         
 };
 

@@ -1,12 +1,16 @@
 //---------------------------------------------------------------------------
 
-#ifndef TAPIRISH
-#define TAPIRISH
+#ifndef PARSEH
+#define PARSEH
 #include <windows.h>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 /*******************************************************
-Nom ......... : tapiris.h
-Role ........ : gérer l'automate 
+Nom ......... : parse.h
+Role ........ : établir une connexion tcp
 Auteur ...... : Colin.B
 Version ..... : V1.1 du 14/03/2019
 
@@ -14,12 +18,13 @@ Compilation : c++ builder
 ********************************************************/
 
 //---------------------------------------------------------------------------
-class tapiris
+class parse
 {
-	public:
-        tapiris();
-        bool getCapteur(int capteur);
-        
+        private:
+            vector<char> buffer;
+
+        public:
+            void parse(vector<char>,SOCKET);
 };
 
 #endif
