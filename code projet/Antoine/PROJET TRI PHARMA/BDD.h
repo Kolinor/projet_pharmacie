@@ -1,0 +1,32 @@
+//---------------------------------------------------------------------------
+
+#ifndef BDDH
+#define BDDH
+//---------------------------------------------------------------------------
+
+class BDD {
+
+private:
+
+public:
+
+	BDD();
+	~BDD();
+	void connexionBDD();
+	void sauvegardeBDD();
+	void restauraionBDD();
+	void ajoutBDD();
+	void suppressionBDD();
+	void compareBDD();
+
+};
+
+
+
+
+
+
+
+
+
+#endif
