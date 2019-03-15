@@ -1,0 +1,32 @@
+//---------------------------------------------------------------------------
+
+#ifndef BDDSQLH
+#define BDDSQLH
+//---------------------------------------------------------------------------
+
+class BDDSQL {
+
+private:
+
+public:
+
+	BDDSQL();
+	~BDDSQL();
+	void sauvegardeBDD(char ip,char login,char mdp);
+	void restauraionBDD(char ip,char login,char mdp);
+	void ajoutBDD(char ip,char login,char mdp);
+	void suppressionBDD(char ip,char login,char mdp);
+	void compareBDD(char ip,char login,char mdp);
+
+};
+
+
+
+
+
+
+
+
+
+
+#endif
