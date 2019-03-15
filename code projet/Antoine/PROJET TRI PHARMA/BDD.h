@@ -18,6 +18,7 @@ public:
 	void ajoutBDD();
 	void suppressionBDD();
 	void compareBDD();
+	void testlanglace();
 
 };
 
