@@ -1,0 +1,75 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "tcpClient.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+tcpClient::tcpClient()
+{
+	int wsResult = WSAStartup(ver, &data);
+	if (wsResult != 0) {
+		cerr << "impossible de démarrer winsock" << wsResult << endl;
+		return;
+	}
+
+	this->sock = socket(AF_INET, SOCK_STREAM,0);
+	if (sock == INVALID_SOCKET) {
+		cerr << "impossible de creer le socket" << WSAGetLastError() << endl;
+		WSACleanup();
+		return;
+	}
+
+}
+
+bool tcpClient::connected(string adress, unsigned short port)
+{
+	bool result;
+	hint.sin_family = AF_INET;
+	hint.sin_port = htons(port);
+	inet_pton(AF_INET, adress.c_str(), &hint.sin_addr);
+
+	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
+	if (connResult == SOCKET_ERROR) {
+		cerr << "impossible de se connecter au serveur" << WSAGetLastError() << endl;
+		closesocket(sock);
+		WSACleanup();
+		result = false;
+	}
+	else {
+		result = true;
+	}
+	return result;
+}
+
+bool tcpClient::send(string userInput)
+{
+	bool result;
+	this->userInput = userInput;
+
+	if (userInput.size() > 0) {
+		int sendResult = send(sock, this->userInput.c_str(), this->userInput.size() +1,0);
+
+		if (sendResult != SOCKET_ERROR) {
+			result = true;
+		}
+		else {
+			result = false;
+		}
+	}
+
+
+    return result;
+}
+
+string tcpClient::read()
+{
+	if (this->userInput.size() > 0) {
+		ZeroMemory(buffer, 4096);
+		int bytesReceived = recv(sock, buffer, 4096);
+		if (bytesReceived > 0) {
+			return string(buffer, 0, bytesReceived) << endl;
+		}
+	}
+}

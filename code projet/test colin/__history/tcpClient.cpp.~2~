@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "tcpClient.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+tcpClient::tcpClient()
+{
+	int wsResult = WSAStartup(ver, &data);
+	if (wsResult != 0) {
+		cerr << "impossible de démarrer winsock" << wsResult << endl;
+		return;
+	}
+
+	this->sock = socket(AF_INET, SOCK_STREAM,0);
+	if (sock == INVALID_SOCKET) {
+		cerr << "impossible de creer le socket" << WSAGetLastError() << endl;
+		return;
+	}
+
+}
