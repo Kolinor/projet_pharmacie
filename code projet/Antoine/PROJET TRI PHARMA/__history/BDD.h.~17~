@@ -1,0 +1,27 @@
+//---------------------------------------------------------------------------
+
+#ifndef BDDH
+#define BDDH
+//---------------------------------------------------------------------------
+
+#include <string>
+
+using namespace std;
+class BDD {
+
+private:
+
+public:
+
+	BDD();
+	~BDD();
+	virtual void connexionBDD()=0;
+	virtual void sauvegardeBDD()=0;
+	virtual void restauraionBDD()=0;
+	virtual void ajoutBDD(string )=0;
+	virtual void suppressionBDD()=0;
+	virtual void compareBDD()=0;
+
+};
+
+#endif

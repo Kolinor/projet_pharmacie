@@ -3,4 +3,13 @@
 #ifndef MedicamentH
 #define MedicamentH
 //---------------------------------------------------------------------------
+
+class Medicament {
+
+private:
+
+public:
+
+
+};
 #endif

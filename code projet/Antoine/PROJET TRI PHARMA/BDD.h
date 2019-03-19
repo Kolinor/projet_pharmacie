@@ -4,6 +4,10 @@
 #define BDDH
 //---------------------------------------------------------------------------
 
+#include <string>
+#include <vector>
+
+using namespace std;
 class BDD {
 
 private:
@@ -12,22 +16,13 @@ public:
 
 	BDD();
 	~BDD();
-	void connexionBDD();
-	void sauvegardeBDD();
-	void restauraionBDD();
-	void ajoutBDD();
-	void suppressionBDD();
-	void compareBDD();
-	void testlanglace();
+	virtual bool connect(string host,string user,string password,string dbname)=0;
+	virtual bool insert(string requete)=0;
+	virtual vector< vector<std::string> > select(std::string requete)=0;
+//	virtual void saveBDD(string requete)=0;
+//	virtual void restorBDD(string requete)=0;
+//	virtual void compareBDD(string requete)=0;
 
 };
-
-
-
-
-
-
-
-
 
 #endif

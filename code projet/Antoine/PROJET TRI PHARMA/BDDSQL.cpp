@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-	BDDSQL::BDDSQL(char ip,char login,char mdp)
+	BDDSQL::BDDSQL()
 	{
 	mysql=mysql_init(NULL);
 	}
@@ -16,40 +16,35 @@
 	BDDSQL::~BDDSQL()
 	{
 	  mysql_close(mysql);
-    }
+	}
 //---------------------------------------------------------------------------
-	void sauvegardeBDD(char ip,char login,char mdp)
+bool BDDSQL::connect(string host,string user,string password,string dbname)
+{
+	if (mysql_real_connect(mysql,
+							host.c_str(), 				//ip bdd
+							user.c_str(), 			   //user bdd
+							password.c_str(),          //password of user
+							dbname.c_str(),           //name of bdd
+							0,
+							NULL,
+							0))
 	{
+	 return true;
+	}
+	else
+	{
+	 return false;
+	}
+}
+//---------------------------------------------------------------------------
+bool BDDSQL::insert(string requete)
+{
 
-	}
+}
 //---------------------------------------------------------------------------
-	bool BDDSQL::connexionBDD(char* ip,char *login,char *mdp,char * bdd)
-	{
-		if (!mysql_real_connect(mysql, ip, login, mdp, bdd, 0, NULL, 0)) {
-		 return false;
-		}
-		else
-		{
-		 return true;
-		}
-	}
-//---------------------------------------------------------------------------
-	void BDDSQL::restaurationBDD(char ip,char login,char mdp)
-	{
+vector< vector<std::string> > BDDSQL::select(string requete)
+{
 
-	}
+}
 //---------------------------------------------------------------------------
-	void BDDSQL::ajoutBDD(char ip,char login,char mdp)
-	{
 
-	}
-//---------------------------------------------------------------------------
-	void BDDSQL::suppressionBDD(char ip,char login,char mdp)
-	{
-
-	}
-//---------------------------------------------------------------------------
-	void BDDSQL::compareBDD(char ip,char login,char mdp)
-	{
-
-	}
