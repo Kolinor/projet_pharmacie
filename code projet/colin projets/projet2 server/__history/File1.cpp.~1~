@@ -1,0 +1,39 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#include <iostream>
+#include <WS2tcpip.h>
+
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#pragma comment(lib, "ws2_32.lib")
+
+#include <stdio.h>
+
+using namespace std;
+
+ int _tmain(int argc, _TCHAR* argv[]) 
+{
+
+	WSADATA wsData;
+	WORD ver = MAKEWORD(2,2);
+
+	int ws0k = WSAStartup(ver, &wsData);
+	if (ws0k != 0) {
+		cerr << "Impossible d'initialiser winsock" << endl;
+		return;
+	}
+
+	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
+	if (listening == INVALID_SOCKET) {
+        cerr << "impossible de creer la socket" << endl;
+	}
+
+
+	return 0;
+}

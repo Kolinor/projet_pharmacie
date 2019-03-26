@@ -1,0 +1,78 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#include <iostream>
+#include <WS2tcpip.h>
+
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#pragma comment(lib, "ws2_32.lib")
+
+#include <stdio.h>
+
+using namespace std;
+
+ int _tmain(int argc, _TCHAR* argv[])
+{
+
+	WSADATA wsData;
+	WORD ver = MAKEWORD(2,2);
+
+	int ws0k = WSAStartup(ver, &wsData);
+	if (ws0k != 0) {
+		cerr << "Impossible d'initialiser winsock" << endl;
+	}
+
+	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
+	if (listening == INVALID_SOCKET) {
+		cerr << "impossible de creer la socket" << endl;
+	}
+
+	sockaddr_in hint;
+	hint.sin_family = AF_INET;
+	hint.sin_port = htons(54000);
+	hint.sin_addr.S_un.S_addr = INADDR_ANY;
+
+	bind(listening, (sockaddr*)&hint, sizeof(hint));
+
+	listen(listening, SOMAXCONN);
+
+	fd_set master;
+	FD_ZERO(&master);
+
+	FD_SET(listening, &master);
+
+	while (true)
+	{
+		fd_set copy = master;
+
+		int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
+
+		for (i = 0;s; i++)socketCount; i++) {
+			SOCKET sock =  copy.fd_aray[i];
+			if (sock == listening) {
+				SOCKET client = accept(listening, nullptr, nullptr);
+
+				FD_SET(client, &master);
+
+				string welcomeMsg = "Bienvenue sur le serveur";
+				send(client, welcomeMsg.c_str(); welcomeMsg.size() +1, 0);
+			}
+			else
+			{
+
+            }
+		}
+    }
+
+
+
+	WSACleanup;
+
+	return 0;
+}
