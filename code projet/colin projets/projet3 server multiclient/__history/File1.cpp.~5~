@@ -5,7 +5,6 @@
 #include <tchar.h>
 #include <iostream>
 #include <WS2tcpip.h>
-#include <sstream>
 
 #else
   typedef char _TCHAR;
@@ -36,7 +35,7 @@ using namespace std;
 
 	sockaddr_in hint;
 	hint.sin_family = AF_INET;
-	hint.sin_port = htons(9013);
+	hint.sin_port = htons(54000);
 	hint.sin_addr.S_un.S_addr = INADDR_ANY;
 
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
@@ -52,42 +51,22 @@ using namespace std;
 	{
 		fd_set copy = master;
 
-		int socketCount = select(0, &copy, 0, 0, 0);
+		int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
 
-		for (int i = 0; i < socketCount; i++) {
-			SOCKET sock =  copy.fd_array[i];
+		for (i = 0;s; i++)socketCount; i++) {
+			SOCKET sock =  copy.fd_aray[i];
 			if (sock == listening) {
-				SOCKET client = accept(listening, 0, 0);
+				SOCKET client = accept(listening, nullptr, nullptr);
 
 				FD_SET(client, &master);
 
-				string welcomeMsg = "Bienvenue sur le serveur\r\n";
-				send(client, welcomeMsg.c_str(), welcomeMsg.size() +1, 0);
+				string welcomeMsg = "Bienvenue sur le serveur";
+				send(client, welcomeMsg.c_str(); welcomeMsg.size() +1, 0);
 			}
 			else
 			{
-				char buf[4096];
-				ZeroMemory(buf, 4096);
 
-
-				int bytesIn = recv(sock,buf,4096,0);
-				if (bytesIn <= 0) {
-					closesocket(sock);
-					FD_CLR(sock, &master);
-				}
-				else {
-					for (int i = 0; i < master.fd_count; i++) {
-						SOCKET outSock = master.fd_array[i];
-						if (outSock != listening && outSock != sock) {
-							ostringstream ss;
-							ss << "SOCKET #" << sock << ":" << buf << "\r\n";
-							string strOut = ss.str();
-
-
-							send(outSock, strOut.c_str(), strOut.size()+1, 0);
-						}
-					}
-                }
+				int bytesIn = recv(sock,)
             }
 		}
     }
@@ -95,6 +74,6 @@ using namespace std;
 
 
 	WSACleanup;
-	system("pause");
+
 	return 0;
 }

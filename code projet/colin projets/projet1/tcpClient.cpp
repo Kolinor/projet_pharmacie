@@ -73,12 +73,12 @@ string tcpClient::readString()
 	}
 }
 
-bool tcpClient::sendChar(char * buffer, int length)
+bool tcpClient::sendChar(char * buf, int length)
 {
 	bool result;
 
 	if (length > 0) {
-		int sendResult = send(sock, buffer, length ,0);
+		int sendResult = send(sock, buf, length ,0);
 
 		if (sendResult != SOCKET_ERROR) {
 			result = true;

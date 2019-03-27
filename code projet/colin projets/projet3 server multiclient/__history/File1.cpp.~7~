@@ -5,7 +5,6 @@
 #include <tchar.h>
 #include <iostream>
 #include <WS2tcpip.h>
-#include <sstream>
 
 #else
   typedef char _TCHAR;
@@ -61,7 +60,7 @@ using namespace std;
 
 				FD_SET(client, &master);
 
-				string welcomeMsg = "Bienvenue sur le serveur\r\n";
+				string welcomeMsg = "Bienvenue sur le serveur";
 				send(client, welcomeMsg.c_str(), welcomeMsg.size() +1, 0);
 			}
 			else
@@ -79,12 +78,7 @@ using namespace std;
 					for (int i = 0; i < master.fd_count; i++) {
 						SOCKET outSock = master.fd_array[i];
 						if (outSock != listening && outSock != sock) {
-							ostringstream ss;
-							ss << "SOCKET #" << sock << ":" << buf << "\r\n";
-							string strOut = ss.str();
-
-
-							send(outSock, strOut.c_str(), strOut.size()+1, 0);
+							send(outSock, buf, bytesIn, 0);
 						}
 					}
                 }
