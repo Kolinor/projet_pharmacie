@@ -1,0 +1,19 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "MysqlPharmacieManager.h"
+#define __WIN__
+#include "mysql.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+MysqlPharmacieManager::MysqlPharmacieManager()
+{
+	this->mySql = new BDDSQL();
+    this->mySql->connect("192.168.64.111","pharma","pharma","pharmacie");
+}
+void MysqlPharmacieManager::selectOrdonnance(TStringGrid *excelOrdo)
+{
+
+
+}

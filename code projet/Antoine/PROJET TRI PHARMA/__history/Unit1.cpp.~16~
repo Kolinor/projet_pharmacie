@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+	sql.connect("192.168.64.111","pharma","pharma","pharmacie");
+
+//	string requete="INSERT INTO pharmacie.test (id) VALUES (25);";
+string requete="INSERT INTO `Medicament`(`Nom_Medicament`, `Hauteur`, `Largeur`, `Longueur`, `Quantite_Restante`, `Code_Barre`, `Prix`, `Nombre_Unite_Vendu`) VALUES ('test officiel add snapchat: antoine.vltn','1',' 8','16','44','8754666','66','4');";
+//string requeteOrdonnance="INSERT INTO `Ordonnance`(`Etat`, `Numero_Caisse`, `Date_Saisie_Ordonnance`) VALUES (0,1,now());";
+//INSERT INTO `medicament`(`ID_Medicament`, `Nom_Medicament`, `Hauteur`, `Largeur`, `Longueur`, `Quantite_Restante`, `Code_Barre`, `Prix`, `Nombre_Unite_Vendu`) VALUES ('','Armel','1',' 8','16','44','8754666','66','4')
+	sql.insert(requete);
+	//sql.insert(requeteOrdonnance);
+}
+//---------------------------------------------------------------------------

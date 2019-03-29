@@ -1,0 +1,20 @@
+//---------------------------------------------------------------------------
+
+#ifndef MysqlPharmacieManagerH
+#define MysqlPharmacieManagerH
+//---------------------------------------------------------------------------
+
+#include "BDD.h"
+#include "BDDSQL.h"
+#include <vcl.h>
+
+class MysqlPharmacieManager
+{
+	private :
+		BDD *mySql;
+	public :
+		MysqlPharmacieManager();
+		void selectOrdonnance();
+
+};
+#endif
