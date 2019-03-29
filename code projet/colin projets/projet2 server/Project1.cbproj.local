@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/10/15 14:11:59.000.754,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2018/10/15 14:11:59.000.767,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/03/26 16:52:02.000.444,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\File1.cpp</Transaction>
+    <Transaction>2019/03/26 16:52:02.000.439,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/03/26 17:02:02.000.807,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\File1.cpp=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet2 server multiclient\File1.cpp</Transaction>
+    <Transaction>2019/03/26 17:02:03.000.468,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet2 server multiclient\Project1PCH1.h</Transaction>
+    <Transaction>2019/03/26 17:02:04.000.098,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1.cbproj=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet2 server multiclient\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

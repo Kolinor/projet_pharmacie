@@ -1,0 +1,91 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#include <iostream>
+#include <WS2tcpip.h>
+
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#pragma comment(lib, "ws2_32.lib")
+
+#include <stdio.h>
+
+using namespace std;
+
+ int _tmain(int argc, _TCHAR* argv[]) 
+{
+
+	WSADATA wsData;
+	WORD ver = MAKEWORD(2,2);
+
+	int ws0k = WSAStartup(ver, &wsData);
+	if (ws0k != 0) {
+		cerr << "Impossible d'initialiser winsock" << endl;
+	}
+
+	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
+	if (listening == INVALID_SOCKET) {
+		cerr << "impossible de creer la socket" << endl;
+	}
+
+	sockaddr_in hint;
+	hint.sin_family = AF_INET;
+	hint.sin_port = htons(54000);
+	hint.sin_addr.S_un.S_addr = INADDR_ANY;
+
+	bind(listening, (sockaddr*)&hint, sizeof(hint));
+
+	listen(listening, SOMAXCONN);
+
+	sockaddr_in client;
+	int clientsize = sizeof(client);
+
+	SOCKET clientSocket = accept(listening, (sockaddr*)&client, &clientsize);
+
+	char host[NI_MAXHOST];
+	char service[NI_MAXHOST];
+
+	ZeroMemory(host, NI_MAXHOST);
+	ZeroMemory(service, NI_MAXHOST);
+
+	if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV,0) == 0) {
+		cout << host << "Connecte sur le port" << service << endl;
+	}
+	else
+	{
+		inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
+		cout << host << "Connecte sur le port" << htons(client.sin_port) << endl;
+    }
+
+	closesocket(listening);
+
+	char buf[4096];
+
+	while (true)
+	{
+		ZeroMemory(buf, 4096);
+
+		int bytesReceived = recv(clientSocket, buf, 4096, 0);
+		if (bytesReceived == SOCKET_ERROR) {
+			cerr << "erreur dans le recv" << endl;
+		}
+		if (bytesReceived == 0) {
+			cout << "client deconnecte" << endl;
+			break;
+		}
+
+        cout << buf << endl;
+		send(clientSocket, buf, bytesReceived + 1,0);
+    }
+
+	closesocket(clientSocket);
+
+	WSACleanup;
+
+	return 0;
+}
