@@ -36,7 +36,7 @@ using namespace std;
 
 	sockaddr_in hint;
 	hint.sin_family = AF_INET;
-	hint.sin_port = htons(9013);
+	hint.sin_port = htons(6666);
 	hint.sin_addr.S_un.S_addr = INADDR_ANY;
 
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
@@ -87,10 +87,10 @@ using namespace std;
 							send(outSock, strOut.c_str(), strOut.size()+1, 0);
 						}
 					}
-                }
-            }
+				}
+			}
 		}
-    }
+	}
 
 
 

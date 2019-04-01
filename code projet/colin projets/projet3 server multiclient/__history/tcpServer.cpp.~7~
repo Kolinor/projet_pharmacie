@@ -30,7 +30,6 @@ bool tcpServer::start(unsigned short port)
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
 	listen(listening, SOMAXCONN);
-    return true;
 
 }
 

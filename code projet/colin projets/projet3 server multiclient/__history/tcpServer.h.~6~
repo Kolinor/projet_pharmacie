@@ -23,13 +23,11 @@ class tcpServer
 		WSADATA wsData;
 		sockaddr_in hint;
 		fd_set master;
-		bool etat;
 
 	public:
 		tcpSever();
 		bool start(unsigned short port);
-		bool sendMessage(const unsigned char buf, unsigned int lenght);
-		bool read();
+		bool send(const unsigned char* buf, unsigned int lenght);
 
 
 

@@ -23,7 +23,6 @@ class tcpServer
 		WSADATA wsData;
 		sockaddr_in hint;
 		fd_set master;
-		bool etat;
 
 	public:
 		tcpSever();

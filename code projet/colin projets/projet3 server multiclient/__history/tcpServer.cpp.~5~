@@ -30,13 +30,13 @@ bool tcpServer::start(unsigned short port)
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
 	listen(listening, SOMAXCONN);
-    return true;
 
 }
 
 bool tcpServer::read()
 {
 	FD_ZERO(&master);
+
 	FD_SET(listening, &master);
 
 	while (true)
@@ -82,22 +82,11 @@ bool tcpServer::read()
 			}
 		}
 	}
-    return true;
 }
 
 bool tcpServer::sendMessage(const unsigned char buf, unsigned int lenght)
 {
-	bool verif;
 
-	if (length > 0) {
-		send(client, welcomeMsg.c_str(), welcomeMsg.size() +1, 0);
-		verif = true;
-	}
-	else
-	{
-		verif = false
-	}
-	return verif;
 }
 
 

@@ -17,10 +17,12 @@
 {
 	tcpClient * tcp;
 	tcp = new(tcpClient);
-	char buf[]="DONNEDONNER";
-	tcp->connected("192.168.65.7", 9013);
+	char * buf;
+	buf = new char() ;
+	buf = "000000000006000600000000";
+	tcp->connected("192.168.64.200", 502);
 	tcp->sendChar(buf,sizeof(buf));
-//	tcp->sendString("DONNEDONNER\n");
+	tcp->sendString("yop");
 	string coucou = tcp->readString();
 	cout << coucou << endl;
 
