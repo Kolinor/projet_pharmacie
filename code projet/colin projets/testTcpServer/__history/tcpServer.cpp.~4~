@@ -21,6 +21,12 @@ tcpServer::tcpSever()
 	}
 }
 
+tcpServer::~tcpServer()
+{
+	WSACleanup;
+
+}
+
 bool tcpServer::start(unsigned short port)
 {
 	hint.sin_family = AF_INET;
@@ -30,14 +36,37 @@ bool tcpServer::start(unsigned short port)
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
 	listen(listening, SOMAXCONN);
-    return true;
+	Handle_Of_Thread_1 = CreateThread( NULL, 0,Thread_no_1, this, 0, NULL);
+
+
+
+	return true;
 
 }
 
-bool tcpServer::read()
+
+bool tcpServer::sendMessage(const unsigned char* buf, unsigned int length)
 {
+	bool verif;
+
+	if (length > 0) {
+		send(client, buf, length, 0);
+		verif = true;
+	}
+	else
+	{
+		verif = false;
+	}
+	return verif;
+}
+
+DWORD WINAPI tcpServer::Thread_no_1( LPVOID lpParam )
+{
+	tcpServer * thisThread = (tcpServer*)lpParam;
+
+	fd_set master;
 	FD_ZERO(&master);
-	FD_SET(listening, &master);
+	FD_SET(thisThread->listening, &master);
 
 	while (true)
 	{
@@ -47,13 +76,13 @@ bool tcpServer::read()
 
 		for (int i = 0; i < socketCount; i++) {
 			SOCKET sock =  copy.fd_array[i];
-			if (sock == listening) {
-				client = accept(listening, 0, 0);
+			if (sock == thisThread->listening) {
+				thisThread->client = accept(thisThread->listening, 0, 0);
 
-				FD_SET(client, &master);
+				FD_SET(thisThread->client, &master);
 
 				string welcomeMsg = "Bienvenue sur le serveur\r\n";
-				send(client, welcomeMsg.c_str(), welcomeMsg.size() +1, 0);
+				send(thisThread->client, welcomeMsg.c_str(), welcomeMsg.size() +1, 0);
 			}
 			else
 			{
@@ -69,7 +98,7 @@ bool tcpServer::read()
 				else {
 					for (int i = 0; i < master.fd_count; i++) {
 						SOCKET outSock = master.fd_array[i];
-						if (outSock != listening && outSock != sock) {
+						if (outSock != thisThread->listening && outSock != sock) {
 							ostringstream ss;
 							ss << "SOCKET #" << sock << ":" << buf << "\r\n";
 							string strOut = ss.str();
@@ -82,22 +111,6 @@ bool tcpServer::read()
 			}
 		}
 	}
-    return true;
-}
-
-bool tcpServer::sendMessage(const unsigned char* buf, unsigned int length)
-{
-	bool verif;
-
-	if (length > 0) {
-		send(client, buf, length, 0);
-		verif = true;
-	}
-	else
-	{
-		verif = false;
-	}
-	return verif;
 }
 
 
