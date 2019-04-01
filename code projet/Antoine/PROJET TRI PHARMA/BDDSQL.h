@@ -5,6 +5,9 @@
 //---------------------------------------------------------------------------
 #include "mysql.h"
 #include "BDD.h"
+#include <stdlib.h>
+#include <vcl.h>
+#include <windows.h>
 
 class BDDSQL : public BDD{
 
@@ -22,6 +25,9 @@ public:
 //	void compareBDD (char ip,char login,char mdp);
 	bool connect(string host,string user,string password,string dbname);
 	bool insert(string requete);
+	//bool delete (string requete);
+	//bool save ();
+	//bool restore();
 vector< vector<std::string> > select(string requete);
 
 };
