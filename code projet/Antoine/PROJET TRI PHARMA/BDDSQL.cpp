@@ -52,7 +52,7 @@ bool BDDSQL::insert(string requete)
 	{
 		MessageBox(NULL, L"Echec pour la requete INSERT",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
-    }
+	}
 
 }
 //---------------------------------------------------------------------------
@@ -60,23 +60,23 @@ vector< vector<std::string> > BDDSQL::select(string requete)
 {
 		vector< vector<std::string> > vec;
 
-		 mysql_query(&mysql, "SELECT * FROM scores");
-        //Déclaration des objets
-        MYSQL_RES *result = NULL;
-        MYSQL_ROW row;
-        int i = 1;
+//		 mysql_query(&mysql, "SELECT * FROM scores");
+		//Déclaration des objets
+//        MYSQL_RES *result = NULL;
+//        MYSQL_ROW row;
+//        int i = 1;
 
-        //On met le jeu de résultat dans le pointeur result
-        result = mysql_use_result(&mysql);
-        //Tant qu'il y a encore un résultat ...
-        while ((row = mysql_fetch_row(result)))
-		{
-		   printf("Resultat %ld\n", i);
-           i++;
-        }
-        //Libération du jeu de résultat
-		mysql_free_result(result);
-    return vec;
+		//On met le jeu de résultat dans le pointeur result
+//        result = mysql_use_result(&mysql);
+		//Tant qu'il y a encore un résultat ...
+//        while ((row = mysql_fetch_row(result)))
+//		{
+//		   printf("Resultat %ld\n", i);
+//           i++;
+//		}
+		//Libération du jeu de résultat
+//		mysql_free_result(result);
+//    return vec;
 }
 //---------------------------------------------------------------------------
 
