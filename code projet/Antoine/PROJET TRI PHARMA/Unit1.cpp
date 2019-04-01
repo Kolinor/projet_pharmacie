@@ -38,3 +38,13 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 
 
+
+
+
+void __fastcall TForm1::Btn_sendAutomateClick(TObject *Sender)
+{
+	manager->insertTapiris(Edit_cle->Text, Edit_value->Text);
+}
+//---------------------------------------------------------------------------
+
+
