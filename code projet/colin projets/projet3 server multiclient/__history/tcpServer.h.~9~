@@ -19,8 +19,6 @@ class tcpServer
 {
 
 	private:
-		SOCKET listening;
-		SOCKET client;
 		char buffer[4096];
 		WSADATA wsData;
 		sockaddr_in hint;
@@ -30,7 +28,7 @@ class tcpServer
 	public:
 		tcpSever();
 		bool start(unsigned short port);
-		bool sendMessage(const unsigned char* buf, unsigned int lenght);
+		bool sendMessage(const unsigned char buf, unsigned int lenght);
 		bool read();
 
 

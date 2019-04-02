@@ -25,7 +25,9 @@ class tcpClient
 		~tcpClient();
 		bool connected(string adress, unsigned short port);
 		bool sendString(string userInput);
-		string read();
+		string readString();
+		bool sendChar(char * buffer, int length);
+		int readChar(char * buffer);
 
 
 };

@@ -7,9 +7,11 @@
 #include <iostream>
 #include <WS2tcpip.h>
 #include <sstream>
+#include <windows.h>
 #pragma comment(lib, "ws2_32.lib")
 
 #include <stdio.h>
+#define BUF_SIZE 255
 
 using namespace std;
 
@@ -21,17 +23,20 @@ class tcpServer
 	private:
 		SOCKET listening;
 		SOCKET client;
-		char buffer[4096];
 		WSADATA wsData;
 		sockaddr_in hint;
-		fd_set master;
 		bool etat;
+		TCHAR msgBuf[BUF_SIZE];
+		size_t cchStringSize;
+		DWORD dwChars;
+		HANDLE Handle_Of_Thread_1;
 
 	public:
 		tcpSever();
+		~tcpServer();
 		bool start(unsigned short port);
 		bool sendMessage(const unsigned char* buf, unsigned int lenght);
-		bool read();
+		static DWORD WINAPI Thread_no_1( LPVOID lpParam );
 
 
 

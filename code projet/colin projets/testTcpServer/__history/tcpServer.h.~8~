@@ -1,48 +1,55 @@
 //---------------------------------------------------------------------------
 /*******************************************************
-Nom ......... : tcpClient.h
+Nom ......... : tcpServer.h
 Role ........ : serveur multiclient un seul thread
 Auteur ...... : Colin.B
 Version ..... : V1.1 du 02/04/2019
 
 Compilation : c++ builder
 ********************************************************/
+
+#ifndef tcpServerH
+#define tcpServerH
+
+#include <tchar.h>
 #include <iostream>
 #include <WS2tcpip.h>
-#include <string>
-
+#include <sstream>
+#include <windows.h>
 #pragma comment(lib, "ws2_32.lib")
+
+#include <stdio.h>
+#define BUF_SIZE 255
 
 using namespace std;
 
-#ifndef tcpClientH
-#define tcpClientH
 //---------------------------------------------------------------------------
 
-class tcpClient
+class tcpServer
 {
-	private:
-		WSADATA data;
-		SOCKET sock;
-		sockaddr_in hint;
-		char buffer[4096];
 
+	private:
+		SOCKET listening;
+		SOCKET client;
+		WSADATA wsData;
+		sockaddr_in hint;
+		TCHAR msgBuf[BUF_SIZE];
+		size_t cchStringSize;
+		DWORD dwChars;
+		HANDLE Thread;
+		bool etatThread;
 
 	public:
-		tcpClient();
-		~tcpClient();
-		//permet d'ouvrir une connection en spécifiant l'adresse et le port
-		bool connected(string adress, unsigned short port);
-		//permet d'envoyer un string
-		bool sendString(string userInput);
-		//permet de lire un string
-		string readString();
-		//permet d'envoyer un char
-		bool sendChar(char * buffer, int length);
-		//permet de lire un char
-		int readChar(char * buffer);
+		tcpServer();
+		~tcpServer();
+		bool start(unsigned short port);
+		bool stop();
+		bool sendMessage(const unsigned char* buf, unsigned int lenght);
+		static DWORD WINAPI Thread_no_1( LPVOID lpParam );
+
 
 
 };
+
 
 #endif

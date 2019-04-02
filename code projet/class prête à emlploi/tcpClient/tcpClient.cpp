@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+ï»¿//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -11,7 +11,7 @@ tcpClient::tcpClient()
 	WORD ver = MAKEWORD(2,2);
 	int wsResult = WSAStartup(ver, &data);
 	if (wsResult != 0) {
-		cerr << "impossible de démarrer winsock" << wsResult << endl;
+		cerr << "impossible de dï¿½marrer winsock" << wsResult << endl;
 		return;
 	}
 
@@ -64,13 +64,42 @@ bool tcpClient::sendString(string userInput)
 	return result;
 }
 
-string tcpClient::read()
+string tcpClient::readString()
 {
 	ZeroMemory(buffer, 4096);
 	int bytesReceived = recv(sock, buffer, 4096,0);
 	if (bytesReceived > 0) {
 		return string(buffer, 0, bytesReceived);
 	}
+}
+
+bool tcpClient::sendChar(char * buf, int length)
+{
+	bool result;
+
+	if (length > 0) {
+		int sendResult = send(sock, buf, length ,0);
+
+		if (sendResult != SOCKET_ERROR) {
+			result = true;
+		}
+		else {
+			result = false;
+		}
+	}
+
+
+	return result;
+}
+
+int tcpClient::readChar(char * buffer)
+{
+	ZeroMemory(buffer, 4096);
+	int bytesReceived = recv(sock, buffer, 4096,0);
+	if (bytesReceived > 0) {
+		return bytesReceived;
+	}
+
 }
 
 tcpClient::~tcpClient()

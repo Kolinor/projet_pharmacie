@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/10/15 14:11:59.000.767,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2018/10/15 14:11:59.000.754,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/03/26 17:33:23.000.104,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\File1.cpp</Transaction>
+    <Transaction>2019/03/26 17:33:23.000.100,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/03/26 17:33:41.000.350,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\File1.cpp=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\File1.cpp</Transaction>
+    <Transaction>2019/03/26 17:33:41.000.769,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\Project1PCH1.h=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/03/26 17:33:42.000.507,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\Project1.cbproj=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1.cbproj</Transaction>
+    <Transaction>2019/03/27 08:49:00.000.901,=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\Unit1.cpp</Transaction>
+    <Transaction>2019/03/27 08:49:11.000.298,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\Unit1.h=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpSever.h</Transaction>
+    <Transaction>2019/03/27 08:49:11.000.298,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\Unit1.cpp=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpSever.cpp</Transaction>
+    <Transaction>2019/03/27 08:49:18.000.012,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpSever.h=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpServer.h</Transaction>
+    <Transaction>2019/03/27 08:49:18.000.012,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpSever.cpp=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpServer.cpp</Transaction>
+    <Transaction>2019/03/28 10:53:31.435,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpServer.cpp=</Transaction>
+    <Transaction>2019/03/28 11:15:52.689,=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\projet3 server multiclient\tcpServer.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

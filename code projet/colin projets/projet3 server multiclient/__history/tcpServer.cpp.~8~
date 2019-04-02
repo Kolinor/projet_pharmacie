@@ -15,7 +15,7 @@ tcpServer::tcpSever()
 		cerr << "Impossible d'initialiser winsock" << endl;
 	}
 
-	listening = socket(AF_INET, SOCK_STREAM, 0);
+    SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
 	if (listening == INVALID_SOCKET) {
 		cerr << "impossible de creer la socket" << endl;
 	}
@@ -48,7 +48,7 @@ bool tcpServer::read()
 		for (int i = 0; i < socketCount; i++) {
 			SOCKET sock =  copy.fd_array[i];
 			if (sock == listening) {
-				client = accept(listening, 0, 0);
+				SOCKET client = accept(listening, 0, 0);
 
 				FD_SET(client, &master);
 
@@ -85,17 +85,17 @@ bool tcpServer::read()
     return true;
 }
 
-bool tcpServer::sendMessage(const unsigned char* buf, unsigned int length)
+bool tcpServer::sendMessage(const unsigned char buf, unsigned int lenght)
 {
 	bool verif;
 
 	if (length > 0) {
-		send(client, buf, length, 0);
+		send(client, welcomeMsg.c_str(), welcomeMsg.size() +1, 0);
 		verif = true;
 	}
 	else
 	{
-		verif = false;
+		verif = false
 	}
 	return verif;
 }
