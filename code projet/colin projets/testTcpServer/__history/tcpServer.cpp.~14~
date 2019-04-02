@@ -6,7 +6,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-tcpServer::tcpSever()
+tcpServer::tcpServer()
 {
 	this->etatThread = true;
 	WORD ver = MAKEWORD(2,2);
@@ -25,9 +25,8 @@ tcpServer::tcpSever()
 
 tcpServer::~tcpServer()
 {
-	WSACleanup;
 	this->etatThread = false;
-
+	WSACleanup;
 }
 
 bool tcpServer::start(unsigned short port)
@@ -38,8 +37,8 @@ bool tcpServer::start(unsigned short port)
 
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
-	if (listen(listening, SOMAXCONN) == 0)
-		Handle_Of_Thread_1 = CreateThread( NULL, 0,Thread_no_1, this, 0, NULL);
+	listen(listening, SOMAXCONN);
+	Thread = CreateThread( NULL, 0,Thread_no_1, this, 0, NULL);
 
 
 
@@ -47,6 +46,11 @@ bool tcpServer::start(unsigned short port)
 
 }
 
+bool tcpServer::stop()
+{
+	this->etatThread = false;
+
+}
 
 bool tcpServer::sendMessage(const unsigned char* buf, unsigned int length)
 {
@@ -85,7 +89,7 @@ DWORD WINAPI tcpServer::Thread_no_1( LPVOID lpParam )
 
 				FD_SET(thisThread->client, &master);
 
-				string welcomeMsg = "Bienvenue sur le serveur\r\n";
+				string welcomeMsg = "Serveur pharmacie\r\n";
 				send(thisThread->client, welcomeMsg.c_str(), welcomeMsg.size() +1, 0);
 			}
 			else
@@ -99,22 +103,15 @@ DWORD WINAPI tcpServer::Thread_no_1( LPVOID lpParam )
 					closesocket(sock);
 					FD_CLR(sock, &master);
 				}
-				else {
-					for (int i = 0; i < master.fd_count; i++) {
-						SOCKET outSock = master.fd_array[i];
-						if (outSock != thisThread->listening && outSock != sock) {
-							ostringstream ss;
-							ss << "SOCKET #" << sock << ":" << buf << "\r\n";
-							string strOut = ss.str();
-
-
-							send(outSock, strOut.c_str(), strOut.size()+1, 0);
-						}
-					}
+				else
+				{
+                    cout<<buf<<endl;
+					send(sock,"recu",5,0);
 				}
 			}
 		}
 	}
+
     return 0;
 }
 

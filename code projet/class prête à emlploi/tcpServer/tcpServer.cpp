@@ -48,7 +48,7 @@ bool tcpServer::start(unsigned short port)
 
 bool tcpServer::stop()
 {
-	this->etatThread = false;
+	tcpServer::~tcpServer();
 
 }
 
@@ -105,8 +105,8 @@ DWORD WINAPI tcpServer::Thread_no_1( LPVOID lpParam )
 				}
 				else
 				{
-                    cout<<buf<<endl;
-					send(sock,"recu",5,0);
+					send(sock, buf, strlen(buf)+1,0);
+					cout<<buf<<endl;
 				}
 			}
 		}

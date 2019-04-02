@@ -1,4 +1,12 @@
 //---------------------------------------------------------------------------
+/*******************************************************
+Nom ......... : tcpServer.h
+Role ........ : serveur multiclient un seul thread
+Auteur ...... : Colin.B
+Version ..... : V1.1 du 02/04/2019
+
+Compilation : c++ builder
+********************************************************/
 
 #ifndef tcpServerH
 #define tcpServerH
@@ -34,9 +42,13 @@ class tcpServer
 	public:
 		tcpServer();
 		~tcpServer();
+		//sert à demarrer le serveur
 		bool start(unsigned short port);
+		//sert à arreter le serveur
 		bool stop();
+		//sert à envoyer un message
 		bool sendMessage(const unsigned char* buf, unsigned int lenght);
+		//thread pour le lecture
 		static DWORD WINAPI Thread_no_1( LPVOID lpParam );
 
 
