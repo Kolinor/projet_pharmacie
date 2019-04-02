@@ -21,7 +21,7 @@ __published:	// Composants gérés par l'EDI
 	TGroupBox *Grb_Automate;
 	TGroupBox *Grb_addMedicament;
 	TLabel *Lbl_Title;
-	TComboBox *Cmb_Medicament;
+	TComboBox *Cmb_MedicamentModifier;
 	TLabel *Lbl_Consigne;
 	TEdit *Edit_nomMedicament;
 	TEdit *Edit_hauteur;
@@ -47,6 +47,16 @@ __published:	// Composants gérés par l'EDI
 	TButton *Btn_sendOrdonnance;
 	TGroupBox *Grb_update;
 	TRadioButton *Rbt_Update;
+	TEdit *Edit_numeroCaisse;
+	TLabel *Lbl_numeroCaisse;
+	TLabel *Lbl_nombreMedicament;
+	TEdit *Edit_nombreMedicament;
+	TLabel *Lbl_nombreMedicamentSaisie;
+	TButton *Bt_SupprimerDernierMedicamentSaisie;
+	TButton *Bt_AjouterMedicament;
+	TComboBox *Cmb_medicamentOrdonnance;
+	TLabel *Lbl_MedicamentOrdonnance;
+	TLabel *Lbl_nbrMédicamentAjoute;
 	void __fastcall Btn_sendAutomateClick(TObject *Sender);
 	void __fastcall Btn_sendMedicamentClick(TObject *Sender);
 	void __fastcall Rbt_addMedicamentClick(TObject *Sender);

@@ -19,6 +19,7 @@ class MysqlPharmacieManager
 		bool insertOrdonnance();
 		bool insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		bool insertTapiris(String cle,String value);
+		bool selectMedicament();
 
 };
 #endif

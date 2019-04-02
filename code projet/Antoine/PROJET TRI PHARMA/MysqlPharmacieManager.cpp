@@ -54,3 +54,7 @@ bool MysqlPharmacieManager::insertTapiris(String cle,String value)
 
 	delete req;
 }
+bool MysqlPharmacieManager::selectMedicament()
+{
+
+}

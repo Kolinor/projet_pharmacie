@@ -1,4 +1,4 @@
-object Form1: TForm1
+﻿object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
@@ -94,95 +94,95 @@ object Form1: TForm1
     Left = 8
     Top = 135
     Width = 362
-    Height = 354
+    Height = 250
     TabOrder = 3
     object Lbl_Nom_Medicament: TLabel
       Left = 19
-      Top = 156
+      Top = 60
       Width = 96
       Height = 13
       Caption = 'Nom du m'#233'dicament'
     end
     object Lbl_Hauteur: TLabel
       Left = 19
-      Top = 183
+      Top = 87
       Width = 39
       Height = 13
       Caption = 'Hauteur'
     end
     object Lbl_Largeur: TLabel
       Left = 19
-      Top = 210
+      Top = 114
       Width = 37
       Height = 13
       Caption = 'Largeur'
     end
     object Lbl_Code_Barre: TLabel
       Left = 19
-      Top = 267
+      Top = 168
       Width = 54
       Height = 13
       Caption = 'Code Barre'
     end
     object Lbl_Prix: TLabel
       Left = 19
-      Top = 296
+      Top = 200
       Width = 18
       Height = 13
       Caption = 'Prix'
     end
     object Lbl_Longueur: TLabel
       Left = 19
-      Top = 240
+      Top = 141
       Width = 45
       Height = 13
       Caption = 'Longueur'
     end
     object Edit_hauteur: TEdit
       Left = 121
-      Top = 180
+      Top = 84
       Width = 121
       Height = 21
       TabOrder = 0
     end
     object Edit_largeur: TEdit
       Left = 121
-      Top = 207
+      Top = 111
       Width = 121
       Height = 21
       TabOrder = 1
     end
     object Edit_nomMedicament: TEdit
       Left = 121
-      Top = 153
+      Top = 57
       Width = 121
       Height = 21
       TabOrder = 2
     end
     object Edit_longueur: TEdit
       Left = 121
-      Top = 237
+      Top = 138
       Width = 121
       Height = 21
       TabOrder = 3
     end
     object Edit_codeBarre: TEdit
       Left = 121
-      Top = 264
+      Top = 165
       Width = 121
       Height = 21
       TabOrder = 4
     end
     object Edit_prix: TEdit
       Left = 121
-      Top = 291
+      Top = 192
       Width = 121
       Height = 21
       TabOrder = 5
     end
     object Btn_sendMedicament: TButton
       Left = 272
-      Top = 288
+      Top = 216
       Width = 75
       Height = 25
       Caption = 'Envoyer'
@@ -207,8 +207,45 @@ object Form1: TForm1
     Left = 808
     Top = 135
     Width = 354
-    Height = 354
+    Height = 322
     TabOrder = 5
+    object Lbl_numeroCaisse: TLabel
+      Left = 24
+      Top = 114
+      Width = 84
+      Height = 13
+      Caption = 'Numero de caisse'
+    end
+    object Lbl_nombreMedicament: TLabel
+      Left = 24
+      Top = 146
+      Width = 112
+      Height = 13
+      Caption = 'Nombre de medicament'
+    end
+    object Lbl_nombreMedicamentSaisie: TLabel
+      Left = 328
+      Top = 216
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clAqua
+      ParentColor = False
+    end
+    object Lbl_MedicamentOrdonnance: TLabel
+      Left = 24
+      Top = 184
+      Width = 57
+      Height = 13
+      Caption = 'Medicament'
+    end
+    object Lbl_nbrMédicamentAjoute: TLabel
+      Left = 24
+      Top = 216
+      Width = 155
+      Height = 13
+      Caption = 'Nombre de m'#233'dicament a ajout'#233
+    end
     object Btn_sendOrdonnance: TButton
       Left = 264
       Top = 288
@@ -216,6 +253,44 @@ object Form1: TForm1
       Height = 25
       Caption = 'Envoyer'
       TabOrder = 0
+    end
+    object Edit_numeroCaisse: TEdit
+      Left = 192
+      Top = 111
+      Width = 121
+      Height = 21
+      TabOrder = 1
+    end
+    object Edit_nombreMedicament: TEdit
+      Left = 192
+      Top = 143
+      Width = 121
+      Height = 21
+      TabOrder = 2
+    end
+    object Bt_SupprimerDernierMedicamentSaisie: TButton
+      Left = 24
+      Top = 240
+      Width = 155
+      Height = 25
+      Caption = 'Supprimer dernier medicament'
+      TabOrder = 3
+    end
+    object Bt_AjouterMedicament: TButton
+      Left = 185
+      Top = 241
+      Width = 152
+      Height = 25
+      Caption = 'Ajouter medicament'
+      TabOrder = 4
+    end
+    object Cmb_medicamentOrdonnance: TComboBox
+      Left = 168
+      Top = 184
+      Width = 145
+      Height = 21
+      TabOrder = 5
+      Text = 'M'#233'dicament a ajouter'
     end
   end
   object Rbt_Ordonnance: TRadioButton
@@ -243,7 +318,7 @@ object Form1: TForm1
         'Ecrivez ce que vous voulez modifier, ne remplissez rien et rien ' +
         'ne sera modifier'
     end
-    object Cmb_Medicament: TComboBox
+    object Cmb_MedicamentModifier: TComboBox
       Left = 16
       Top = 35
       Width = 145
