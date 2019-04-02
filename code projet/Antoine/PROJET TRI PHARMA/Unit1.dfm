@@ -1,4 +1,4 @@
-object Form1: TForm1
+﻿object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
@@ -27,58 +27,62 @@ object Form1: TForm1
     ParentFont = False
   end
   object Rbt_Automate: TRadioButton
-    Left = 664
+    Left = 520
     Top = 96
     Width = 129
     Height = 17
     Caption = 'Parametre automate'
     TabOrder = 1
+    Visible = False
+    OnClick = Rbt_AutomateClick
   end
-  object Rbt_Medicament: TRadioButton
-    Left = 168
+  object Rbt_addMedicament: TRadioButton
+    Left = 104
     Top = 96
-    Width = 113
+    Width = 121
     Height = 17
-    Caption = 'M'#233'dicament'
+    Caption = 'Ajout'#233' M'#233'dicament'
     TabOrder = 0
+    Visible = False
+    OnClick = Rbt_addMedicamentClick
   end
   object Grb_Automate: TGroupBox
-    Left = 520
+    Left = 392
     Top = 135
-    Width = 457
-    Height = 338
+    Width = 410
+    Height = 122
     TabOrder = 2
     object lbl_cle: TLabel
-      Left = 104
-      Top = 88
+      Left = 16
+      Top = 43
       Width = 15
       Height = 13
       Caption = 'Cle'
     end
     object lbl_value: TLabel
-      Left = 104
-      Top = 139
+      Left = 16
+      Top = 94
       Width = 26
       Height = 13
       Caption = 'Value'
     end
     object Edit_cle: TEdit
-      Left = 200
-      Top = 85
+      Left = 56
+      Top = 40
       Width = 121
       Height = 21
       TabOrder = 0
     end
     object Edit_value: TEdit
-      Left = 200
-      Top = 136
+      Left = 56
+      Top = 91
       Width = 121
       Height = 21
       TabOrder = 1
     end
     object Btn_sendAutomate: TButton
-      Left = 360
-      Top = 287
+      Left = 332
+      Top = 86
       Width = 75
       Height = 25
       Caption = 'Envoyer'
@@ -86,135 +90,162 @@ object Form1: TForm1
       OnClick = Btn_sendAutomateClick
     end
   end
-  object Grb_Medicament: TGroupBox
-    Left = 55
+  object Grb_addMedicament: TGroupBox
+    Left = 8
     Top = 135
-    Width = 442
-    Height = 338
+    Width = 362
+    Height = 250
     TabOrder = 3
-    object Lbl_Consigne: TLabel
-      Left = 17
-      Top = 88
-      Width = 376
-      Height = 13
-      Caption = 
-        'Ecrivez ce que vous voulez modifier, ne remplissez rien et rien ' +
-        'ne sera modifier'
-    end
     object Lbl_Nom_Medicament: TLabel
       Left = 19
-      Top = 156
+      Top = 60
       Width = 96
       Height = 13
       Caption = 'Nom du m'#233'dicament'
     end
     object Lbl_Hauteur: TLabel
       Left = 19
-      Top = 183
+      Top = 87
       Width = 39
       Height = 13
       Caption = 'Hauteur'
     end
     object Lbl_Largeur: TLabel
       Left = 19
-      Top = 210
+      Top = 114
       Width = 37
       Height = 13
       Caption = 'Largeur'
     end
     object Lbl_Code_Barre: TLabel
       Left = 19
-      Top = 267
+      Top = 168
       Width = 54
       Height = 13
       Caption = 'Code Barre'
     end
     object Lbl_Prix: TLabel
       Left = 19
-      Top = 296
+      Top = 200
       Width = 18
       Height = 13
       Caption = 'Prix'
     end
     object Lbl_Longueur: TLabel
       Left = 19
-      Top = 240
+      Top = 141
       Width = 45
       Height = 13
       Caption = 'Longueur'
     end
-    object Cmb_Medicament: TComboBox
-      Left = 17
-      Top = 40
-      Width = 145
-      Height = 21
-      TabOrder = 0
-      Text = 'M'#233'dicament a modifier'
-    end
     object Edit_hauteur: TEdit
       Left = 121
-      Top = 180
+      Top = 84
+      Width = 121
+      Height = 21
+      TabOrder = 0
+    end
+    object Edit_largeur: TEdit
+      Left = 121
+      Top = 111
       Width = 121
       Height = 21
       TabOrder = 1
     end
-    object Edit_largeur: TEdit
+    object Edit_nomMedicament: TEdit
       Left = 121
-      Top = 207
+      Top = 57
       Width = 121
       Height = 21
       TabOrder = 2
     end
-    object Edit_nomMedicament: TEdit
+    object Edit_longueur: TEdit
       Left = 121
-      Top = 153
+      Top = 138
       Width = 121
       Height = 21
       TabOrder = 3
     end
-    object Edit_longueur: TEdit
+    object Edit_codeBarre: TEdit
       Left = 121
-      Top = 237
+      Top = 165
       Width = 121
       Height = 21
       TabOrder = 4
     end
-    object Edit_codeBarre: TEdit
+    object Edit_prix: TEdit
       Left = 121
-      Top = 264
+      Top = 192
       Width = 121
       Height = 21
       TabOrder = 5
     end
-    object Edit_prix: TEdit
-      Left = 121
-      Top = 291
-      Width = 121
-      Height = 21
-      TabOrder = 6
-    end
     object Btn_sendMedicament: TButton
-      Left = 336
-      Top = 288
+      Left = 272
+      Top = 216
       Width = 75
       Height = 25
       Caption = 'Envoyer'
-      TabOrder = 7
+      TabOrder = 6
+      OnClick = Btn_sendMedicamentClick
     end
   end
   object StringGrid1: TStringGrid
-    Left = 94
-    Top = 487
-    Width = 346
+    Left = 16
+    Top = 495
+    Width = 305
     Height = 121
     TabOrder = 4
+    ColWidths = (
+      64
+      88
+      60
+      815
+      815)
   end
   object Grb_Ordonance: TGroupBox
-    Left = 1000
+    Left = 808
     Top = 135
     Width = 354
-    Height = 338
+    Height = 322
     TabOrder = 5
+    object Lbl_numeroCaisse: TLabel
+      Left = 24
+      Top = 114
+      Width = 84
+      Height = 13
+      Caption = 'Numero de caisse'
+    end
+    object Lbl_nombreMedicament: TLabel
+      Left = 24
+      Top = 146
+      Width = 112
+      Height = 13
+      Caption = 'Nombre de medicament'
+    end
+    object Lbl_nombreMedicamentSaisie: TLabel
+      Left = 328
+      Top = 216
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clAqua
+      ParentColor = False
+    end
+    object Lbl_MedicamentOrdonnance: TLabel
+      Left = 24
+      Top = 184
+      Width = 57
+      Height = 13
+      Caption = 'Medicament'
+    end
+    object Lbl_nbrMédicamentAjoute: TLabel
+      Left = 24
+      Top = 216
+      Width = 155
+      Height = 13
+      Caption = 'Nombre de m'#233'dicament a ajout'#233
+    end
     object Btn_sendOrdonnance: TButton
       Left = 264
       Top = 288
@@ -223,13 +254,87 @@ object Form1: TForm1
       Caption = 'Envoyer'
       TabOrder = 0
     end
+    object Edit_numeroCaisse: TEdit
+      Left = 192
+      Top = 111
+      Width = 121
+      Height = 21
+      TabOrder = 1
+    end
+    object Edit_nombreMedicament: TEdit
+      Left = 192
+      Top = 143
+      Width = 121
+      Height = 21
+      TabOrder = 2
+    end
+    object Bt_SupprimerDernierMedicamentSaisie: TButton
+      Left = 24
+      Top = 240
+      Width = 155
+      Height = 25
+      Caption = 'Supprimer dernier medicament'
+      TabOrder = 3
+    end
+    object Bt_AjouterMedicament: TButton
+      Left = 185
+      Top = 241
+      Width = 152
+      Height = 25
+      Caption = 'Ajouter medicament'
+      TabOrder = 4
+    end
+    object Cmb_medicamentOrdonnance: TComboBox
+      Left = 168
+      Top = 184
+      Width = 145
+      Height = 21
+      TabOrder = 5
+      Text = 'M'#233'dicament a ajouter'
+    end
   end
   object Rbt_Ordonnance: TRadioButton
-    Left = 1136
+    Left = 944
     Top = 96
     Width = 113
     Height = 17
     Caption = 'Ordonnance'
     TabOrder = 6
+    Visible = False
+    OnClick = Rbt_OrdonnanceClick
+  end
+  object Grb_update: TGroupBox
+    Left = 392
+    Top = 292
+    Width = 410
+    Height = 197
+    TabOrder = 7
+    object Lbl_Consigne: TLabel
+      Left = 16
+      Top = 16
+      Width = 376
+      Height = 13
+      Caption = 
+        'Ecrivez ce que vous voulez modifier, ne remplissez rien et rien ' +
+        'ne sera modifier'
+    end
+    object Cmb_MedicamentModifier: TComboBox
+      Left = 16
+      Top = 35
+      Width = 145
+      Height = 21
+      TabOrder = 0
+      Text = 'M'#233'dicament a modifier'
+    end
+  end
+  object Rbt_Update: TRadioButton
+    Left = 543
+    Top = 269
+    Width = 113
+    Height = 17
+    Caption = 'Modifier M'#233'dicament'
+    TabOrder = 8
+    Visible = False
+    OnClick = Rbt_UpdateClick
   end
 end

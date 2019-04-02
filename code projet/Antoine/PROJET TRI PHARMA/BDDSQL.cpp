@@ -31,12 +31,12 @@ bool BDDSQL::connect(string host,string user,string password,string dbname)
 							NULL,
 							0)!= NULL)
 	{
-		MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		//MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return true;
 	}
 	else
 	{
-		MessageBox(NULL, L"Quel échec !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		MessageBox(NULL, L"Echec de connexion !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 }
@@ -45,12 +45,12 @@ bool BDDSQL::insert(string requete)
 {
 	if(mysql_query(mysql,requete.c_str())==0)
 	{
-		MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		//MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return true;
 	}
 	else
 	{
-		MessageBox(NULL, L"Echec pour la requete INSERT",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		MessageBox(NULL, L"Echec pour la requete INSERT verfiez que les codes barres ne soient pas identique",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 
@@ -76,7 +76,7 @@ vector< vector<std::string> > BDDSQL::select(string requete)
 //		}
 		//Libération du jeu de résultat
 //		mysql_free_result(result);
-//    return vec;
+    return vec;
 }
 //---------------------------------------------------------------------------
 

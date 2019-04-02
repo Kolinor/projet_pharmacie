@@ -29,10 +29,16 @@ bool MysqlPharmacieManager::insertOrdonnance()
 	this->mySql->insert(requeteOrdonnance);
 }
 //---------------------------------------------------------------------------
-bool MysqlPharmacieManager::insertMedicament()
+bool MysqlPharmacieManager::insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix)
 {
-    string requete="INSERT INTO `Medicament`(`Nom_Medicament`, `Hauteur`, `Largeur`, `Longueur`, `Quantite_Restante`, `Code_Barre`, `Prix`, `Nombre_Unite_Vendu`) VALUES ('Doliprane','10','50','20','30','84785','99.99','0');";
-	this->mySql->insert(requete);
+	String requete="INSERT INTO `Medicament`(`Nom_Medicament`, `Hauteur`, `Largeur`, `Longueur`, `Quantite_Restante`, `Code_Barre`, `Prix`, `Nombre_Unite_Vendu`) VALUES ('" + nomMedicament + "','" + hauteur.ToInt() + "','" + largeur.ToInt() + "' , '" + longueur.ToInt() + "' , '"+ 0 + "' , '" + codeBarre.ToInt() + "' , '" + prix.ToInt() + "' , '" + 0 + "');";
+
+	wchar_t * wStrReq = requete.c_str();
+	int reqLength = wcslen(wStrReq);
+	char * req = new char[reqLength + 1];
+	wcstombs(req, wStrReq, reqLength);
+
+	this->mySql->insert(req);
 }
 //---------------------------------------------------------------------------
 bool MysqlPharmacieManager::insertTapiris(String cle,String value)
@@ -47,4 +53,8 @@ bool MysqlPharmacieManager::insertTapiris(String cle,String value)
 	mySql->insert(req);
 
 	delete req;
+}
+bool MysqlPharmacieManager::selectMedicament()
+{
+
 }

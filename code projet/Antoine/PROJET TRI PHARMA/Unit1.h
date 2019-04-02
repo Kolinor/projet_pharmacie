@@ -16,12 +16,12 @@ using namespace std;
 class TForm1 : public TForm
 {
 __published:	// Composants gérés par l'EDI
-	TRadioButton *Rbt_Medicament;
+	TRadioButton *Rbt_addMedicament;
 	TRadioButton *Rbt_Automate;
 	TGroupBox *Grb_Automate;
-	TGroupBox *Grb_Medicament;
+	TGroupBox *Grb_addMedicament;
 	TLabel *Lbl_Title;
-	TComboBox *Cmb_Medicament;
+	TComboBox *Cmb_MedicamentModifier;
 	TLabel *Lbl_Consigne;
 	TEdit *Edit_nomMedicament;
 	TEdit *Edit_hauteur;
@@ -45,7 +45,24 @@ __published:	// Composants gérés par l'EDI
 	TRadioButton *Rbt_Ordonnance;
 	TButton *Btn_sendMedicament;
 	TButton *Btn_sendOrdonnance;
+	TGroupBox *Grb_update;
+	TRadioButton *Rbt_Update;
+	TEdit *Edit_numeroCaisse;
+	TLabel *Lbl_numeroCaisse;
+	TLabel *Lbl_nombreMedicament;
+	TEdit *Edit_nombreMedicament;
+	TLabel *Lbl_nombreMedicamentSaisie;
+	TButton *Bt_SupprimerDernierMedicamentSaisie;
+	TButton *Bt_AjouterMedicament;
+	TComboBox *Cmb_medicamentOrdonnance;
+	TLabel *Lbl_MedicamentOrdonnance;
+	TLabel *Lbl_nbrMédicamentAjoute;
 	void __fastcall Btn_sendAutomateClick(TObject *Sender);
+	void __fastcall Btn_sendMedicamentClick(TObject *Sender);
+	void __fastcall Rbt_addMedicamentClick(TObject *Sender);
+	void __fastcall Rbt_AutomateClick(TObject *Sender);
+	void __fastcall Rbt_OrdonnanceClick(TObject *Sender);
+	void __fastcall Rbt_UpdateClick(TObject *Sender);
 private: BDDSQL sql;	// Déclarations utilisateur
 		 MysqlPharmacieManager *manager;
 public:		// Déclarations utilisateur

@@ -27,24 +27,66 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //	sql.insert(requeteOrdonnance);
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void __fastcall TForm1::Btn_sendAutomateClick(TObject *Sender)
 {
 	manager->insertTapiris(Edit_cle->Text, Edit_value->Text);
+	Edit_value->Clear();
+    Edit_cle->Clear();
 }
 //---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Btn_sendMedicamentClick(TObject *Sender)
+{
+	manager->insertMedicament(Edit_nomMedicament->Text , Edit_hauteur->Text , Edit_largeur->Text , Edit_longueur->Text , Edit_codeBarre->Text , Edit_prix->Text);
+	Edit_nomMedicament->Clear();
+	Edit_longueur->Clear();
+	Edit_largeur->Clear();
+	Edit_hauteur->Clear();
+	Edit_codeBarre->Clear();
+    Edit_prix->Clear();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Rbt_addMedicamentClick(TObject *Sender)
+{
+//	Grb_addMedicament->Visible=true;
+//	Grb_Automate->Visible=false;
+//	Grb_Ordonance->Visible=false;
+//	Grb_update->Visible=false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Rbt_AutomateClick(TObject *Sender)
+{
+//	Grb_addMedicament->Visible=false;
+//	Grb_Automate->Visible=true;
+//	Grb_Ordonance->Visible=false;
+//	Grb_update->Visible=false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Rbt_OrdonnanceClick(TObject *Sender)
+{
+//	Grb_addMedicament->Visible=false;
+//	Grb_Automate->Visible=false;
+//	Grb_Ordonance->Visible=true;
+//	Grb_update->Visible=false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Rbt_UpdateClick(TObject *Sender)
+{
+//	Grb_addMedicament->Visible=false;
+//	Grb_Automate->Visible=false;
+//	Grb_Ordonance->Visible=false;
+//	Grb_update->Visible=true;
+}
+//---------------------------------------------------------------------------
+
+
+
+
 
 
