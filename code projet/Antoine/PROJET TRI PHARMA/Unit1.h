@@ -16,10 +16,10 @@ using namespace std;
 class TForm1 : public TForm
 {
 __published:	// Composants gérés par l'EDI
-	TRadioButton *Rbt_Medicament;
+	TRadioButton *Rbt_addMedicament;
 	TRadioButton *Rbt_Automate;
 	TGroupBox *Grb_Automate;
-	TGroupBox *Grb_Medicament;
+	TGroupBox *Grb_addMedicament;
 	TLabel *Lbl_Title;
 	TComboBox *Cmb_Medicament;
 	TLabel *Lbl_Consigne;
@@ -45,7 +45,14 @@ __published:	// Composants gérés par l'EDI
 	TRadioButton *Rbt_Ordonnance;
 	TButton *Btn_sendMedicament;
 	TButton *Btn_sendOrdonnance;
+	TGroupBox *Grb_update;
+	TRadioButton *Rbt_Update;
 	void __fastcall Btn_sendAutomateClick(TObject *Sender);
+	void __fastcall Btn_sendMedicamentClick(TObject *Sender);
+	void __fastcall Rbt_addMedicamentClick(TObject *Sender);
+	void __fastcall Rbt_AutomateClick(TObject *Sender);
+	void __fastcall Rbt_OrdonnanceClick(TObject *Sender);
+	void __fastcall Rbt_UpdateClick(TObject *Sender);
 private: BDDSQL sql;	// Déclarations utilisateur
 		 MysqlPharmacieManager *manager;
 public:		// Déclarations utilisateur

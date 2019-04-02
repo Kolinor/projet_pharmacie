@@ -17,7 +17,7 @@ class MysqlPharmacieManager
 		~MysqlPharmacieManager();
 		bool selectOrdonnance(TStringGrid *excelOrdo);
 		bool insertOrdonnance();
-		bool insertMedicament();
+		bool insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		bool insertTapiris(String cle,String value);
 
 };
