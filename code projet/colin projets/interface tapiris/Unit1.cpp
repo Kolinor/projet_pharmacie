@@ -16,9 +16,27 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-	tcp = new tcpClient();
-	tcp->connected("192.168.64.200",502);
+
+	pThreadConnection = new threadConnection(true);
+	pThreadConnection->OnTerminate = finThread;
+	EnableWindow(Handle, false);
+
 }
+
+//---------------------------------------------------------------------------
+void __fastcall  TForm1::finThread(TObject *Sender)
+{
+		EnableWindow(Handle, true);
+		delete pThreadConnection;
+		pThreadConnection = NULL;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	  if(pThreadConnection) Action = caNone;
+}
+
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {

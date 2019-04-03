@@ -3,13 +3,16 @@
 	<Transactions>
     <Transaction>2018/10/15 14:11:59.000.767,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
     <Transaction>2018/10/15 14:11:59.000.754,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
-    <Transaction>2019/04/02 17:23:44.974,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
-    <Transaction>2019/04/02 17:23:44.988,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
-    <Transaction>2019/04/02 17:24:45.232,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit1.h=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.h</Transaction>
-    <Transaction>2019/04/02 17:24:45.232,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit1.dfm=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.dfm</Transaction>
-    <Transaction>2019/04/02 17:24:45.232,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit1.cpp=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
-    <Transaction>2019/04/02 17:24:45.647,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Project1PCH1.h=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
-    <Transaction>2019/04/02 17:24:46.442,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Project1.cbproj=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1.cbproj</Transaction>
-    <Transaction>2019/04/02 17:25:05.653,=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\tcpClient.cpp</Transaction>
+    <Transaction>2019/04/02 17:23:44.000.974,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/04/02 17:23:44.000.988,=C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/04/02 17:24:45.000.232,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.cpp=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit1.cpp</Transaction>
+    <Transaction>2019/04/02 17:24:45.000.647,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Project1PCH1.h</Transaction>
+    <Transaction>2019/04/02 17:24:45.000.232,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.h=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit1.h</Transaction>
+    <Transaction>2019/04/02 17:24:45.000.232,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Unit1.dfm=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit1.dfm</Transaction>
+    <Transaction>2019/04/02 17:24:46.000.442,C:\Users\Colin\Documents\Embarcadero\Studio\Projets\Project1.cbproj=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Project1.cbproj</Transaction>
+    <Transaction>2019/04/02 17:25:05.000.653,=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\tcpClient.cpp</Transaction>
+    <Transaction>2019/04/03 08:19:26.812,=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit2.cpp</Transaction>
+    <Transaction>2019/04/03 08:19:48.747,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\threadConnection.cpp=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit2.cpp</Transaction>
+    <Transaction>2019/04/03 08:19:48.747,C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\threadConnection.h=C:\Users\Colin\Documents\GitHub\projet_pharmacie\code projet\colin projets\interface tapiris\Unit2.h</Transaction>
   </Transactions>
 </BorlandProject>

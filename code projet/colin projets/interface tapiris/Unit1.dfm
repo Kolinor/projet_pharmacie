@@ -13,6 +13,13 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object Shape1: TShape
+    Left = 160
+    Top = 40
+    Width = 43
+    Height = 41
+    Brush.Color = clRed
+  end
   object Button1: TButton
     Left = 56
     Top = 56

@@ -31,9 +31,10 @@ bool tcpClient::connected(string adress, unsigned short port)
 	hint.sin_port = htons(port);
 	inet_pton(AF_INET, adress.c_str(), &hint.sin_addr);
 
+
+
 	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
 	if (connResult == SOCKET_ERROR) {
-		cerr << "impossible de se connecter au serveur" << WSAGetLastError() << endl;
 		closesocket(sock);
 		WSACleanup();
 		result = false;
