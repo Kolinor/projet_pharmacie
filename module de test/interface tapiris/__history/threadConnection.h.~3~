@@ -1,0 +1,20 @@
+//---------------------------------------------------------------------------
+
+#ifndef threadConnectionH
+#define threadConnectionH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+//---------------------------------------------------------------------------
+class threadConnection : public TThread
+{
+private:
+		bool etatCon;
+		tcpClient * tcp;
+protected:
+        void __fastcall Execute();
+        void __fastcall AffMessage();
+public:
+        __fastcall threadConnection(bool CreateSuspended);
+};
+//---------------------------------------------------------------------------
+#endif
