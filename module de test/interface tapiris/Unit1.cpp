@@ -153,7 +153,7 @@ void __fastcall TForm1::Button7Click(TObject *Sender)
 	trame[9] = 0x05;
 	trame[10] = 0x00;
 	trame[11] = 0x00;
-
+Â²
 	tcp->sendChar(trame,12);
 	delete trame;
 }
@@ -237,24 +237,24 @@ void __fastcall TForm1::Button11Click(TObject *Sender)
 
 
 	if (trameRecu[14] == 1) {
-		Memo1->Lines->Add("capteur 1 allumé");
+		Memo1->Lines->Add("capteur 1 allumï¿½");
 	}
 	else {
-		Memo1->Lines->Add("capteur 1 étteint");
+		Memo1->Lines->Add("capteur 1 ï¿½tteint");
 	}
 
 	if (trameRecu[12] == 1) {
-		Memo1->Lines->Add("capteur 2 allumé");
+		Memo1->Lines->Add("capteur 2 allumï¿½");
 	}
 	else {
-		Memo1->Lines->Add("capteur 2 étteint");
+		Memo1->Lines->Add("capteur 2 ï¿½tteint");
 	}
 
 	if (trameRecu[10] == 1) {
-		Memo1->Lines->Add("capteur 3 allumé");
+		Memo1->Lines->Add("capteur 3 allumï¿½");
 	}
 	else {
-		Memo1->Lines->Add("capteur 3 étteint");
+		Memo1->Lines->Add("capteur 3 ï¿½tteint");
 	}
 
 	delete trameRecu;
