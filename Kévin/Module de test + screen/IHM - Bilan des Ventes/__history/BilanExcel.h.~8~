@@ -1,0 +1,17 @@
+//---------------------------------------------------------------------------
+#ifndef BilanExcelH
+#define BilanExcelH
+#include <fstream>
+#include <iostream>
+using namespace std ;
+//---------------------------------------------------------------------------
+
+class Excel
+{
+	public :
+		Excel() ;
+		void  recupererInformations() ;
+		void ecrireInformations(std::string nomMedicament, long quantiteMedicamentVendu, double prixMedicament, long double TotalePrixMedicamentVendu) ;
+};
+
+#endif

@@ -1,0 +1,41 @@
+//---------------------------------------------------------------------------
+//-- IHM_Confirmation_BilanExcel.cpp ----------------------------------------
+//-- Développé par VUILLEMENOT Kevin (BTS SN2) ------------------------------
+//-- Projet : Tri Pharmacie  ------------------------------------------------
+//-- En collaboration avec : BEAUVISAGE Colin et VALENTINI Antoine ----------
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+#ifndef IHM_Confirmation_BilanExcelH
+#define IHM_Confirmation_BilanExcelH
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "BilanExcel.h"
+//---------------------------------------------------------------------------
+
+class TForm2 : public TForm
+{
+	// Composants gérés par l'EDI
+	__published:
+		TButton *Button_Oui;
+		TButton *Button_Non;
+		TLabel *Label1;
+		TLabel *Label2;
+		void __fastcall Button_OuiClick(TObject *Sender);
+		void __fastcall Button_NonClick(TObject *Sender);
+
+	// Déclarations utilisateur
+	private:
+
+	// Déclarations utilisateur
+	public:
+		__fastcall TForm2(TComponent* Owner);
+		Excel * Bilan ;
+};
+
+//---------------------------------------------------------------------------
+extern PACKAGE TForm2 *Form2;
+//---------------------------------------------------------------------------
+#endif

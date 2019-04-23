@@ -1,0 +1,35 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "BilanExcel.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+
+Excel::Excel()
+{
+	ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes.csv", ios::out) ;
+
+	if (fichierBilan)
+	{
+		fichierBilan << "Médicaments" << ";;" << "Quantité vendu" << ";;" << "Prix\n";
+	}
+
+	else
+		cerr << "Erreur à l'ouverture du fichier Bilan des ventes" << endl ;
+}
+
+void Excel::ecrireInformations()
+{          /*
+	ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes.csv", ios::out) ;
+
+		string contenu = "test" ;
+		int testnb = 12 ;
+		fichierBilan << testnb << "\n" << endl ;
+		fichierBilan << "This is the first cell in the first column.\n";
+		fichierBilan << "a" << ";" << "b;c,\n";
+		fichierBilan << "c;s;v,\n";
+		fichierBilan << "1;2;3.456\n";
+		fichierBilan << "semi;colon";
+
+
+		fichierBilan.close(); */
+}

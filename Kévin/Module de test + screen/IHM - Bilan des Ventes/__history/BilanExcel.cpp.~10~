@@ -1,0 +1,42 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "BilanExcel.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+
+// Création du fichier template Excel s'il n'existe pas deja
+Excel::Excel()
+{
+	ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes.csv", ios::out | ios::trunc) ;
+
+	if (fichierBilan)
+	{
+		fichierBilan << "Médicaments" << ";;" << "Quantité vendu" << ";;" << "Prix unitaire (en €)" << ";;" << "Prix totale (en €)\n" << endl ;
+	}
+
+	else
+		cerr << "Erreur à l'ouverture du fichier Bilan des ventes" << endl ;
+}
+
+// - Les variables remplace temporairement les informations à allez chercher en base de données
+// - Un fois la liaison BDD éfféctué il faut mettre en place un while afin de récuperer les info en BDD tans qu'il reste des médicaments non traiter
+void  Excel::recupererInformations()
+{
+	std::string nomMedicament = "Doliprane" ;
+	long quantiteMedicamentVendu = 35000 ;
+	double prixMedicament = 4.95 ;
+	long double prixMedicamentTotale = quantiteMedicamentVendu * prixMedicament ;
+
+	ecrireInformations(nomMedicament, quantiteMedicamentVendu, prixMedicament, prixMedicamentTotale);
+}
+
+// Inscription des informations dans le fichier Excel
+void Excel::ecrireInformations(std::string nomMedicament, long quantiteMedicamentVendu, double prixMedicament, long double prixMedicamentTotale)
+{
+	ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes.csv", ios::out | ios::app) ;
+	fichierBilan << nomMedicament.c_str() << ";;" ;
+	fichierBilan << quantiteMedicamentVendu << ";;" ;
+	fichierBilan << prixMedicament << ";;" ;
+	fichierBilan << prixMedicamentTotale << endl;
+	fichierBilan.close();
+}

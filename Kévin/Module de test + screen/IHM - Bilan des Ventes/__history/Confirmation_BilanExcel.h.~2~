@@ -1,0 +1,30 @@
+//---------------------------------------------------------------------------
+#ifndef Confirmation_BilanExcelH
+#define Confirmation_BilanExcelH
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+//---------------------------------------------------------------------------
+
+class TForm2 : public TForm
+{
+	// Composants gérés par l'EDI
+	__published:
+		TButton *Button_Oui;
+		TButton *Button_Non;
+		TLabel *Label1;
+		TLabel *Label2;
+
+	// Déclarations utilisateur
+	private:
+
+	// Déclarations utilisateur
+	public:
+		__fastcall TForm2(TComponent* Owner);
+};
+
+//---------------------------------------------------------------------------
+extern PACKAGE TForm2 *Form2;
+//---------------------------------------------------------------------------
+#endif

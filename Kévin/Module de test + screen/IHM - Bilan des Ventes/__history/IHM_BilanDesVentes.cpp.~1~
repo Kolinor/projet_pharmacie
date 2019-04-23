@@ -1,0 +1,28 @@
+//---------------------------------------------------------------------------
+//-- IHM Télécharger le Bilan Excel -----------------------------------------
+//-- Développé par VUILLEMENOT Kevin (BTS SN2) ------------------------------
+//-- Projet : Tri Pharmacie  ------------------------------------------------
+//-- En collaboration avec : BEAUVISAGE Colin et VALENTINI Antoine ----------
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+#include "C.h"
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+
+__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
+{
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button_BilanVentesClick(TObject *Sender)
+{
+	// Affichage de la fenetre de confirmation
+	Form2->Visible = true ;
+}
+//---------------------------------------------------------------------------

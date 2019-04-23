@@ -1,0 +1,51 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "BilanExcel.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+
+// Création du fichier template Excel s'il n'existe pas deja
+Excel::Excel()
+{
+	ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes.csv", ios::out | ios::trunc) ;
+
+	if (fichierBilan)
+	{
+		fichierBilan << "Médicaments" << ";;" << "Quantité vendu" << ";;" << "Prix unitaire" << ";;" << "Prix totale\n" << endl ;
+	}
+
+	else
+		cerr << "Erreur à l'ouverture du fichier Bilan des ventes" << endl ;
+}
+
+// Recuperation des informations de la BDD puis inscription dans le fichier Excel
+void  Excel::recupererInformations()
+{
+	// Des variables remplace temporairement les informations à allez chercher en base de données
+	std::string nomMedicament = "Doliprane 500mg" ;
+	long quantiteMedicamentVendu = 35000 ;
+	double prixMedicament = 2.18 ;
+	long double TotalePrixMedicamentVendu = quantiteMedicamentVendu * prixMedicament ;
+
+	ecrireInformations(nomMedicament, quantiteMedicamentVendu, prixMedicament, TotalePrixMedicamentVendu);
+
+	// !!! A FAIRE : !!!
+    // 1. Une variable prend le nombre de médicament vendu dans la BDD
+	//  -> long nbMedicament ;
+	// 2. Une variable permet d'obtenir le prix total de tout les medicaments vendu
+	//  -> long double prixTotal = nbMedicament * TotalePrixMedicamentVendu ;
+	// 3. Un  while permet d'inscrire tout les médicaments vendu
+	//  -> while(nbMedicament  ! =0){/*stockage des variables , ecrireInformations(...) , nbMedicament --; */}
+	// 4. Pour finir on inscrit le Total de medicaments vendu et le prix final après le while puis on ferme le fichier
+}
+
+// Inscription des informations dans le fichier Excel
+void Excel::ecrireInformations(std::string nomMedicament, long quantiteMedicamentVendu, double prixMedicament, long double TotalePrixMedicamentVendu)
+{
+	ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes.csv", ios::out | ios::app) ;
+	fichierBilan << nomMedicament.c_str() << ";;" ;
+	fichierBilan << quantiteMedicamentVendu << ";;" ;
+	fichierBilan << prixMedicament << " €" << ";;" ;
+	fichierBilan << TotalePrixMedicamentVendu << " €" << endl;
+	fichierBilan.close();
+}

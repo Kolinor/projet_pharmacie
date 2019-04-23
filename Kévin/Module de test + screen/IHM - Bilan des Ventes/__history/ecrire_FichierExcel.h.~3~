@@ -1,0 +1,14 @@
+//---------------------------------------------------------------------------
+#ifndef ecrire_FichierExcelH
+#define ecrire_FichierExcelH
+#include <fstream>
+#include <iostream>
+#include <string>
+//---------------------------------------------------------------------------
+
+class ecrire_FichierExcel
+{
+
+};
+
+#endif
