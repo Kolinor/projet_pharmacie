@@ -46,7 +46,7 @@ bool tcpServer::start(unsigned short port)
 
 }
 
-bool tcpServer::stop()
+void tcpServer::stop()
 {
 	tcpServer::~tcpServer();
 

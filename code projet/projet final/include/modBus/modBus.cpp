@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "modBus.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+modBus::modBus()
+{
+	tcp = new tcpClient();
+}
+
+bool modBus::connected(string adress, unsigned short port)
+{
+	bool connected = tcp->connected(adress,port);
+	return connected;
+}
+
+void modBus::disconnect()
+{
+	delete tcp;
+}

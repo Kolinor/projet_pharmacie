@@ -222,11 +222,11 @@ void __fastcall TForm1::Button11Click(TObject *Sender)
 	trame[4] = 0x00;
 	trame[5] = 0x06;
 	trame[6] = 0x00;
-	trame[7] = 0x04;
+	trame[7] = 0x04; // lecture
 	trame[8] = 0x00;
-	trame[9] = 0x01;
+	trame[9] = 0x01; // adresse de départ on commence au 1 jusqu'au 3
 	trame[10] = 0x00;
-	trame[11] = 0x03;
+	trame[11] = 0x03;// nombre de capteur
 
 	tcp->sendChar(trame,12);
 	delete trame;
