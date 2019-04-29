@@ -9,7 +9,7 @@
 modBus::modBus()
 {
 	tcp = new tcpClient();
-	trame = new unsigned char[12];
+	trame = new char[12];
 
 	trame[0] = 0x00;
 	trame[1] = 0x00;
@@ -37,8 +37,7 @@ void modBus::disconnect()
 	delete tcp;
 }
 
-bool modBus::writeWord(unsigned char mot, unsigned char valeur)
+bool modBus::writeWord()
 {
-	trame[7] = 0x06
-	trame[8] =
+
 }

@@ -13,7 +13,6 @@ class modBus {
 
 	public:
 		modBus();
-		~modBus();
 		bool writeWord();
 		unsigned char* readWord();
 		bool connected(string adress, unsigned short port);

@@ -172,9 +172,9 @@ void __fastcall TForm1::Button8Click(TObject *Sender)
 	trame[6] = 0x00;
 	trame[7] = 0x06;
 	trame[8] = 0x00;
-	trame[9] = 0x00; //  mot
+	trame[9] = 0x00;
 	trame[10] = 0x00;
-	trame[11] = 0x00;   //valeur
+	trame[11] = 0x00;
 
 	tcp->sendChar(trame,12);
 	delete trame;

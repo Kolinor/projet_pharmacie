@@ -5,10 +5,15 @@
     <Transaction>2019/04/26 11:48:24.000.539,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
     <Transaction>2019/04/29 16:03:51.773,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
     <Transaction>2019/04/29 16:03:51.785,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/04/29 16:04:14.586,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\IHM_Pilote.cpp=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
     <Transaction>2019/04/29 16:04:14.586,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\IHM_Pilote.h=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.h</Transaction>
     <Transaction>2019/04/29 16:04:14.586,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\IHM_Pilote.dfm=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.dfm</Transaction>
-    <Transaction>2019/04/29 16:04:14.586,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\IHM_Pilote.cpp=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
     <Transaction>2019/04/29 16:04:16.273,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\Project1PCH1.h=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
     <Transaction>2019/04/29 16:04:16.911,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\Project1.cbproj=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1.cbproj</Transaction>
+    <Transaction>2019/04/29 16:05:04.216,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\include\tcpServer\tcpServer.cpp</Transaction>
+    <Transaction>2019/04/29 16:05:28.406,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\include\tcpClient\tcpClient.cpp</Transaction>
+    <Transaction>2019/04/29 16:09:13.355,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\Unit1.cpp</Transaction>
+    <Transaction>2019/04/29 16:09:26.437,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\include\modBus\modBus.cpp=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\Unit1.cpp</Transaction>
+    <Transaction>2019/04/29 16:09:26.437,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\include\modBus\modBus.h=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\code projet\projet final\colin\Unit1.h</Transaction>
   </Transactions>
 </BorlandProject>
