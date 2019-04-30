@@ -1,0 +1,88 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "modBus.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+modBus::modBus()
+{
+	tcp = new tcpClient();
+	trame = new unsigned char[12];
+
+	trame[0] = 0x00;
+	trame[1] = 0x00;
+	trame[2] = 0x00;
+	trame[3] = 0x00;
+	trame[4] = 0x00;
+	trame[5] = 0x06;
+	trame[6] = 0x00;
+}
+
+modBus::~modBus()
+{
+	delete tcp;
+	delete trame;
+}
+
+bool modBus::connected(string adress, unsigned short port)
+{
+	bool connected = tcp->connected(adress,port);
+	return connected;
+}
+
+void modBus::disconnect()
+{
+	delete tcp;
+}
+
+bool modBus::writeWord(unsigned int mot, unsigned int valeur)
+{
+	trame[7] = 0x06;
+	trame[8] = (mot & 0xFF00) >> 8;
+	trame[9] = (mot & 0x00FF);
+	trame[10] = (valeur & 0xFF00) >> 8;
+	trame[11] = (valeur & 0x00FF);
+
+	tcp->sendChar(trame,12);
+}
+
+unsigned char* modBus::readWord(unsigned int mot, unsigned int valeur)
+{
+    unsigned char * buffer = new unsigned char[60];
+
+	trame[7] = 0x04;
+	trame[8] = (mot & 0xFF00) >> 8;
+	trame[9] = (mot & 0x00FF);
+	trame[10] = (valeur & 0xFF00) >> 8;
+	trame[11] = (valeur & 0x00FF);
+
+	tcp->readChar(buffer);
+
+    	if (trameRecu[14] == 1) {
+		Memo1->Lines->Add("capteur 1 allumé");
+	}
+	else {
+		Memo1->Lines->Add("capteur 1 étteint");
+	}
+
+	if (trameRecu[12] == 1) {
+		Memo1->Lines->Add("capteur 2 allumé");
+	}
+	else {
+		Memo1->Lines->Add("capteur 2 étteint");
+	}
+
+	if (trameRecu[10] == 1) {
+		Memo1->Lines->Add("capteur 3 allumé");
+	}
+	else {
+		Memo1->Lines->Add("capteur 3 étteint");
+	}
+
+
+	return buffer;
+
+
+}

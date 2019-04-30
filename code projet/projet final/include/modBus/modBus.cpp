@@ -37,8 +37,25 @@ void modBus::disconnect()
 	delete tcp;
 }
 
-bool modBus::writeWord(unsigned char mot, unsigned char valeur)
+bool modBus::writeWord(unsigned int mot, unsigned int valeur)
 {
-	trame[7] = 0x06
-	trame[8] =
+	trame[7] = 0x06;
+	trame[8] = (mot & 0xFF00) >> 8;
+	trame[9] = (mot & 0x00FF);
+	trame[10] = (valeur & 0xFF00) >> 8;
+	trame[11] = (valeur & 0x00FF);
+
+	tcp->sendChar(trame,12);
+}
+
+char modBus::readWord(unsigned int mot)
+{
+	trame[7] = 0x04;
+	trame[8] = (mot & 0xFF00) >> 8;
+	trame[9] = (mot & 0x00FF);
+	trame[10] = 0x00;
+	trame[11] = 0x03;
+	char buffer[4096];
+	int bytes = tcp->readChar(buffer);
+	return buffer;
 }
