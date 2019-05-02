@@ -29,6 +29,7 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
 	pTapiris->activePiston(1);
+	pTapiris->activePiston(2);
 }
 //---------------------------------------------------------------------------
 
@@ -41,6 +42,12 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
 void __fastcall TForm1::Button4Click(TObject *Sender)
 {
 	pTapiris->deactivateTapis();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button5Click(TObject *Sender)
+{
+	pTapiris->deactivatePiston(2);
 }
 //---------------------------------------------------------------------------
 

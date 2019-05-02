@@ -49,7 +49,7 @@ class tcpServer
 		//sert � envoyer un message
 		bool sendMessage(const unsigned char* buf, unsigned int lenght);
 		//thread pour le lecture
-		static DWORD WINAPI Thread_no_1( LPVOID lpParam );
+		static DWORD WINAPI receive( LPVOID lpParam );
 
 
 

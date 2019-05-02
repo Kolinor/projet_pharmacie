@@ -9,21 +9,11 @@
 modBus::modBus()
 {
 	tcp = new tcpClient();
-	trame = new unsigned char[12];
-
-	trame[0] = 0x00;
-	trame[1] = 0x00;
-	trame[2] = 0x00;
-	trame[3] = 0x00;
-	trame[4] = 0x00;
-	trame[5] = 0x06;
-	trame[6] = 0x00;
 }
 
 modBus::~modBus()
 {
 	delete tcp;
-	delete trame;
 }
 
 bool modBus::connected(string adress, unsigned short port)
@@ -39,6 +29,15 @@ void modBus::disconnect()
 
 bool modBus::writeWord(unsigned int mot, unsigned int valeur)
 {
+	unsigned char trame[12];
+	trame[0] = 0x00;
+	trame[1] = 0x00;
+	trame[2] = 0x00;
+	trame[3] = 0x00;
+	trame[4] = 0x00;
+	trame[5] = 0x06;
+	trame[6] = 0x00;
+
 	trame[7] = 0x06;
 	trame[8] = (mot & 0xFF00) >> 8;
 	trame[9] = (mot & 0x00FF);
@@ -51,6 +50,15 @@ bool modBus::writeWord(unsigned int mot, unsigned int valeur)
 
 int modBus::readWord(unsigned int mot,char * buffer)
 {
+	unsigned char trame[12];
+	trame[0] = 0x00;
+	trame[1] = 0x00;
+	trame[2] = 0x00;
+	trame[3] = 0x00;
+	trame[4] = 0x00;
+	trame[5] = 0x06;
+	trame[6] = 0x00;
+
 	trame[7] = 0x04;
 	trame[8] = (mot & 0xFF00) >> 8;
 	trame[9] = (mot & 0x00FF);

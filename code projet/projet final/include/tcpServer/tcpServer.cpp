@@ -38,7 +38,7 @@ bool tcpServer::start(unsigned short port)
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
 	listen(listening, SOMAXCONN);
-	Thread = CreateThread( NULL, 0,Thread_no_1, this, 0, NULL);
+	Thread = CreateThread( NULL, 0,receive, this, 0, NULL);
 
 
 
@@ -67,7 +67,7 @@ bool tcpServer::sendMessage(const unsigned char* buf, unsigned int length)
 	return verif;
 }
 
-DWORD WINAPI tcpServer::Thread_no_1( LPVOID lpParam )
+DWORD WINAPI tcpServer::receive( LPVOID lpParam )
 {
 	tcpServer * thisThread = (tcpServer*)lpParam;
 

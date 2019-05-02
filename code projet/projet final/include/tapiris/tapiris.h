@@ -3,12 +3,30 @@
 #ifndef tapirisH
 #define tapirisH
 #include "../include/modBus/modBus.h"
+#include "../include/vector/Vector.h"
+#include <windows.h>
+
+using namespace std;
+
+
 //---------------------------------------------------------------------------
 
 class tapiris
 {
 	private:
-		int npiston;
+		struct ThreadDataTapiris
+		{
+			int piston;
+			tapiris * tapis;
+			ThreadDataTapiris(int piston, tapiris * tapis)
+			{
+				this->piston = piston;
+				this->tapis = tapis;
+			}
+		};
+
+		bool etatCapteur;
+		Vector<int> vpiston;
 		modBus * pmodBus;
 		size_t cchStringSize;
 		DWORD dwChars;
@@ -18,9 +36,11 @@ class tapiris
 		~tapiris();
 		bool connected(string adress, unsigned short port);
 		bool activePiston(int piston);
+		bool deactivatePiston(int piston);
 		bool activeTapis();
 		bool deactivateTapis();
 		static DWORD WINAPI piston(LPVOID lpParam);
+		static DWORD WINAPI capteur(LPVOID lpParam);
 };
 
 #endif

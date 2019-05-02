@@ -46,8 +46,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <IncludePath>..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -140,6 +140,9 @@
             <DependentOn>..\include\tcpServer\tcpServer.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
+        <None Include="..\include\vector\Vector.h">
+            <BuildOrder>7</BuildOrder>
+        </None>
         <FormResources Include="IHM_Pilote.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -597,13 +600,13 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

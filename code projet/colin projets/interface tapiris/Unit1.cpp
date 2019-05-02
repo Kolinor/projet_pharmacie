@@ -233,7 +233,7 @@ void __fastcall TForm1::Button11Click(TObject *Sender)
 
 	unsigned char * trameRecu;
 	trameRecu = new unsigned char[12];
-	int bytes = tcp->readChar(trame);
+	int bytes = tcp->readChar(trameRecu);
 
 
 	if (trameRecu[14] == 1) {
