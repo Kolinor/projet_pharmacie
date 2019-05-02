@@ -45,17 +45,19 @@ bool modBus::writeWord(unsigned int mot, unsigned int valeur)
 	trame[10] = (valeur & 0xFF00) >> 8;
 	trame[11] = (valeur & 0x00FF);
 
-	tcp->sendChar(trame,12);
+	bool verif = tcp->sendChar(trame,12);
+	return verif;
 }
 
-char modBus::readWord(unsigned int mot)
+int modBus::readWord(unsigned int mot,char * buffer)
 {
 	trame[7] = 0x04;
 	trame[8] = (mot & 0xFF00) >> 8;
 	trame[9] = (mot & 0x00FF);
 	trame[10] = 0x00;
 	trame[11] = 0x03;
-	char buffer[4096];
+
+	tcp->sendChar(trame,12);
 	int bytes = tcp->readChar(buffer);
-	return buffer;
+    return bytes;
 }

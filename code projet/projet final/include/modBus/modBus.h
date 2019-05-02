@@ -15,7 +15,7 @@ class modBus {
 		modBus();
 		~modBus();
 		bool writeWord(unsigned int mot, unsigned int valeur);
-		char readWord(unsigned int mot);
+		int readWord(unsigned int mot,char * buffer);
 		bool connected(string adress, unsigned short port);
 		void disconnect();
 

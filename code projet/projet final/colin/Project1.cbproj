@@ -46,8 +46,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <IncludePath>..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -127,6 +127,10 @@
         <CppCompile Include="..\include\modBus\modBus.cpp">
             <DependentOn>..\include\modBus\modBus.h</DependentOn>
             <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\include\tapiris\tapiris.cpp">
+            <DependentOn>..\include\tapiris\tapiris.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\include\tcpClient\tcpClient.cpp">
             <DependentOn>..\include\tcpClient\tcpClient.h</DependentOn>
@@ -593,13 +597,13 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

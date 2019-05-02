@@ -12,42 +12,35 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
-	pmodBus = new modBus();
+	pTapiris = new tapiris();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+	bool verifco = pTapiris->connected("192.168.64.200",502);
+
+
+
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-	bool verifco = pmodBus->connected("192.168.64.200",502);
+	pTapiris->activePiston(1);
+}
+//---------------------------------------------------------------------------
 
-//	unsigned char * test = new unsigned char[14];
-	unsigned char * trame;
-	trame = new unsigned char[14];
-	int bytes = pmodBus->readWord(0001);
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+    pTapiris->activeTapis();
+}
+//---------------------------------------------------------------------------
 
-
-
-	if (trame[14] == 1) {
-		Memo1->Lines->Add("capteur 1 allumé");
-	}
-	else {
-		Memo1->Lines->Add("capteur 1 étteint");
-	}
-
-	if (trame[12] == 1) {
-		Memo1->Lines->Add("capteur 2 allumé");
-	}
-	else {
-		Memo1->Lines->Add("capteur 2 étteint");
-	}
-
-	if (trame[10] == 1) {
-		Memo1->Lines->Add("capteur 3 allumé");
-	}
-	else {
-		Memo1->Lines->Add("capteur 3 étteint");
-	}
-
+void __fastcall TForm1::Button4Click(TObject *Sender)
+{
+	pTapiris->deactivateTapis();
 }
 //---------------------------------------------------------------------------
 
