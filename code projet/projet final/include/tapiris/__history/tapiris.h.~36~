@@ -1,4 +1,13 @@
 //---------------------------------------------------------------------------
+/*******************************************************
+Nom ......... : tapiris.h
+Role ........ : faire les actions demandé par l'utilisateur sur le tapis
+Auteur ...... : Colin.B
+Version ..... : V1.1 du 03/05/2019
+
+Compilation : c++ builder
+********************************************************/
+//---------------------------------------------------------------------------
 
 #ifndef tapirisH
 #define tapirisH
@@ -22,11 +31,20 @@ class tapiris
 				this->tapis = tapis;
 			}
 		};
+//		struct ThreadDataCaisse
+//		{
+//			int caisse
+//			tapiris * tapis;
+//			ThreadDataCaisse(int caisse, tapiris * tapis)
+//			{
+//				this->caisse = caisse;
+//				this->tapis = tapis;
+//			}
+//		};
 
 		bool etatCapteur;
 		Vector<int> vpiston;
 		modBus * pmodBus;
-		size_t cchStringSize;
 		DWORD dwChars;
 		HANDLE Thread;
 	public:
@@ -37,6 +55,7 @@ class tapiris
 		bool deactivatePiston(int piston);
 		bool activeTapis();
 		bool deactivateTapis();
+		void newDrug(int caisse);
 		static DWORD WINAPI piston(LPVOID lpParam);
 		static DWORD WINAPI capteur(LPVOID lpParam);
 };

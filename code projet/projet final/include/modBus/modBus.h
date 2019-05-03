@@ -1,4 +1,13 @@
 //---------------------------------------------------------------------------
+/*******************************************************
+Nom ......... : modBus.h
+Role ........ : créer la trame prête à envoyer au tcpClient
+Auteur ...... : Colin.B
+Version ..... : V1.1 du 03/05/2019
+
+Compilation : c++ builder
+********************************************************/
+//---------------------------------------------------------------------------
 
 #ifndef modBusH
 #define modBusH
@@ -14,9 +23,13 @@ class modBus {
 	public:
 		modBus();
 		~modBus();
+		//permet d'écrire sur les mots mémoire de l'automate
 		bool writeWord(unsigned int mot, unsigned int valeur);
+		//permet de lire les mots mémoires de l'automate
 		int readWord(unsigned int mot,unsigned int nbLecture,char * buffer);
+		//permet de se connecter à l'automate
 		bool connected(string adress, unsigned short port);
+		//permet de se connecter à l'automate
 		void disconnect();
 
 

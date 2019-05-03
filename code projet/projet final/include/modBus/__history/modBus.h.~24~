@@ -1,4 +1,13 @@
 //---------------------------------------------------------------------------
+/*******************************************************
+Nom ......... : modBus.h
+Role ........ : créer la trame prête à envoyer au tcpClient
+Auteur ...... : Colin.B
+Version ..... : V1.1 du 03/05/2019
+
+Compilation : c++ builder
+********************************************************/
+//---------------------------------------------------------------------------
 
 #ifndef modBusH
 #define modBusH
@@ -15,7 +24,7 @@ class modBus {
 		modBus();
 		~modBus();
 		bool writeWord(unsigned int mot, unsigned int valeur);
-		int readWord(unsigned int mot, unsigned int valeur,unsigned char* buffer);
+		int readWord(unsigned int mot,unsigned int nbLecture,char * buffer);
 		bool connected(string adress, unsigned short port);
 		void disconnect();
 

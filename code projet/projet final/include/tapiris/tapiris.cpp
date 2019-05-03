@@ -8,21 +8,32 @@
 
 tapiris::tapiris()
 {
-	pmodBus = new modBus();
+
 }
 
 tapiris::~tapiris()
 {
-	delete pmodBus;
+	this->deactivatePiston(1);
+	this->deactivatePiston(2);
+	this->deactivatePiston(3);
+	this->deactivateTapis();
+
 	this->etatCapteur = false;
+	delete pmodBus;
 }
 
 bool tapiris::connected(string adress, unsigned short port)
 {
+	pmodBus = new modBus();
 	bool connected = pmodBus->connected(adress,port);
 	this->etatCapteur = true;
 	Thread = CreateThread(NULL,0,this->capteur,this,0,NULL);
 	return connected;
+}
+
+void tapiris::disconnect()
+{
+	this->~tapiris();
 }
 
 bool tapiris::activePiston(int piston)
