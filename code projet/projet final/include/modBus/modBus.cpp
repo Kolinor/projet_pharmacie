@@ -48,7 +48,7 @@ bool modBus::writeWord(unsigned int mot, unsigned int valeur)
 	return verif;
 }
 
-int modBus::readWord(unsigned int mot,char * buffer)
+int modBus::readWord(unsigned int mot,unsigned int nbLecture, char * buffer)
 {
 	unsigned char trame[12];
 	trame[0] = 0x00;
@@ -62,10 +62,11 @@ int modBus::readWord(unsigned int mot,char * buffer)
 	trame[7] = 0x04;
 	trame[8] = (mot & 0xFF00) >> 8;
 	trame[9] = (mot & 0x00FF);
-	trame[10] = 0x00;
-	trame[11] = 0x03;
+	trame[10] = (nbLecture & 0xFF00) >> 8;
+	trame[11] = (nbLecture & 0x00FF);
 
 	tcp->sendChar(trame,12);
+
 	int bytes = tcp->readChar(buffer);
-    return bytes;
+	return bytes;
 }

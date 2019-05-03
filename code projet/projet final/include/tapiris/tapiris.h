@@ -4,7 +4,7 @@
 #define tapirisH
 #include "../include/modBus/modBus.h"
 #include "../include/vector/Vector.h"
-#include <windows.h>
+
 
 using namespace std;
 
@@ -24,11 +24,20 @@ class tapiris
 				this->tapis = tapis;
 			}
 		};
+//		struct ThreadDataCaisse
+//		{
+//			int caisse
+//			tapiris * tapis;
+//			ThreadDataCaisse(int caisse, tapiris * tapis)
+//			{
+//				this->caisse = caisse;
+//				this->tapis = tapis;
+//			}
+//		};
 
 		bool etatCapteur;
 		Vector<int> vpiston;
 		modBus * pmodBus;
-		size_t cchStringSize;
 		DWORD dwChars;
 		HANDLE Thread;
 	public:
@@ -39,6 +48,7 @@ class tapiris
 		bool deactivatePiston(int piston);
 		bool activeTapis();
 		bool deactivateTapis();
+		void newDrug(int caisse);
 		static DWORD WINAPI piston(LPVOID lpParam);
 		static DWORD WINAPI capteur(LPVOID lpParam);
 };

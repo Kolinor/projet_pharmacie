@@ -47,7 +47,7 @@ void __fastcall TForm1::Button4Click(TObject *Sender)
 
 void __fastcall TForm1::Button5Click(TObject *Sender)
 {
-	pTapiris->deactivatePiston(2);
+	pTapiris->test();
 }
 //---------------------------------------------------------------------------
 

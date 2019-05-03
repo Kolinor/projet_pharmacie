@@ -20,7 +20,7 @@ tapiris::~tapiris()
 bool tapiris::connected(string adress, unsigned short port)
 {
 	bool connected = pmodBus->connected(adress,port);
-    this->etatCapteur = true;
+	this->etatCapteur = true;
 	Thread = CreateThread(NULL,0,this->capteur,this,0,NULL);
 	return connected;
 }
@@ -41,7 +41,6 @@ bool tapiris::activePiston(int piston)
 	}
 	if (npiston <= 3 && npiston >= 1) {
 		verif = pmodBus->writeWord(pist,1);
-		//vpiston.push_back(npiston);
 		Thread = CreateThread(NULL,0,this->piston,new ThreadDataTapiris(piston, this),0,NULL);
 	}
 	return verif;
@@ -100,33 +99,45 @@ bool tapiris::deactivatePiston(int piston)
 	return verif;
 }
 
+
 DWORD WINAPI tapiris::capteur(LPVOID lpParam)
 {
-	tapiris * capteur = (tapiris*)lpParam;
+	tapiris * tapis = (tapiris*)lpParam;
 
-//	unsigned char * buffer = new unsigned char[4096];
 	char buffer[4096];
 	bool test = true;
+	int tabPiece[2];
 	int bytes;
-	while(capteur->etatCapteur == true || test == false)
+	while(tapis->etatCapteur == true || test == false)
 	{
 		ZeroMemory(buffer, 4096);
-		test = capteur->pmodBus->readWord(3,buffer);
+		test = tapis->pmodBus->readWord(1,3,buffer);;
 
-//		char * buf = new char[4096];
-//		wcstombs(buffer,buf.c_str(),strlen(buffer));
-        char t = buffer[14];
+		if (buffer[12] == 1 && tabPiece[0] != 1) {
+			tapis->activePiston(1);
+			tabPiece[0] = 1;
+		}
+		else
+		{
+			tabPiece[0] = 0;
+		}
 
-		if (buffer[14] == 1) {
-			capteur->activePiston(1);
+		if (buffer[14] == 1 && tabPiece[1] != 1) {
+			tapis->activePiston(2);
+			tabPiece[1] = 1;
 		}
-		if (buffer[12] == 1) {
-			capteur->activePiston(2);
+		else
+		{
+			tabPiece[1] = 0;
 		}
-		if (buffer[10] == 1) {
-			capteur->activePiston(3);
-		}
-        Sleep(100);
+
+		Sleep(500);
+
 	}
 	return 0;
+}
+
+void tapiris::newDrug(int caisse)
+{
+
 }
