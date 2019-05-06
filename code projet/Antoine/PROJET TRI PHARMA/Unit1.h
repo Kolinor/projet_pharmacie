@@ -9,6 +9,27 @@
 #include <Vcl.Forms.hpp>
 #include "BDDSQL.h"
 #include <Vcl.Grids.hpp>
+#include <Data.DB.hpp>
+#include <FireDAC.Comp.Client.hpp>
+#include <FireDAC.Comp.DataSet.hpp>
+#include <FireDAC.Comp.UI.hpp>
+#include <FireDAC.DApt.hpp>
+#include <FireDAC.DApt.Intf.hpp>
+#include <FireDAC.DatS.hpp>
+#include <FireDAC.Phys.hpp>
+#include <FireDAC.Phys.Intf.hpp>
+#include <FireDAC.Phys.MySQL.hpp>
+#include <FireDAC.Phys.MySQLDef.hpp>
+#include <FireDAC.Stan.Async.hpp>
+#include <FireDAC.Stan.Def.hpp>
+#include <FireDAC.Stan.Error.hpp>
+#include <FireDAC.Stan.Intf.hpp>
+#include <FireDAC.Stan.Option.hpp>
+#include <FireDAC.Stan.Param.hpp>
+#include <FireDAC.Stan.Pool.hpp>
+#include <FireDAC.UI.Intf.hpp>
+#include <FireDAC.VCLUI.Wait.hpp>
+#include <Vcl.DBGrids.hpp>
 #include <string>
 #include "MysqlPharmacieManager.h"
 using namespace std;
@@ -35,7 +56,6 @@ __published:	// Composants gérés par l'EDI
 	TLabel *Lbl_Code_Barre;
 	TLabel *Lbl_Prix;
 	TEdit *Edit_prix;
-	TStringGrid *StringGrid1;
 	TEdit *Edit_cle;
 	TEdit *Edit_value;
 	TLabel *lbl_cle;
@@ -57,12 +77,22 @@ __published:	// Composants gérés par l'EDI
 	TComboBox *Cmb_medicamentOrdonnance;
 	TLabel *Lbl_MedicamentOrdonnance;
 	TLabel *Lbl_nbrMédicamentAjoute;
+	TButton *Btn_modifierMedicament;
+	TFDGUIxWaitCursor *FDGUIxWaitCursor_Pharma;
+	TDataSource *DataSource_Pharma;
+	TFDQuery *FDQuery_Pharma;
+	TFDConnection *FDConnection_Pharma;
+	TLabel *Label1;
+	TDBGrid *DBGrid1;
+	TDataSource *DataSource_update;
+	TFDQuery *FDQuery_update;
 	void __fastcall Btn_sendAutomateClick(TObject *Sender);
 	void __fastcall Btn_sendMedicamentClick(TObject *Sender);
 	void __fastcall Rbt_addMedicamentClick(TObject *Sender);
 	void __fastcall Rbt_AutomateClick(TObject *Sender);
 	void __fastcall Rbt_OrdonnanceClick(TObject *Sender);
 	void __fastcall Rbt_UpdateClick(TObject *Sender);
+	void __fastcall Cmb_MedicamentModifierEnter(TObject *Sender);
 private: BDDSQL sql;	// Déclarations utilisateur
 		 MysqlPharmacieManager *manager;
 public:		// Déclarations utilisateur

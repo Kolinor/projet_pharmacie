@@ -15,10 +15,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 	this->manager = new MysqlPharmacieManager();
 
 
-	this->manager->insertOrdonnance();
+//	this->manager->insertOrdonnance();
 
 //	sql.connect("192.168.64.111","pharma","pharma","pharmacie");
-	//	string requete="INSERT INTO pharmacie.test (id) VALUES (25);";
+//	string requete="INSERT INTO pharmacie.test (id) VALUES (25);";
 //	string requete="INSERT INTO `Medicament`(`Nom_Medicament`, `Hauteur`, `Largeur`, `Longueur`, `Quantite_Restante`, `Code_Barre`, `Prix`, `Nombre_Unite_Vendu`) VALUES ('Doliprane','10','50','20','30','84785','99.99','0');";
 //	string requeteOrdonnance="INSERT INTO `Ordonnance`(`Etat`, `Numero_Caisse`, `Date_Saisie_Ordonnance`) VALUES (0,1,now());";
 //	string requeteUpdateMedicament="UPDATE `Medicament` SET `ID_Medicament`=[value-1],`Nom_Medicament`=[value-2],`Hauteur`=[value-3],`Largeur`=[value-4],`Longueur`=[value-5],`Quantite_Restante`=[value-6],`Code_Barre`=[value-7],`Prix`=[value-8],`Nombre_Unite_Vendu`=[value-9] WHERE 1);";
@@ -51,6 +51,10 @@ void __fastcall TForm1::Btn_sendMedicamentClick(TObject *Sender)
 
 void __fastcall TForm1::Rbt_addMedicamentClick(TObject *Sender)
 {
+	Btn_sendMedicament->Enabled=true;
+	Btn_sendAutomate->Enabled=false;
+	Btn_sendOrdonnance->Enabled=false;
+	Btn_modifierMedicament->Enabled=false;
 //	Grb_addMedicament->Visible=true;
 //	Grb_Automate->Visible=false;
 //	Grb_Ordonance->Visible=false;
@@ -60,6 +64,10 @@ void __fastcall TForm1::Rbt_addMedicamentClick(TObject *Sender)
 
 void __fastcall TForm1::Rbt_AutomateClick(TObject *Sender)
 {
+	Btn_sendAutomate->Enabled=true;
+	Btn_sendMedicament->Enabled=false;
+	Btn_sendOrdonnance->Enabled=false;
+	Btn_modifierMedicament->Enabled=false;
 //	Grb_addMedicament->Visible=false;
 //	Grb_Automate->Visible=true;
 //	Grb_Ordonance->Visible=false;
@@ -69,6 +77,10 @@ void __fastcall TForm1::Rbt_AutomateClick(TObject *Sender)
 
 void __fastcall TForm1::Rbt_OrdonnanceClick(TObject *Sender)
 {
+	Btn_sendOrdonnance->Enabled=true;
+	Btn_sendAutomate->Enabled=false;
+	Btn_sendMedicament->Enabled=false;
+	Btn_modifierMedicament->Enabled=false;
 //	Grb_addMedicament->Visible=false;
 //	Grb_Automate->Visible=false;
 //	Grb_Ordonance->Visible=true;
@@ -78,6 +90,10 @@ void __fastcall TForm1::Rbt_OrdonnanceClick(TObject *Sender)
 
 void __fastcall TForm1::Rbt_UpdateClick(TObject *Sender)
 {
+	Btn_modifierMedicament->Enabled=true;
+	Btn_sendOrdonnance->Enabled=false;
+	Btn_sendAutomate->Enabled=false;
+	Btn_sendMedicament->Enabled=false;
 //	Grb_addMedicament->Visible=false;
 //	Grb_Automate->Visible=false;
 //	Grb_Ordonance->Visible=false;
@@ -88,5 +104,25 @@ void __fastcall TForm1::Rbt_UpdateClick(TObject *Sender)
 
 
 
+
+
+
+
+
+
+
+void __fastcall TForm1::Cmb_MedicamentModifierEnter(TObject *Sender)
+{   UnicodeString medocName=Cmb_MedicamentModifier->Text;
+	FDQuery_Pharma->Open("Select * FROM Medicament");
+		for (int i = 0; i < FDQuery_Pharma->RowsAffected; i++)
+		{
+			Cmb_MedicamentModifier->Items->Add(DataSource_Pharma->DataSet->FieldByName("Nom_Medicament")->AsString);
+			DataSource_Pharma->DataSet->FindNext();
+		}
+
+	FDQuery_update->Open("SELECT `Nom_Medicament`, `Hauteur`, `Largeur`, `Longueur`, `Quantite_Restante`, `Code_Barre`, `Prix` FROM `Medicament` WHERE `Nom_Medicament` LIKE '%"+medocName+"%'");
+	DataSource_update->DataSet->FieldByName("Nom_Medicament")->AsString;
+}
+//---------------------------------------------------------------------------
 
 

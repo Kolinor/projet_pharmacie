@@ -23,10 +23,34 @@ bool MysqlPharmacieManager::selectOrdonnance(TStringGrid *excelOrdo)
 
 }
 //---------------------------------------------------------------------------
-bool MysqlPharmacieManager::insertOrdonnance()
+bool MysqlPharmacieManager::createOrdonnance(String numeroCaisse)
 {
-	string requeteOrdonnance="INSERT INTO `Ordonnance`(`Etat`, `Numero_Caisse`, `Date_Saisie_Ordonnance`) VALUES (0,1,now());";
-	this->mySql->insert(requeteOrdonnance);
+	String requeteOrdonnance="INSERT INTO `Ordonnance`(`Etat`, `Numero_Caisse`, `Date_Saisie_Ordonnance`) VALUES (`en attente`, '" + numeroCaisse + "',now());";
+	wchar_t * wStrReq = requeteOrdonnance.c_str();
+	int reqLength = wcslen(wStrReq);
+	char * req = new char[reqLength + 1];
+	wcstombs(req, wStrReq, reqLength);
+	this->mySql->insert(req);
+// stocker dans derniereCommandeCAISSE
+	if (numeroCaisse==1){
+	this->deriereCommandeCAISSE1="SELECT `ID_Ordonnance` FROM `Ordonnance` WHERE `ID_Ordonnance`= '" + numeroCaisse + "' );";
+	}
+	if (numeroCaisse==2){
+	this->deriereCommandeCAISSE2="SELECT `ID_Ordonnance` FROM `Ordonnance` WHERE `ID_Ordonnance`= '" + numeroCaisse + "' );";
+	}
+	if (numeroCaisse==3){
+	this->deriereCommandeCAISSE3="SELECT `ID_Ordonnance` FROM `Ordonnance` WHERE `ID_Ordonnance`= '" + numeroCaisse + "' )";;
+	}
+}
+//---------------------------------------------------------------------------
+bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse)
+{
+	String requeteOrdonnance="INSERT INTO `Ordonnance_Medicament_Association`(`ID_Ordonnance`, `ID_Medicament`, `Quantite_Demande`, `Quantite_Delivree`) VALUES ([value-1],[value-2],[value-3],[value-4]);";
+	wchar_t * wStrReq = requeteOrdonnance.c_str();
+	int reqLength = wcslen(wStrReq);
+	char * req = new char[reqLength + 1];
+	wcstombs(req, wStrReq, reqLength);
+	this->mySql->insert(req);
 }
 //---------------------------------------------------------------------------
 bool MysqlPharmacieManager::insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix)
