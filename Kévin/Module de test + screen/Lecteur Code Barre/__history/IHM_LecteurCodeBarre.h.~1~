@@ -1,0 +1,29 @@
+//---------------------------------------------------------------------------
+#ifndef IHMH
+#define IHMH
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+//---------------------------------------------------------------------------
+
+class TForm1 : public TForm
+{
+	// Composants gérés par l'EDI
+	__published:
+		TGroupBox *Groupe_CodeBarre;
+		TLabel *Label_CodeBarre;
+		TEdit *Edit_CodeBarre;
+
+	// Déclarations utilisateur
+	private:
+
+	// Déclarations utilisateur
+	public:
+		__fastcall TForm1(TComponent* Owner);
+};
+
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif

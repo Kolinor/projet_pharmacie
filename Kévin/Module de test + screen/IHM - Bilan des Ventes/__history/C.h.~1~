@@ -1,0 +1,31 @@
+//---------------------------------------------------------------------------
+#ifndef IHM_BilanExcelH
+#define IHM_BilanExcelH
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "Confirmation_BilanExcel.h"
+#include "BilanExcel.h"
+//---------------------------------------------------------------------------
+
+class TForm1 : public TForm
+{
+	// Composants gérés par l'EDI
+	__published:
+    	TButton *Button_BilanVentes;
+	void __fastcall Button_BilanVentesClick(TObject *Sender);
+
+	// Déclarations utilisateur
+	private:
+
+	// Déclarations utilisateur
+	public:
+		__fastcall TForm1(TComponent* Owner);
+		Excel * Bilan ;
+};
+
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif

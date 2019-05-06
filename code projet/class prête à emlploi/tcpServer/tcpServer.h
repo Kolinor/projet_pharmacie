@@ -42,11 +42,11 @@ class tcpServer
 	public:
 		tcpServer();
 		~tcpServer();
-		//sert à demarrer le serveur
+		//sert ï¿½ demarrer le serveur
 		bool start(unsigned short port);
-		//sert à arreter le serveur
-		bool stop();
-		//sert à envoyer un message
+		//sert ï¿½ arreter le serveur
+		void stop();
+		//sert ï¿½ envoyer un message
 		bool sendMessage(const unsigned char* buf, unsigned int lenght);
 		//thread pour le lecture
 		static DWORD WINAPI Thread_no_1( LPVOID lpParam );

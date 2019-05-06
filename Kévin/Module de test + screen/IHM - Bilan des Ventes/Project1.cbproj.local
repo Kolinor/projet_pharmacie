@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/04/03 08:22:21.000.176,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/04/03 08:22:21.000.154,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/04/03 08:22:28.000.778,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.dfm=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\IHM.dfm</Transaction>
+    <Transaction>2019/04/03 08:22:28.000.778,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.h=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\IHM.h</Transaction>
+    <Transaction>2019/04/03 08:22:28.000.778,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\IHM.cpp</Transaction>
+    <Transaction>2019/04/03 08:29:57.000.563,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\IHM.cpp=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\IHM.cpp</Transaction>
+    <Transaction>2019/04/03 08:29:57.000.563,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\IHM.h=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\IHM.h</Transaction>
+    <Transaction>2019/04/03 08:29:57.000.563,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\IHM.dfm=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\IHM.dfm</Transaction>
+    <Transaction>2019/04/03 08:29:58.000.878,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project1.cbproj=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\Project1.cbproj</Transaction>
+    <Transaction>2019/04/03 08:29:58.000.218,C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project1PCH1.h=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\Project1PCH1.h</Transaction>
+    <Transaction>2019/04/03 08:32:17.000.548,=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\Unit1.cpp</Transaction>
+    <Transaction>2019/04/03 08:32:33.000.057,C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\Unit1.h=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecireExcel.h</Transaction>
+    <Transaction>2019/04/03 08:32:33.000.057,C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\Unit1.cpp=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecireExcel.cpp</Transaction>
+    <Transaction>2019/04/03 08:43:38.000.534,C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecireExcel.cpp=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecrire_FichierExcel.cpp</Transaction>
+    <Transaction>2019/04/03 08:43:38.000.534,C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecireExcel.h=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecrire_FichierExcel.h</Transaction>
+    <Transaction>2019/04/03 09:50:09.000.498,C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecrire_FichierExcel.cpp=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\Excel.cpp</Transaction>
+    <Transaction>2019/04/03 09:50:09.000.498,C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\ecrire_FichierExcel.h=C:\Users\Kevin\Desktop\Test Lecteur Code Barre\IHM - Bilan des Ventes\Excel.h</Transaction>
+    <Transaction>2019/04/06 10:05:58.000.902,=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Unit2.cpp</Transaction>
+    <Transaction>2019/04/06 10:06:23.000.753,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_FichierExcel.dfm=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Unit2.dfm</Transaction>
+    <Transaction>2019/04/06 10:06:23.000.753,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_FichierExcel.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Unit2.cpp</Transaction>
+    <Transaction>2019/04/06 10:06:23.000.753,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_FichierExcel.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Unit2.h</Transaction>
+    <Transaction>2019/04/06 10:13:11.000.519,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanExcel.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM.cpp</Transaction>
+    <Transaction>2019/04/06 10:13:11.000.519,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanExcel.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM.h</Transaction>
+    <Transaction>2019/04/06 10:13:11.000.519,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanExcel.dfm=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM.dfm</Transaction>
+    <Transaction>2019/04/06 10:13:18.000.150,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_BilanExcel.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_FichierExcel.h</Transaction>
+    <Transaction>2019/04/06 10:13:18.000.150,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_BilanExcel.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_FichierExcel.cpp</Transaction>
+    <Transaction>2019/04/06 10:13:18.000.150,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_BilanExcel.dfm=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_FichierExcel.dfm</Transaction>
+    <Transaction>2019/04/06 10:13:30.000.690,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\BilanExcel.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Excel.cpp</Transaction>
+    <Transaction>2019/04/06 10:13:30.000.690,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\BilanExcel.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Excel.h</Transaction>
+    <Transaction>2019/04/06 14:38:35.000.932,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanExcel.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_BilanExcel.cpp</Transaction>
+    <Transaction>2019/04/06 14:38:35.000.932,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanExcel.dfm=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_BilanExcel.dfm</Transaction>
+    <Transaction>2019/04/06 14:38:35.000.932,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanExcel.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\Confirmation_BilanExcel.h</Transaction>
+    <Transaction>2019/04/06 14:38:43.000.068,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\C.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanExcel.cpp</Transaction>
+    <Transaction>2019/04/06 14:38:43.000.068,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\C.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanExcel.h</Transaction>
+    <Transaction>2019/04/06 14:38:43.000.068,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\C.dfm=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanExcel.dfm</Transaction>
+    <Transaction>2019/04/06 14:39:30.000.753,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanDesVentes.dfm=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\C.dfm</Transaction>
+    <Transaction>2019/04/06 14:39:30.000.753,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanDesVentes.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\C.cpp</Transaction>
+    <Transaction>2019/04/06 14:39:30.000.753,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_BilanDesVentes.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\C.h</Transaction>
+    <Transaction>2019/04/06 14:39:49.000.153,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanDesVentes.h=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanExcel.h</Transaction>
+    <Transaction>2019/04/06 14:39:49.000.153,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanDesVentes.cpp=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanExcel.cpp</Transaction>
+    <Transaction>2019/04/06 14:39:49.000.153,C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanDesVentes.dfm=C:\Users\Kevin\Desktop\Test Module de test\IHM - Bilan des Ventes\IHM_Confirmation_BilanExcel.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="IHM_BilanDesVentes.cpp"/>
+    <File Path="IHM_BilanDesVentes.cpp"/>
+    <File Path="IHM_BilanDesVentes.dfm"/>
+    <File Path="IHM_BilanDesVentes.h"/>
+    <File Path="IHM_Confirmation_BilanDesVentes.cpp"/>
+    <File Path="IHM_Confirmation_BilanDesVentes.cpp"/>
+    <File Path="IHM_Confirmation_BilanDesVentes.dfm"/>
+    <File Path="IHM_Confirmation_BilanDesVentes.h"/>
+    <File Path="BilanExcel.cpp"/>
+    <File Path="BilanExcel.cpp"/>
+    <File Path="BilanExcel.h"/>
+    <File Path="Project1.cpp"/>
+    <File Path="Project1PCH1.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

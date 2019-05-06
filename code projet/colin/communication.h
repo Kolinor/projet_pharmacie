@@ -4,7 +4,6 @@
 #define TCPSERVERH
 #include <windows.h>
 #include <string>
-#include <vector>
 
 using namespace std;
 

@@ -1,0 +1,18 @@
+//---------------------------------------------------------------------------
+
+#ifndef threadConnectionH
+#define threadConnectionH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+//---------------------------------------------------------------------------
+class TMonThread : public TThread
+{
+private:
+protected:
+        void __fastcall Execute();
+        void __fastcall AffMessage();
+public:
+        __fastcall TMonThread(bool CreateSuspended);
+};
+//---------------------------------------------------------------------------
+#endif

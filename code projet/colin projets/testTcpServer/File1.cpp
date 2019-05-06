@@ -20,8 +20,5 @@
 	tcp->start(502);
 	system("PAUSE");
 
-	tcp->sendMessage("test",5);
-	system("PAUSE");
-
 	return 0;
 }
