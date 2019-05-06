@@ -11,15 +11,20 @@
 class MysqlPharmacieManager
 {
 	private :
+		String deriereCommandeCAISSE1;
+		String deriereCommandeCAISSE2;
+		String deriereCommandeCAISSE3;
 		BDD *mySql;
 	public :
 		MysqlPharmacieManager();
 		~MysqlPharmacieManager();
 		bool selectOrdonnance(TStringGrid *excelOrdo);
-		bool insertOrdonnance();
+		bool createOrdonnance(String numeroCaisse);
+		bool insertOrdonnance(String numeroCaisse);
 		bool insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		bool insertTapiris(String cle,String value);
 		bool selectMedicament();
+		bool etatCommande(String idCommande);
 
 };
 #endif

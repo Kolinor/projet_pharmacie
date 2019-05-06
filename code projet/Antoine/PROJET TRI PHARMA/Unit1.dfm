@@ -3,7 +3,7 @@
   Top = 0
   Caption = 'Form1'
   ClientHeight = 658
-  ClientWidth = 1362
+  ClientWidth = 1188
   Color = clCream
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,7 +14,7 @@
   PixelsPerInch = 96
   TextHeight = 13
   object Lbl_Title: TLabel
-    Left = 543
+    Left = 408
     Top = 8
     Width = 412
     Height = 50
@@ -26,6 +26,13 @@
     Font.Style = []
     ParentFont = False
   end
+  object Label1: TLabel
+    Left = 576
+    Top = 592
+    Width = 31
+    Height = 13
+    Caption = 'Label1'
+  end
   object Rbt_Automate: TRadioButton
     Left = 520
     Top = 96
@@ -33,7 +40,6 @@
     Height = 17
     Caption = 'Parametre automate'
     TabOrder = 1
-    Visible = False
     OnClick = Rbt_AutomateClick
   end
   object Rbt_addMedicament: TRadioButton
@@ -43,7 +49,6 @@
     Height = 17
     Caption = 'Ajout'#233' M'#233'dicament'
     TabOrder = 0
-    Visible = False
     OnClick = Rbt_addMedicamentClick
   end
   object Grb_Automate: TGroupBox
@@ -81,11 +86,12 @@
       TabOrder = 1
     end
     object Btn_sendAutomate: TButton
-      Left = 332
+      Left = 324
       Top = 86
       Width = 75
       Height = 25
       Caption = 'Envoyer'
+      Enabled = False
       TabOrder = 2
       OnClick = Btn_sendAutomateClick
     end
@@ -186,29 +192,17 @@
       Width = 75
       Height = 25
       Caption = 'Envoyer'
+      Enabled = False
       TabOrder = 6
       OnClick = Btn_sendMedicamentClick
     end
-  end
-  object StringGrid1: TStringGrid
-    Left = 16
-    Top = 495
-    Width = 305
-    Height = 121
-    TabOrder = 4
-    ColWidths = (
-      64
-      88
-      60
-      815
-      815)
   end
   object Grb_Ordonance: TGroupBox
     Left = 808
     Top = 135
     Width = 354
     Height = 322
-    TabOrder = 5
+    TabOrder = 4
     object Lbl_numeroCaisse: TLabel
       Left = 24
       Top = 114
@@ -252,6 +246,7 @@
       Width = 75
       Height = 25
       Caption = 'Envoyer'
+      Enabled = False
       TabOrder = 0
     end
     object Edit_numeroCaisse: TEdit
@@ -299,8 +294,7 @@
     Width = 113
     Height = 17
     Caption = 'Ordonnance'
-    TabOrder = 6
-    Visible = False
+    TabOrder = 5
     OnClick = Rbt_OrdonnanceClick
   end
   object Grb_update: TGroupBox
@@ -308,7 +302,7 @@
     Top = 292
     Width = 410
     Height = 197
-    TabOrder = 7
+    TabOrder = 6
     object Lbl_Consigne: TLabel
       Left = 16
       Top = 16
@@ -325,6 +319,29 @@
       Height = 21
       TabOrder = 0
       Text = 'M'#233'dicament a modifier'
+      OnEnter = Cmb_MedicamentModifierEnter
+    end
+    object Btn_modifierMedicament: TButton
+      Left = 324
+      Top = 152
+      Width = 75
+      Height = 25
+      Caption = 'Envoyer'
+      Enabled = False
+      TabOrder = 1
+    end
+    object DBGrid1: TDBGrid
+      Left = 16
+      Top = 62
+      Width = 377
+      Height = 84
+      DataSource = DataSource_update
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
     end
   end
   object Rbt_Update: TRadioButton
@@ -333,8 +350,45 @@
     Width = 113
     Height = 17
     Caption = 'Modifier M'#233'dicament'
-    TabOrder = 8
-    Visible = False
+    TabOrder = 7
     OnClick = Rbt_UpdateClick
+  end
+  object FDGUIxWaitCursor_Pharma: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 1008
+    Top = 584
+  end
+  object DataSource_Pharma: TDataSource
+    DataSet = FDQuery_Pharma
+    Left = 888
+    Top = 584
+  end
+  object FDQuery_Pharma: TFDQuery
+    Connection = FDConnection_Pharma
+    SQL.Strings = (
+      'SELECT * FROM Medicament')
+    Left = 784
+    Top = 584
+  end
+  object FDConnection_Pharma: TFDConnection
+    Params.Strings = (
+      'Database=pharmacie'
+      'User_Name=pharma'
+      'Password=pharma'
+      'Server=192.168.64.111'
+      'DriverID=MySQL')
+    Connected = True
+    Left = 680
+    Top = 584
+  end
+  object DataSource_update: TDataSource
+    DataSet = FDQuery_update
+    Left = 888
+    Top = 520
+  end
+  object FDQuery_update: TFDQuery
+    Connection = FDConnection_Pharma
+    Left = 784
+    Top = 520
   end
 end
