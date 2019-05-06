@@ -21,27 +21,18 @@ using namespace std;
 class tapiris
 {
 	private:
-		//structure permettant de transmettre des variables à un thread
-		struct ThreadDataTapiris
+		 struct ThreadDataTapiris
 		{
 			int piston;
+			int delay;
 			tapiris * tapis;
-			ThreadDataTapiris(int piston, tapiris * tapis)
+			ThreadDataTapiris(int piston,int delay, tapiris * tapis)
 			{
 				this->piston = piston;
+				this->delay = delay;
 				this->tapis = tapis;
 			}
 		};
-//		struct ThreadDataCaisse
-//		{
-//			int caisse
-//			tapiris * tapis;
-//			ThreadDataCaisse(int caisse, tapiris * tapis)
-//			{
-//				this->caisse = caisse;
-//				this->tapis = tapis;
-//			}
-//		};
 
 		bool etatCapteur;
 		Vector<int> vpiston;
@@ -57,7 +48,7 @@ class tapiris
 		//permet d'arreter la connexion au tapiris
 		void disconnect();
 		//permet d'avtiver un piston
-		bool activePiston(int piston);
+		void activePiston(int piston,int delay);
 		//permet de déactiver un piston sert pour le debogage
 		bool deactivatePiston(int piston);
 		//permet d'allumer le moteur du tapis
@@ -69,6 +60,7 @@ class tapiris
 		static DWORD WINAPI piston(LPVOID lpParam);
 		//thread permettant le mise en fonction automatique du tapiris
 		static DWORD WINAPI capteur(LPVOID lpParam);
+		static DWORD WINAPI apiston(LPVOID lpParam);
 };
 
 #endif

@@ -36,9 +36,15 @@ void tapiris::disconnect()
 	this->~tapiris();
 }
 
-bool tapiris::activePiston(int piston)
+void tapiris::activePiston(int piston, int delay)
 {
-	int npiston = piston;
+	Thread = CreateThread(NULL,0,this->apiston,new ThreadDataTapiris(piston,delay,this),0,NULL);
+}
+
+DWORD WINAPI tapiris::apiston(LPVOID lpParam)
+{
+	ThreadDataTapiris * apiston = (ThreadDataTapiris*)lpParam;
+	int npiston = apiston->piston;
 	bool verif = false;
 	unsigned int pist;
 	if (npiston == 1) {
@@ -51,10 +57,11 @@ bool tapiris::activePiston(int piston)
 		pist = 5;
 	}
 	if (npiston <= 3 && npiston >= 1) {
-		verif = pmodBus->writeWord(pist,1);
-		Thread = CreateThread(NULL,0,this->piston,new ThreadDataTapiris(piston, this),0,NULL);
+		Sleep(apiston->delay);
+		verif = apiston->tapis->pmodBus->writeWord(pist,1);
+		HANDLE Thread = CreateThread(NULL,0,apiston->tapis->piston,new ThreadDataTapiris(apiston->piston,apiston->delay,apiston->tapis),0,NULL);
 	}
-	return verif;
+	return 0;
 }
 
 DWORD WINAPI tapiris::piston(LPVOID lpParam)
@@ -119,30 +126,45 @@ DWORD WINAPI tapiris::capteur(LPVOID lpParam)
 	bool test = true;
 	int tabPiece[2];
 	int bytes;
+
+	bool captState[2];
+	captState[0] = false;
+	captState[1] = false;
+
 	while(tapis->etatCapteur == true || test == false)
 	{
 		ZeroMemory(buffer, 4096);
-		test = tapis->pmodBus->readWord(1,3,buffer);;
+		test = tapis->pmodBus->readWord(1,3,buffer);
 
-		if (buffer[12] == 1 && tabPiece[0] != 1) {
-			tapis->activePiston(1);
-			tabPiece[0] = 1;
-		}
-		else
+		if(buffer[7] == 0x04)
 		{
-			tabPiece[0] = 0;
+			if (buffer[12] == 1) {
+				if(captState[0] == false)
+				{
+					tapis->activePiston(1);
+					captState[0] = true;
+				}
+			}
+			else
+			{
+				captState[0] = false;
+			}
+
+			if (buffer[14] == 1) {
+				if(captState[1] == false)
+				{
+					tapis->activePiston(2);
+					captState[1] = true;
+				}
+
+			}
+			else
+			{
+				captState[1] = false;
+			}
 		}
 
-		if (buffer[14] == 1 && tabPiece[1] != 1) {
-			tapis->activePiston(2);
-			tabPiece[1] = 1;
-		}
-		else
-		{
-			tabPiece[1] = 0;
-		}
-
-		Sleep(500);
+		Sleep(50);
 
 	}
 	return 0;

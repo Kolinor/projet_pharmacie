@@ -28,8 +28,8 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-	pTapiris->activePiston(1);
-	pTapiris->activePiston(2);
+	pTapiris->activePiston(1,0);
+	pTapiris->activePiston(2,0);
 }
 //---------------------------------------------------------------------------
 
