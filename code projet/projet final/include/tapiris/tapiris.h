@@ -57,7 +57,7 @@ class tapiris
 		bool deactivateTapis();
 		void newDrug(int caisse);
 		//thread permmettant de ratracter un piston automatiquement
-		static DWORD WINAPI piston(LPVOID lpParam);
+		static DWORD WINAPI dpiston(LPVOID lpParam);
 		//thread permettant le mise en fonction automatique du tapiris
 		static DWORD WINAPI capteur(LPVOID lpParam);
 		static DWORD WINAPI apiston(LPVOID lpParam);
