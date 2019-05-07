@@ -27,7 +27,7 @@ bool tapiris::connected(string adress, unsigned short port)
 	pmodBus = new modBus();
 	bool connected = pmodBus->connected(adress,port);
 	this->etatCapteur = true;
-	Thread = CreateThread(NULL,0,this->capteur,this,0,NULL);
+	Thread = CreateThread(NULL,0,this->threadCapteur,this,0,NULL);
 	return connected;
 }
 
@@ -38,10 +38,10 @@ void tapiris::disconnect()
 
 void tapiris::activePiston(int piston, int delay)
 {
-	Thread = CreateThread(NULL,0,this->apiston,new ThreadDataTapiris(piston,delay,this),0,NULL);
+	Thread = CreateThread(NULL,0,this->threadApiston,new ThreadDataTapiris(piston,delay,this),0,NULL);
 }
 
-DWORD WINAPI tapiris::apiston(LPVOID lpParam)
+DWORD WINAPI tapiris::threadApiston(LPVOID lpParam)
 {
 	ThreadDataTapiris * apiston = (ThreadDataTapiris*)lpParam;
 	int npiston = apiston->piston;
@@ -59,13 +59,13 @@ DWORD WINAPI tapiris::apiston(LPVOID lpParam)
 	if (npiston <= 3 && npiston >= 1) {
 		Sleep(apiston->delay);
 		verif = apiston->tapis->pmodBus->writeWord(pist,1);
-		HANDLE Thread = CreateThread(NULL,0,apiston->tapis->dpiston,new ThreadDataTapiris(apiston->piston,apiston->delay,apiston->tapis),0,NULL);
+		HANDLE Thread = CreateThread(NULL,0,apiston->tapis->threadDpiston,new ThreadDataTapiris(apiston->piston,apiston->delay,apiston->tapis),0,NULL);
 	}
 	delete apiston;
 	return 0;
 }
 
-DWORD WINAPI tapiris::dpiston(LPVOID lpParam)
+DWORD WINAPI tapiris::threadDpiston(LPVOID lpParam)
 {
 	ThreadDataTapiris * dpiston = (ThreadDataTapiris*)lpParam;
 	Sleep(200);
@@ -119,7 +119,7 @@ bool tapiris::deactivatePiston(int piston)
 }
 
 
-DWORD WINAPI tapiris::capteur(LPVOID lpParam)
+DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 {
 	tapiris * tapis = (tapiris*)lpParam;
 
@@ -130,6 +130,9 @@ DWORD WINAPI tapiris::capteur(LPVOID lpParam)
 	bool captState[2];
 	captState[0] = false;
 	captState[1] = false;
+	captState[2] = false;
+
+
 
 	while(tapis->etatCapteur == true || test == false)
 	{
@@ -162,6 +165,19 @@ DWORD WINAPI tapiris::capteur(LPVOID lpParam)
 			{
 				captState[1] = false;
 			}
+
+			if (buffer[10] == 1) {
+				if(captState[2] == false)
+				{
+					//action à executer ici pour lire la caisse
+					tapis->vpiston.push_back(2);
+					captState[2] = true;
+				}
+			}
+			else
+			{
+				captState[2] = false;
+            }
 		}
 
 		Sleep(100);

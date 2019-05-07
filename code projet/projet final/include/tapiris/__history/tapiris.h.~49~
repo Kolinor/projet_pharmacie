@@ -17,31 +17,22 @@ Compilation : c++ builder
 using namespace std;
 
 //---------------------------------------------------------------------------
-typedef struct ThreadDataTapiris
-{
-	int piston;
-	tapiris * tapis;
-	ThreadDataTapiris(int piston, tapiris * tapis)
-	{
-		this->piston = piston;
-		this->tapis = tapis;
-	}
-};
+
 class tapiris
 {
 	private:
-		//structure permettant de transmettre des variables à un thread
-
-//		struct ThreadDataPiston
-//		{
-//			int piston;
-//			tapiris * tapis;
-//				ThreadDataCaisse(int piston, tapiris * tapis)
-//			{
-//				this->piston = piston;
-//				this->tapis = tapis;
-//			}
-//		};
+		 struct ThreadDataTapiris
+		{
+			int piston;
+			int delay;
+			tapiris * tapis;
+			ThreadDataTapiris(int piston,int delay, tapiris * tapis)
+			{
+				this->piston = piston;
+				this->delay = delay;
+				this->tapis = tapis;
+			}
+		};
 
 		bool etatCapteur;
 		Vector<int> vpiston;
@@ -57,7 +48,7 @@ class tapiris
 		//permet d'arreter la connexion au tapiris
 		void disconnect();
 		//permet d'avtiver un piston
-		bool activePiston(int piston);
+		void activePiston(int piston,int delay);
 		//permet de déactiver un piston sert pour le debogage
 		bool deactivatePiston(int piston);
 		//permet d'allumer le moteur du tapis
@@ -66,10 +57,10 @@ class tapiris
 		bool deactivateTapis();
 		void newDrug(int caisse);
 		//thread permmettant de ratracter un piston automatiquement
-		static DWORD WINAPI piston(LPVOID lpParam);
+		static DWORD WINAPI dpiston(LPVOID lpParam);
 		//thread permettant le mise en fonction automatique du tapiris
 		static DWORD WINAPI capteur(LPVOID lpParam);
-		static DWORD WINAPI ppiston(LPVOID lpParam);
+		static DWORD WINAPI apiston(LPVOID lpParam);
 };
 
 #endif
