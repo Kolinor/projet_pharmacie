@@ -22,7 +22,6 @@ public:
 	vector< vector<std::string> > select(string requete);
 //	bool save (string requete);
 //	bool restore(string requete);
-
 //	bool connexionBDD (char *ip,char *login,char* mdp, char* bdd);
 //	void sauvegardeBDD (char ip,char login,char mdp);
 //	void restaurationBDD (char ip,char login,char mdp);

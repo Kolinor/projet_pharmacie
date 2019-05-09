@@ -43,15 +43,30 @@ bool MysqlPharmacieManager::createOrdonnance(String numeroCaisse)
 	}
 }
 //---------------------------------------------------------------------------
-bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse)
+bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse, String Nom_Medicament, String quantite)
 {
-	String requeteOrdonnance="INSERT INTO `Ordonnance_Medicament_Association`(`ID_Ordonnance`, `ID_Medicament`, `Quantite_Demande`, `Quantite_Delivree`) VALUES ([value-1],[value-2],[value-3],[value-4]);";
+String id=0;
+
+	if (numeroCaisse==1){
+	id=this->deriereCommandeCAISSE1;
+	}
+	if (numeroCaisse==2){
+	id=this->deriereCommandeCAISSE2;
+	}
+	if (numeroCaisse==3){
+	id=this->deriereCommandeCAISSE3;
+	}
+
+	//dans les valeurs je  cherche a mettre le nom du combobox et la quantité magl
+	String requeteOrdonnance="INSERT INTO `Ordonnance_Medicament_Association`(`ID_Ordonnance`, `Nom_Medicament`, `Quantite_Demande`) VALUES ('" + id + "','" + Nom_Medicament + "','" + quantite + "');";
 	wchar_t * wStrReq = requeteOrdonnance.c_str();
 	int reqLength = wcslen(wStrReq);
 	char * req = new char[reqLength + 1];
 	wcstombs(req, wStrReq, reqLength);
 	this->mySql->insert(req);
 }
+//---------------------------------------------------------------------------
+// une methode ou je prend le nom medoc depuis un combo box et je recupere son id//
 //---------------------------------------------------------------------------
 bool MysqlPharmacieManager::insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix)
 {
