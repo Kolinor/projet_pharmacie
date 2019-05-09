@@ -20,10 +20,11 @@ class MysqlPharmacieManager
 		~MysqlPharmacieManager();
 		bool selectOrdonnance(TStringGrid *excelOrdo);
 		bool createOrdonnance(String numeroCaisse);
-		bool insertOrdonnance(String numeroCaisse, String Nom_Medicament, String quantite);
+		bool insertOrdonnance(String numeroCaisse);
 		bool insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		bool insertTapiris(String cle,String value);
 		bool selectMedicament();
 		bool etatCommande(String idCommande);
+
 };
 #endif
