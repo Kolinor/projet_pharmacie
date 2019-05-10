@@ -26,9 +26,18 @@ bool tapiris::connected(string adress, unsigned short port)
 {
 	pmodBus = new modBus();
 	bool connected = pmodBus->connected(adress,port);
+	return connected;
+}
+
+void tapiris::activeCapteur()
+{
 	this->etatCapteur = true;
 	Thread = CreateThread(NULL,0,this->threadCapteur,this,0,NULL);
-	return connected;
+}
+
+void tapiris::deactivateCapteur()
+{
+	this->etatCapteur = false;
 }
 
 void tapiris::disconnect()
@@ -124,7 +133,6 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 	tapiris * tapis = (tapiris*)lpParam;
 
 	char buffer[4096];
-	bool test = true;
 	int bytes;
 
 	bool captState[2];
@@ -134,17 +142,17 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 
 
 
-	while(tapis->etatCapteur == true || test == false)
+	while(tapis->etatCapteur == true)
 	{
 		ZeroMemory(buffer, 4096);
-		test = tapis->pmodBus->readWord(1,3,buffer);
+		tapis->pmodBus->readWord(1,3,buffer);
 
 		if(buffer[7] == 0x04)
 		{
 			if (buffer[12] == 1) {
 				if(captState[0] == false)
 				{
-					tapis->activePiston(1,280);
+					tapis->activePiston(1,500);
 					captState[0] = true;
 				}
 			}
@@ -156,7 +164,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 			if (buffer[14] == 1) {
 				if(captState[1] == false)
 				{
-					tapis->activePiston(2,280);
+					tapis->activePiston(2,500);
 					captState[1] = true;
 				}
 
@@ -166,18 +174,18 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 				captState[1] = false;
 			}
 
-			if (buffer[10] == 1) {
-				if(captState[2] == false)
-				{
-					//action à executer ici pour lire la caisse
-					tapis->vpiston.push_back(2);
-					captState[2] = true;
-				}
-			}
-			else
-			{
-				captState[2] = false;
-            }
+//			if (buffer[10] == 1) {
+//				if(captState[2] == false)
+//				{
+//					//action à executer ici pour lire la caisse
+//					tapis->vpiston.push_back(2);
+//					captState[2] = true;
+//				}
+//			}
+//			else
+//			{
+//				captState[2] = false;
+//			}
 		}
 
 		Sleep(100);

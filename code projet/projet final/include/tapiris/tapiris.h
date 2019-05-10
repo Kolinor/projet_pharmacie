@@ -57,6 +57,10 @@ class tapiris
 		//permet de desactiver la moteur du tapis
 		bool deactivateTapis();
 
+		void activeCapteur();
+
+		void deactivateCapteur();
+
 		void newDrug(int caisse);
 		//thread permmettant de ratracter un piston automatiquement
 		static DWORD WINAPI threadDpiston(LPVOID lpParam);
