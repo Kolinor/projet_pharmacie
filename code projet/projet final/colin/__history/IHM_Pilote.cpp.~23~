@@ -96,8 +96,7 @@ void __fastcall TForm1::btnDéconnexionClick(TObject *Sender)
 
 void __fastcall TForm1::btnActiveTapisClick(TObject *Sender)
 {
-	pTapiris->activeCapteur();
-    btnActiveTapis->Visible = false;
+    pTapiris->activeCapteur();
 }
 //---------------------------------------------------------------------------
 

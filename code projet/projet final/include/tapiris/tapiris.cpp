@@ -70,14 +70,13 @@ DWORD WINAPI tapiris::threadApiston(LPVOID lpParam)
 		verif = apiston->tapis->pmodBus->writeWord(pist,1);
 		HANDLE Thread = CreateThread(NULL,0,apiston->tapis->threadDpiston,new ThreadDataTapiris(apiston->piston,apiston->delay,apiston->tapis),0,NULL);
 	}
-	delete apiston;
 	return 0;
 }
 
 DWORD WINAPI tapiris::threadDpiston(LPVOID lpParam)
 {
 	ThreadDataTapiris * dpiston = (ThreadDataTapiris*)lpParam;
-	Sleep(200);
+	Sleep(100);
 
 	unsigned int pist;
 	if (dpiston->piston == 1) {
@@ -91,7 +90,6 @@ DWORD WINAPI tapiris::threadDpiston(LPVOID lpParam)
 	}
 
 	dpiston->tapis->pmodBus->writeWord(pist,0);
-	delete dpiston;
 	return 0;
 }
 
@@ -191,7 +189,6 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 		Sleep(100);
 
 	}
-	delete tapis;
 	return 0;
 }
 
