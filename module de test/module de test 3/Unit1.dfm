@@ -143,4 +143,18 @@ object Form1: TForm1
       TabOrder = 3
     end
   end
+  object Memo2: TMemo
+    Left = 32
+    Top = 203
+    Width = 185
+    Height = 89
+    Lines.Strings = (
+      'Mot :'
+      '        tapis : 00'
+      '        piston 1 : 06'
+      '        piston 2 : 07'
+      '        piston 3 : 05'
+      '        capteur : 04')
+    TabOrder = 4
+  end
 end

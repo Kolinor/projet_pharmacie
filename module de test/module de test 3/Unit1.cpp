@@ -44,6 +44,7 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 	char buffer[4096];
 
 	pmodbus->readWord(Edit3->Text.ToInt(),Edit4->Text.ToInt(),buffer);
+	Sleep(500);
 
 	if(buffer[7] == 0x04)
 	{
