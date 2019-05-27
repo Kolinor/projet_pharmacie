@@ -13,6 +13,7 @@ Compilation : c++ builder
 #define tapirisH
 #include "../include/modBus/modBus.h"
 #include "../include/vector/Vector.h"
+#include "../include/carte/carte.h"
 
 using namespace std;
 class tapiris;
@@ -40,6 +41,16 @@ class tapiris
 		modBus * pmodBus;
 		DWORD dwChars;
 		HANDLE Thread;
+		Vector<int> caisse;
+		HANDLE mutex;
+
+		//thread permmettant de ratracter un piston automatiquement
+		static DWORD WINAPI threadDpiston(LPVOID lpParam);
+		//thread permettant le mise en fonction automatique du tapiris
+		static DWORD WINAPI threadCapteur(LPVOID lpParam);
+		//thread permmettant d'activer un piston avec le numéro du piston et un delay en ms
+		static DWORD WINAPI threadApiston(LPVOID lpParam);
+
 	public:
 
 		tapiris();
@@ -62,12 +73,11 @@ class tapiris
 		void deactivateCapteur();
 
 		void newDrug(int caisse);
-		//thread permmettant de ratracter un piston automatiquement
-		static DWORD WINAPI threadDpiston(LPVOID lpParam);
-		//thread permettant le mise en fonction automatique du tapiris
-		static DWORD WINAPI threadCapteur(LPVOID lpParam);
-		//thread permmettant d'activer un piston avec le numéro du piston et un delay en ms
-		static DWORD WINAPI threadApiston(LPVOID lpParam);
+		int test();
+		int test1();
+
+
+
 
 
 };

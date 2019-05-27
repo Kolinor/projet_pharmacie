@@ -25,6 +25,7 @@ template <class T> class Vector
 		T pop_front();
 		void push_back(T valeur);
 		void push_front(T valeur);
+		T back();
 
 
 
@@ -85,24 +86,41 @@ template <class T> void Vector<T>::push_front(T valeur)
 
 }
 
+template <class T> T Vector<T>::back()
+{
+	return tab[nombre];
+}
+
 template <class T> T Vector<T>::pop_back()
 {
-	return tab[nombre--];
+	if (nombre > 0) {
+		return tab[nombre--];
+	}
+	else {
+		return 0;
+    }
+
 
 }
 
 template <class T> T Vector<T>::pop_front()
 {
-	T var = tab[0];
+	if (nombre > 0) {
+    	T var = tab[0];
 
-	T * tmp = new T[taille-1];
-	for (unsigned long i = 0; i < size()-1; i++) {
-		tmp[i] = tab [i+1];
+		T * tmp = new T[taille-1];
+		for (unsigned long i = 0; i < size()-1; i++) {
+			tmp[i] = tab [i+1];
+		}
+		delete tab;
+		tab = tmp;
+		nombre--;
+		return var;
 	}
-	delete tab;
-	tab = tmp;
-	nombre--;
-	return var;
+	else {
+		return 0;
+    }
+
 
 }
 

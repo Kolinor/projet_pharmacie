@@ -13,6 +13,18 @@
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 664
+    Top = 348
+    Width = 3
+    Height = 13
+  end
+  object Label2: TLabel
+    Left = 648
+    Top = 367
+    Width = 3
+    Height = 13
+  end
   object Button1: TButton
     Left = 575
     Top = 212
@@ -141,5 +153,40 @@
     Caption = 'd'#233'sactiver lecture du tapis'
     TabOrder = 9
     OnClick = btnDesactiveTapisClick
+  end
+  object Button7: TButton
+    Left = 552
+    Top = 312
+    Width = 75
+    Height = 25
+    Caption = 'Button7'
+    TabOrder = 10
+    OnClick = Button7Click
+  end
+  object Edit1: TEdit
+    Left = 648
+    Top = 314
+    Width = 121
+    Height = 21
+    TabOrder = 11
+    Text = 'Edit1'
+  end
+  object Button8: TButton
+    Left = 552
+    Top = 343
+    Width = 75
+    Height = 25
+    Caption = 'Button8'
+    TabOrder = 12
+    OnClick = Button8Click
+  end
+  object Button9: TButton
+    Left = 552
+    Top = 365
+    Width = 75
+    Height = 25
+    Caption = 'Button9'
+    TabOrder = 13
+    OnClick = Button9Click
   end
 end

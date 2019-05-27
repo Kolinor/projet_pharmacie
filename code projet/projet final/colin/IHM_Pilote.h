@@ -31,6 +31,12 @@ __published:	// Composants gérés par l'EDI
 	TButton *btnActiveTapis;
 	TGroupBox *Action;
 	TButton *btnDesactiveTapis;
+	TButton *Button7;
+	TEdit *Edit1;
+	TButton *Button8;
+	TLabel *Label1;
+	TButton *Button9;
+	TLabel *Label2;
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button3Click(TObject *Sender);
@@ -41,6 +47,9 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall btnDéconnexionClick(TObject *Sender);
 	void __fastcall btnActiveTapisClick(TObject *Sender);
 	void __fastcall btnDesactiveTapisClick(TObject *Sender);
+	void __fastcall Button7Click(TObject *Sender);
+	void __fastcall Button8Click(TObject *Sender);
+	void __fastcall Button9Click(TObject *Sender);
 private:	tapiris * pTapiris;
 		// Déclarations utilisateur
 public:

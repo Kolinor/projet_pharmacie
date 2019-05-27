@@ -107,3 +107,21 @@ void __fastcall TForm1::btnDesactiveTapisClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::Button7Click(TObject *Sender)
+{
+	pTapiris->newDrug(Edit1->Text.ToInt());
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button8Click(TObject *Sender)
+{
+	Label1->Caption = pTapiris->test();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button9Click(TObject *Sender)
+{
+    Label2->Caption = pTapiris->test1();
+}
+//---------------------------------------------------------------------------
+

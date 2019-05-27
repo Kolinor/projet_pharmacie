@@ -8,7 +8,7 @@
 
 tapiris::tapiris()
 {
-
+	this->mutex = CreateMutex(NULL,FALSE,NULL);
 }
 
 tapiris::~tapiris()
@@ -76,7 +76,7 @@ DWORD WINAPI tapiris::threadApiston(LPVOID lpParam)
 DWORD WINAPI tapiris::threadDpiston(LPVOID lpParam)
 {
 	ThreadDataTapiris * dpiston = (ThreadDataTapiris*)lpParam;
-	Sleep(100);
+	Sleep(150);
 
 	unsigned int pist;
 	if (dpiston->piston == 1) {
@@ -132,6 +132,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 
 	char buffer[4096];
 	int bytes;
+	int caisse;
 
 	bool captState[2];
 	captState[0] = false;
@@ -145,24 +146,54 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 		ZeroMemory(buffer, 4096);
 		tapis->pmodBus->readWord(1,3,buffer);
 
+
+
+
+
 		if(buffer[7] == 0x04)
 		{
+
+			WaitForSingleObject(tapis->mutex,INFINITE);
 			if (buffer[12] == 1) {
+
 				if(captState[0] == false)
 				{
-					tapis->activePiston(1,500);
+					caisse = tapis->caisse.pop_front();
+					if (caisse == 1) {
+						tapis->activePiston(1,300);
+					}
+					else {
+						if (caisse != 0) {
+							tapis->caisse.push_front(caisse);
+						}
+					}
 					captState[0] = true;
 				}
+
 			}
 			else
 			{
 				captState[0] = false;
 			}
 
+
 			if (buffer[14] == 1) {
 				if(captState[1] == false)
 				{
-					tapis->activePiston(2,500);
+					caisse = tapis->caisse.pop_front();
+
+					if (caisse == 2) {
+						tapis->activePiston(2,300);
+					}
+					else {
+						if (caisse != 0) {
+							tapis->caisse.push_front(caisse);
+						}
+
+					}
+					if (caisse == 3) {
+						tapis->caisse.pop_front();
+					}
 					captState[1] = true;
 				}
 
@@ -172,6 +203,8 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 				captState[1] = false;
 			}
 
+
+			ReleaseMutex(tapis->mutex);
 //			if (buffer[10] == 1) {
 //				if(captState[2] == false)
 //				{
@@ -194,5 +227,27 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 
 void tapiris::newDrug(int caisse)
 {
+	WaitForSingleObject(this->mutex,INFINITE);
+		this->caisse.push_back(caisse);
+	ReleaseMutex(this->mutex);
+}
+
+int tapiris::test()
+{
+	WaitForSingleObject(this->mutex,INFINITE);
+	int test = this->caisse.size();
+	ReleaseMutex(this->mutex);
+	return test;
 
 }
+
+int tapiris::test1()
+{
+	WaitForSingleObject(this->mutex,INFINITE);
+	int test = this->caisse.pop_front();
+	ReleaseMutex(this->mutex);
+	return test;
+
+}
+
+
