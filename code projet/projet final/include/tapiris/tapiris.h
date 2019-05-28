@@ -43,6 +43,7 @@ class tapiris
 		HANDLE Thread;
 		Vector<int> caisse1;
 		Vector<int> caisse2;
+		int etat[5]; // tapis, piston1, piston2, piston3, capteur1, capteur2
 
 		HANDLE mutex;
 
@@ -75,6 +76,8 @@ class tapiris
 		void deactivateCapteur();
 
 		void newDrug(int caisse);
+
+		int etatCapteurReturn(int idx);
 		int test();
 		int test1();
 

@@ -69,6 +69,16 @@
       TabOrder = 2
       Text = '502'
     end
+    object btnDéconnexion: TButton
+      Left = 48
+      Top = 80
+      Width = 89
+      Height = 25
+      Caption = 'd'#233'connexion'
+      TabOrder = 3
+      Visible = False
+      OnClick = btnDéconnexionClick
+    end
   end
   object Action: TGroupBox
     Left = 286
@@ -117,23 +127,13 @@
       OnClick = btnEteindreTapisClick
     end
   end
-  object btnDéconnexion: TButton
-    Left = 64
-    Top = 88
-    Width = 89
-    Height = 25
-    Caption = 'd'#233'connexion'
-    TabOrder = 4
-    Visible = False
-    OnClick = btnDéconnexionClick
-  end
   object Button7: TButton
     Left = 48
     Top = 242
     Width = 75
     Height = 25
     Caption = 'Button7'
-    TabOrder = 5
+    TabOrder = 4
     OnClick = Button7Click
   end
   object Edit1: TEdit
@@ -141,15 +141,109 @@
     Top = 244
     Width = 121
     Height = 21
-    TabOrder = 6
+    TabOrder = 5
     Text = 'Edit1'
   end
   object Memo1: TMemo
-    Left = 640
-    Top = 8
-    Width = 201
-    Height = 382
+    Left = 608
+    Top = 180
+    Width = 217
+    Height = 210
     ScrollBars = ssVertical
+    TabOrder = 6
+  end
+  object Etat: TGroupBox
+    Left = 584
+    Top = 8
+    Width = 225
+    Height = 128
+    Caption = 'Etat'
     TabOrder = 7
+    Visible = False
+    object lblTapis: TLabel
+      Left = 33
+      Top = 27
+      Width = 32
+      Height = 13
+      Caption = 'Tapis :'
+    end
+    object lblCapteur1: TLabel
+      Left = 11
+      Top = 40
+      Width = 62
+      Height = 18
+      Caption = 'Capteur 1 :'
+    end
+    object lblCapteur2: TLabel
+      Left = 11
+      Top = 55
+      Width = 55
+      Height = 13
+      Caption = 'Capteur 2 :'
+    end
+    object lblPiston1: TLabel
+      Left = 21
+      Top = 69
+      Width = 45
+      Height = 13
+      Caption = 'Piston 1 :'
+    end
+    object lblPiston2: TLabel
+      Left = 21
+      Top = 81
+      Width = 45
+      Height = 13
+      Caption = 'Piston 2 :'
+    end
+    object lblPiston3: TLabel
+      Left = 21
+      Top = 92
+      Width = 45
+      Height = 13
+      Caption = 'Piston 3 :'
+    end
+    object lblTapisRep: TLabel
+      Left = 79
+      Top = 27
+      Width = 3
+      Height = 13
+    end
+    object lblCapteur1Rep: TLabel
+      Left = 79
+      Top = 40
+      Width = 3
+      Height = 13
+    end
+    object lblCapteur2Rep: TLabel
+      Left = 79
+      Top = 55
+      Width = 3
+      Height = 13
+    end
+    object lblPiston1Rep: TLabel
+      Left = 79
+      Top = 69
+      Width = 3
+      Height = 13
+    end
+    object lblPiston2Rep: TLabel
+      Left = 79
+      Top = 81
+      Width = 3
+      Height = 13
+    end
+    object lblPiston3Rep: TLabel
+      Left = 79
+      Top = 92
+      Width = 3
+      Height = 13
+    end
+  end
+  object tmEtat: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = tmEtatTimer
+    Left = 760
+    Top = 24
   end
 end
