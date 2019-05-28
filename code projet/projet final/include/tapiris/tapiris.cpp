@@ -132,23 +132,16 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 
 	char buffer[4096];
 	int bytes;
-	int caisse;
+	int caisse1, caisse2;
 
-	bool captState[2];
+	bool captState[1];
 	captState[0] = false;
 	captState[1] = false;
-	captState[2] = false;
-
-
 
 	while(tapis->etatCapteur == true)
 	{
 		ZeroMemory(buffer, 4096);
 		tapis->pmodBus->readWord(1,3,buffer);
-
-
-
-
 
 		if(buffer[7] == 0x04)
 		{
@@ -158,14 +151,9 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 
 				if(captState[0] == false)
 				{
-					caisse = tapis->caisse.pop_front();
-					if (caisse == 1) {
+					caisse1 = tapis->caisse1.pop_front();
+					if (caisse1 == 1) {
 						tapis->activePiston(1,300);
-					}
-					else {
-						if (caisse != 0) {
-							tapis->caisse.push_front(caisse);
-						}
 					}
 					captState[0] = true;
 				}
@@ -180,20 +168,12 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 			if (buffer[14] == 1) {
 				if(captState[1] == false)
 				{
-					caisse = tapis->caisse.pop_front();
+					caisse2 = tapis->caisse2.pop_front();
 
-					if (caisse == 2) {
+					if (caisse2 == 2) {
 						tapis->activePiston(2,300);
 					}
-					else {
-						if (caisse != 0) {
-							tapis->caisse.push_front(caisse);
-						}
 
-					}
-					if (caisse == 3) {
-						tapis->caisse.pop_front();
-					}
 					captState[1] = true;
 				}
 
@@ -203,20 +183,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 				captState[1] = false;
 			}
 
-
 			ReleaseMutex(tapis->mutex);
-//			if (buffer[10] == 1) {
-//				if(captState[2] == false)
-//				{
-//					//action à executer ici pour lire la caisse
-//					tapis->vpiston.push_back(2);
-//					captState[2] = true;
-//				}
-//			}
-//			else
-//			{
-//				captState[2] = false;
-//			}
 		}
 
 		Sleep(100);
@@ -228,14 +195,19 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 void tapiris::newDrug(int caisse)
 {
 	WaitForSingleObject(this->mutex,INFINITE);
-		this->caisse.push_back(caisse);
+		if (caisse > 0 && caisse < 4) {
+			this->caisse1.push_back(caisse);
+			if (caisse != 1) {
+				 this->caisse2.push_back(caisse);
+			}
+		}
 	ReleaseMutex(this->mutex);
 }
 
 int tapiris::test()
 {
 	WaitForSingleObject(this->mutex,INFINITE);
-	int test = this->caisse.size();
+	int test = this->caisse1.size();
 	ReleaseMutex(this->mutex);
 	return test;
 
@@ -244,7 +216,7 @@ int tapiris::test()
 int tapiris::test1()
 {
 	WaitForSingleObject(this->mutex,INFINITE);
-	int test = this->caisse.pop_front();
+	int test = this->caisse1.pop_front();
 	ReleaseMutex(this->mutex);
 	return test;
 

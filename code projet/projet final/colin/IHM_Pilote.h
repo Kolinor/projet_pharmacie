@@ -17,11 +17,9 @@ class TForm1 : public TForm
 {
 __published:	// Composants gérés par l'EDI
 	TButton *Button1;
-	TButton *Button2;
-	TButton *Button3;
-	TButton *Button4;
+	TButton *btnAllumerTapis;
+	TButton *btnEteindreTapis;
 	TButton *Button5;
-	TButton *Button6;
 	TGroupBox *GroupBox1;
 	TButton *btnConnexion;
 	TEdit *edtIp;
@@ -33,23 +31,16 @@ __published:	// Composants gérés par l'EDI
 	TButton *btnDesactiveTapis;
 	TButton *Button7;
 	TEdit *Edit1;
-	TButton *Button8;
-	TLabel *Label1;
-	TButton *Button9;
-	TLabel *Label2;
-	void __fastcall Button2Click(TObject *Sender);
+	TMemo *Memo1;
 	void __fastcall Button1Click(TObject *Sender);
-	void __fastcall Button3Click(TObject *Sender);
-	void __fastcall Button4Click(TObject *Sender);
+	void __fastcall btnAllumerTapisClick(TObject *Sender);
+	void __fastcall btnEteindreTapisClick(TObject *Sender);
 	void __fastcall Button5Click(TObject *Sender);
-	void __fastcall Button6Click(TObject *Sender);
 	void __fastcall btnConnexionClick(TObject *Sender);
 	void __fastcall btnDéconnexionClick(TObject *Sender);
 	void __fastcall btnActiveTapisClick(TObject *Sender);
 	void __fastcall btnDesactiveTapisClick(TObject *Sender);
 	void __fastcall Button7Click(TObject *Sender);
-	void __fastcall Button8Click(TObject *Sender);
-	void __fastcall Button9Click(TObject *Sender);
 private:	tapiris * pTapiris;
 		// Déclarations utilisateur
 public:

@@ -41,7 +41,9 @@ class tapiris
 		modBus * pmodBus;
 		DWORD dwChars;
 		HANDLE Thread;
-		Vector<int> caisse;
+		Vector<int> caisse1;
+		Vector<int> caisse2;
+
 		HANDLE mutex;
 
 		//thread permmettant de ratracter un piston automatiquement

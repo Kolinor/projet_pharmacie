@@ -16,16 +16,6 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-
-void __fastcall TForm1::Button2Click(TObject *Sender)
-{
-	bool verifco = pTapiris->connected("192.168.64.200",502);
-
-
-
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
 	pTapiris->activePiston(1,0);
@@ -33,15 +23,19 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button3Click(TObject *Sender)
+void __fastcall TForm1::btnAllumerTapisClick(TObject *Sender)
 {
-    pTapiris->activeTapis();
+	pTapiris->activeTapis();
+	btnAllumerTapis->Visible = false;
+	btnEteindreTapis->Visible = true;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button4Click(TObject *Sender)
+void __fastcall TForm1::btnEteindreTapisClick(TObject *Sender)
 {
 	pTapiris->deactivateTapis();
+	btnAllumerTapis->Visible = true;
+	btnEteindreTapis->Visible = false;
 }
 //---------------------------------------------------------------------------
 
@@ -53,12 +47,6 @@ void __fastcall TForm1::Button5Click(TObject *Sender)
 //	pTapiris->deactivatePiston(3);
 	pTapiris->activePiston(3,0);
 
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm1::Button6Click(TObject *Sender)
-{
-	pTapiris->disconnect();
 }
 //---------------------------------------------------------------------------
 
@@ -74,11 +62,13 @@ void __fastcall TForm1::btnConnexionClick(TObject *Sender)
 		shpConnexion->Brush->Color = clLime;
 		btnConnexion->Visible = false;
 		btnDéconnexion->Visible = true;
+		Action->Visible = true;
 
 	}
 	else
 	{
-        shpConnexion->Brush->Color = clRed;
+		shpConnexion->Brush->Color = clRed;
+		Action->Visible = false;
     }
 }
 //---------------------------------------------------------------------------
@@ -91,37 +81,29 @@ void __fastcall TForm1::btnDéconnexionClick(TObject *Sender)
 	shpConnexion->Brush->Color = clRed;
 	btnDéconnexion->Visible = false;
 	btnConnexion->Visible = true;
+    Action->Visible = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::btnActiveTapisClick(TObject *Sender)
 {
 	pTapiris->activeCapteur();
-    btnActiveTapis->Visible = false;
+	btnActiveTapis->Visible = false;
+	btnDesactiveTapis->Visible = true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::btnDesactiveTapisClick(TObject *Sender)
 {
-    pTapiris->deactivateCapteur();
+	pTapiris->deactivateCapteur();
+	btnActiveTapis->Visible = true;
+	btnDesactiveTapis->Visible = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Button7Click(TObject *Sender)
 {
 	pTapiris->newDrug(Edit1->Text.ToInt());
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm1::Button8Click(TObject *Sender)
-{
-	Label1->Caption = pTapiris->test();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm1::Button9Click(TObject *Sender)
-{
-    Label2->Caption = pTapiris->test1();
 }
 //---------------------------------------------------------------------------
 

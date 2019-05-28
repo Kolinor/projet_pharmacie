@@ -13,71 +13,23 @@
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 664
-    Top = 348
-    Width = 3
-    Height = 13
-  end
-  object Label2: TLabel
-    Left = 648
-    Top = 367
-    Width = 3
-    Height = 13
-  end
   object Button1: TButton
-    Left = 575
-    Top = 212
+    Left = 48
+    Top = 180
     Width = 75
     Height = 25
     Caption = 'Button1'
     TabOrder = 0
     OnClick = Button1Click
   end
-  object Button2: TButton
-    Left = 584
-    Top = 27
-    Width = 233
-    Height = 25
-    Caption = 'mettre en marche le tapis'
-    TabOrder = 1
-    OnClick = Button2Click
-  end
-  object Button3: TButton
-    Left = 391
-    Top = 172
-    Width = 75
-    Height = 25
-    Caption = 'allumer tapis'
-    TabOrder = 2
-    OnClick = Button3Click
-  end
-  object Button4: TButton
-    Left = 391
-    Top = 230
-    Width = 75
-    Height = 25
-    Caption = #233'teindre tapis'
-    TabOrder = 3
-    OnClick = Button4Click
-  end
   object Button5: TButton
-    Left = 391
-    Top = 277
+    Left = 48
+    Top = 211
     Width = 75
     Height = 25
     Caption = 'Button5'
-    TabOrder = 4
+    TabOrder = 1
     OnClick = Button5Click
-  end
-  object Button6: TButton
-    Left = 550
-    Top = 252
-    Width = 75
-    Height = 25
-    Caption = 'Button6'
-    TabOrder = 5
-    OnClick = Button6Click
   end
   object GroupBox1: TGroupBox
     Left = 16
@@ -85,7 +37,7 @@
     Width = 249
     Height = 128
     Caption = 'Connexion'
-    TabOrder = 6
+    TabOrder = 2
     object shpConnexion: TShape
       Left = 184
       Top = 48
@@ -119,20 +71,50 @@
     end
   end
   object Action: TGroupBox
-    Left = 287
+    Left = 286
     Top = 8
     Width = 280
     Height = 128
     Caption = 'Action'
-    TabOrder = 7
+    TabOrder = 3
+    Visible = False
     object btnActiveTapis: TButton
-      Left = 71
-      Top = 21
-      Width = 137
+      Left = 64
+      Top = 35
+      Width = 144
       Height = 25
       Caption = 'activer lecture du tapis'
       TabOrder = 0
       OnClick = btnActiveTapisClick
+    end
+    object btnDesactiveTapis: TButton
+      Left = 64
+      Top = 35
+      Width = 145
+      Height = 25
+      Caption = 'd'#233'sactiver lecture du tapis'
+      TabOrder = 1
+      Visible = False
+      OnClick = btnDesactiveTapisClick
+    end
+    object btnAllumerTapis: TButton
+      Left = 64
+      Top = 74
+      Width = 145
+      Height = 25
+      Caption = 'allumer tapis'
+      TabOrder = 2
+      OnClick = btnAllumerTapisClick
+    end
+    object btnEteindreTapis: TButton
+      Left = 64
+      Top = 74
+      Width = 145
+      Height = 25
+      Caption = #233'teindre tapis'
+      TabOrder = 3
+      Visible = False
+      OnClick = btnEteindreTapisClick
     end
   end
   object btnDéconnexion: TButton
@@ -141,52 +123,33 @@
     Width = 89
     Height = 25
     Caption = 'd'#233'connexion'
-    TabOrder = 8
+    TabOrder = 4
     Visible = False
     OnClick = btnDéconnexionClick
   end
-  object btnDesactiveTapis: TButton
-    Left = 358
-    Top = 60
-    Width = 137
-    Height = 25
-    Caption = 'd'#233'sactiver lecture du tapis'
-    TabOrder = 9
-    OnClick = btnDesactiveTapisClick
-  end
   object Button7: TButton
-    Left = 552
-    Top = 312
+    Left = 48
+    Top = 242
     Width = 75
     Height = 25
     Caption = 'Button7'
-    TabOrder = 10
+    TabOrder = 5
     OnClick = Button7Click
   end
   object Edit1: TEdit
-    Left = 648
-    Top = 314
+    Left = 144
+    Top = 244
     Width = 121
     Height = 21
-    TabOrder = 11
+    TabOrder = 6
     Text = 'Edit1'
   end
-  object Button8: TButton
-    Left = 552
-    Top = 343
-    Width = 75
-    Height = 25
-    Caption = 'Button8'
-    TabOrder = 12
-    OnClick = Button8Click
-  end
-  object Button9: TButton
-    Left = 552
-    Top = 365
-    Width = 75
-    Height = 25
-    Caption = 'Button9'
-    TabOrder = 13
-    OnClick = Button9Click
+  object Memo1: TMemo
+    Left = 640
+    Top = 8
+    Width = 201
+    Height = 382
+    ScrollBars = ssVertical
+    TabOrder = 7
   end
 end
