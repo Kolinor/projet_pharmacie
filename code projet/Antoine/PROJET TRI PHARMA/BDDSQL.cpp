@@ -58,25 +58,50 @@ bool BDDSQL::insert(string requete)
 //---------------------------------------------------------------------------
 vector< vector<std::string> > BDDSQL::select(string requete)
 {
-		vector< vector<std::string> > vec;
+	std::vector< std::vector<string> > resultatRequete;
+	std::vector<string> copie;
+	MYSQL_RES *res; /* holds the result set */
+	MYSQL_ROW row;
+	int nbColones=0;
 
-//		 mysql_query(&mysql, "SELECT * FROM scores");
-		//Déclaration des objets
-//        MYSQL_RES *result = NULL;
-//        MYSQL_ROW row;
-//        int i = 1;
+	mysql_query(this->mysql,requete.c_str());
+	res = mysql_store_result(this->mysql);
+	//resultatRequete.resize(mysql_num_rows(res)); //commenter selon Mr Gremont
+	nbColones =  mysql_num_fields(res);
 
-		//On met le jeu de résultat dans le pointeur result
-//        result = mysql_use_result(&mysql);
-		//Tant qu'il y a encore un résultat ...
-//        while ((row = mysql_fetch_row(result)))
-//		{
-//		   printf("Resultat %ld\n", i);
-//           i++;
-//		}
-		//Libération du jeu de résultat
-//		mysql_free_result(result);
-    return vec;
+
+	 while ((row = mysql_fetch_row(res))) {
+
+	   for(int j = 0; j < nbColones; j++)
+	   {
+		   if(row[j] != NULL)
+		   {
+				copie.push_back(row[j]);
+		   }
+	   }
+
+	   resultatRequete.push_back(copie);
+	   copie.clear();
+	}
+	if(res != NULL)
+	mysql_free_result(res);
+
+	return resultatRequete;
 }
 //---------------------------------------------------------------------------
+bool BDDSQL::update(string requete){
 
+	// Exécute une requête SQL
+	mysql_query(this->mysql,requete.c_str());
+	//si au moins une ligne à etait affecté on retourne true sinon false
+
+	if(mysql_affected_rows(this->mysql)>0)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
+}

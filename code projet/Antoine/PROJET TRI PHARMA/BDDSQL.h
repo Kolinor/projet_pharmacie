@@ -19,6 +19,7 @@ public:
 	~BDDSQL ();
 	bool connect(string host,string user,string password,string dbname);
 	bool insert(string requete);
+	bool update (string requete);
 	vector< vector<std::string> > select(string requete);
 //	bool save (string requete);
 //	bool restore(string requete);

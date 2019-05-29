@@ -31,7 +31,7 @@ void __fastcall TForm1::Btn_sendAutomateClick(TObject *Sender)
 {
 	manager->insertTapiris(Edit_cle->Text, Edit_value->Text);
 	Edit_value->Clear();
-    Edit_cle->Clear();
+	Edit_cle->Clear();
 }
 //---------------------------------------------------------------------------
 
@@ -122,6 +122,22 @@ void __fastcall TForm1::Cmb_MedicamentModifierEnter(TObject *Sender)
 
 	FDQuery_update->Open("SELECT `Nom_Medicament`, `Hauteur`, `Largeur`, `Longueur`, `Quantite_Restante`, `Code_Barre`, `Prix` FROM `Medicament` WHERE `Nom_Medicament` LIKE '%"+medocName+"%'");
 	DataSource_update->DataSet->FieldByName("Nom_Medicament")->AsString;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TForm1::Bt_CreateOrdonnanceClick(TObject *Sender)
+{
+	String caisse;
+
+	caisse=this->Edit_numeroCaisse->Text;
+	this->manager->createOrdonnance(caisse);
+    Label1->Caption = caisse;
+	this->manager->insertOrdonnance(caisse,"Doliprane","42"); //C'EST ICI KEVIN QUE FAUT METTRE A LA PLACE DE DOLIPRAN LE COMBOBOX
+	this->Edit_numeroCaisse->Clear();
 }
 //---------------------------------------------------------------------------
 

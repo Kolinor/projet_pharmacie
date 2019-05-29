@@ -25,48 +25,80 @@ bool MysqlPharmacieManager::selectOrdonnance(TStringGrid *excelOrdo)
 //---------------------------------------------------------------------------
 bool MysqlPharmacieManager::createOrdonnance(String numeroCaisse)
 {
-	String requeteOrdonnance="INSERT INTO `Ordonnance`(`Etat`, `Numero_Caisse`, `Date_Saisie_Ordonnance`) VALUES (`en attente`, '" + numeroCaisse + "',now());";
+	String requeteOrdonnance="INSERT INTO `Ordonnance`(`Etat`, `Numero_Caisse`, `Date_Saisie_Ordonnance`) VALUES ('en attente', '" + numeroCaisse + "',now());";
 	wchar_t * wStrReq = requeteOrdonnance.c_str();
 	int reqLength = wcslen(wStrReq);
 	char * req = new char[reqLength + 1];
 	wcstombs(req, wStrReq, reqLength);
-	this->mySql->insert(req);
-// stocker dans derniereCommandeCAISSE
-	if (numeroCaisse==1){
-	this->deriereCommandeCAISSE1="SELECT `ID_Ordonnance` FROM `Ordonnance` WHERE `ID_Ordonnance`= '" + numeroCaisse + "' );";
-	}
-	if (numeroCaisse==2){
-	this->deriereCommandeCAISSE2="SELECT `ID_Ordonnance` FROM `Ordonnance` WHERE `ID_Ordonnance`= '" + numeroCaisse + "' );";
-	}
-	if (numeroCaisse==3){
-	this->deriereCommandeCAISSE3="SELECT `ID_Ordonnance` FROM `Ordonnance` WHERE `ID_Ordonnance`= '" + numeroCaisse + "' )";;
-	}
+	bool test =this->mySql->insert(req);
 }
 //---------------------------------------------------------------------------
 bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse, String Nom_Medicament, String quantite)
 {
-String id=0;
+   vector < vector<string> > id;
+//numeroCaisse=1;
 
-	if (numeroCaisse==1){
-	id=this->deriereCommandeCAISSE1;
+	if (numeroCaisse=="1")
+	{
+
+	String requeteCaisse1="SELECT `ID_Ordonnance` FROM `Ordonnance`WHERE `Numero_Caisse`= '1' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 0,1;";
+	wchar_t * wStrReq1 = requeteCaisse1.c_str();
+	int reqLength1 = wcslen(wStrReq1);
+	char * req1 = new char[reqLength1 + 1];
+	wcstombs(req1, wStrReq1, reqLength1);
+	id=this->mySql->select(req1);
+
 	}
 	if (numeroCaisse==2){
-	id=this->deriereCommandeCAISSE2;
+
+	String requeteCaisse2="SELECT `ID_Ordonnance` FROM `Ordonnance`WHERE `Numero_Caisse`= '2' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 0,1;";
+	wchar_t * wStrReq2 = requeteCaisse2.c_str();
+	int reqLength2 = wcslen(wStrReq2);
+	char * req2 = new char[reqLength2 + 1];
+	wcstombs(req2, wStrReq2, reqLength2);
+	id=this->mySql->select(req2);
+
 	}
 	if (numeroCaisse==3){
-	id=this->deriereCommandeCAISSE3;
+
+	String requeteCaisse3="SELECT `ID_Ordonnance` FROM `Ordonnance`WHERE `Numero_Caisse`= '3' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 0,1;";
+	wchar_t * wStrReq3 = requeteCaisse3.c_str();
+	int reqLength3 = wcslen(wStrReq3);
+	char * req3 = new char[reqLength3 + 1];
+	wcstombs(req3, wStrReq3, reqLength3);
+	id=this->mySql->select(req3);
+
 	}
 
 	//dans les valeurs je  cherche a mettre le nom du combobox et la quantité magl
-	String requeteOrdonnance="INSERT INTO `Ordonnance_Medicament_Association`(`ID_Ordonnance`, `Nom_Medicament`, `Quantite_Demande`) VALUES ('" + id + "','" + Nom_Medicament + "','" + quantite + "');";
+	String requeteOrdonnance="INSERT INTO `Ordonnance_Medicament_Association`(`ID_Ordonnance`, `Nom_Medicament`, `Quantite_Demande`, `Quantite_Delivree`) VALUES ('";
+	 requeteOrdonnance+= id[0][0].c_str();
+	 requeteOrdonnance+="','";
+	 requeteOrdonnance+= Nom_Medicament ;
+	 requeteOrdonnance+= "','" ;
+	 requeteOrdonnance+= quantite;
+	 requeteOrdonnance+= "','";
+	 requeteOrdonnance+= "0";
+	 requeteOrdonnance+= "')";
 	wchar_t * wStrReq = requeteOrdonnance.c_str();
 	int reqLength = wcslen(wStrReq);
 	char * req = new char[reqLength + 1];
 	wcstombs(req, wStrReq, reqLength);
-	this->mySql->insert(req);
+	mySql->insert(req);
+//INSERT INTO `Ordonnance_Medicament_Association`(`ID_Ordonnance`, `Nom_Medicament`
+//, `Quantite_Demande`, `Quantite_Delivree`) VALUES ("4","Doliprane","1","1")
+	delete req;
 }
 //---------------------------------------------------------------------------
-// une methode ou je prend le nom medoc depuis un combo box et je recupere son id//
+bool BilanMois(String mois, String caisse, String medicament)
+{
+//String requete ;
+//
+//	if (caisse==0 && medicament==0)
+//	{
+//		String requete = "SELECT `Nom_Medicament`, `Prix`, `Nombre_Unite_Vendu` FROM `Medicament` WHERE
+//	}
+}
 //---------------------------------------------------------------------------
 bool MysqlPharmacieManager::insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix)
 {
