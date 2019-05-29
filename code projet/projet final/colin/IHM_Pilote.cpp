@@ -7,23 +7,23 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TIHM *IHM;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TIHM::TIHM(TComponent* Owner)
 	: TForm(Owner)
 {
 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button1Click(TObject *Sender)
+void __fastcall TIHM::Button1Click(TObject *Sender)
 {
 	pTapiris->activePiston(1,0);
 	pTapiris->activePiston(2,0);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::btnAllumerTapisClick(TObject *Sender)
+void __fastcall TIHM::btnAllumerTapisClick(TObject *Sender)
 {
 	pTapiris->activeTapis();
 	btnAllumerTapis->Visible = false;
@@ -31,7 +31,7 @@ void __fastcall TForm1::btnAllumerTapisClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::btnEteindreTapisClick(TObject *Sender)
+void __fastcall TIHM::btnEteindreTapisClick(TObject *Sender)
 {
 	pTapiris->deactivateTapis();
 	btnAllumerTapis->Visible = true;
@@ -39,13 +39,13 @@ void __fastcall TForm1::btnEteindreTapisClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button5Click(TObject *Sender)
+void __fastcall TIHM::Button5Click(TObject *Sender)
 {
 	pTapiris->activePiston(3,0);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::btnConnexionClick(TObject *Sender)
+void __fastcall TIHM::btnConnexionClick(TObject *Sender)
 {
 	wchar_t* ip = edtIp->Text.c_str();
 	wstring ws(ip);
@@ -58,26 +58,25 @@ void __fastcall TForm1::btnConnexionClick(TObject *Sender)
 		btnConnexion->Visible = false;
 		btnDéconnexion->Visible = true;
 		Action->Visible = true;
-		tmEtat->Enabled = true;
 		Etat->Visible = true;
 
+		//threadEtat
+		pThreadEtat = new threadEtat(false, pTapiris);
 	}
 	else
 	{
 		shpConnexion->Brush->Color = clRed;
 		Action->Visible = false;
 		Etat->Visible = false;
-		tmEtat->Enabled = false;
-
-    }
+	}
 }
 //---------------------------------------------------------------------------
 
-
-void __fastcall TForm1::btnDéconnexionClick(TObject *Sender)
+void __fastcall TIHM::btnDéconnexionClick(TObject *Sender)
 {
 	pTapiris->deactivateTapis();
-	tmEtat->Enabled = true;
+	delete pThreadEtat;
+	pThreadEtat = NULL;
 	delete pTapiris;
 
 	shpConnexion->Brush->Color = clRed;
@@ -93,7 +92,7 @@ void __fastcall TForm1::btnDéconnexionClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::btnActiveTapisClick(TObject *Sender)
+void __fastcall TIHM::btnActiveTapisClick(TObject *Sender)
 {
 	pTapiris->activeCapteur();
 	btnActiveTapis->Visible = false;
@@ -101,7 +100,7 @@ void __fastcall TForm1::btnActiveTapisClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::btnDesactiveTapisClick(TObject *Sender)
+void __fastcall TIHM::btnDesactiveTapisClick(TObject *Sender)
 {
 	pTapiris->deactivateCapteur();
 	btnActiveTapis->Visible = true;
@@ -109,55 +108,17 @@ void __fastcall TForm1::btnDesactiveTapisClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button7Click(TObject *Sender)
+void __fastcall TIHM::Button7Click(TObject *Sender)
 {
 	pTapiris->newDrug(Edit1->Text.ToInt());
 }
+
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::tmEtatTimer(TObject *Sender)
+void __fastcall TIHM::FormClose(TObject *Sender, TCloseAction &Action)
 {
-
-	if (pTapiris->etatCapteurReturn(0) == 1 ) {
-		lblTapisRep->Caption = "marche";
-	}
-	else {
-		lblTapisRep->Caption = "arret";
-	}
-
-	if (pTapiris->etatCapteurReturn(1) == 1) {
-		lblPiston1Rep->Caption = "actionné";
-	}
-	else {
-		lblPiston1Rep->Caption = "arrêté";
-	}
-
-	if (pTapiris->etatCapteurReturn(2) == 1) {
-		lblPiston2Rep->Caption = "actionné";
-	}
-	else {
-		lblPiston2Rep->Caption = "arrêté";
-	}
-
-	if (pTapiris->etatCapteurReturn(3) == 1) {
-		lblPiston3Rep->Caption = "actionné";
-	}
-	else {
-		lblPiston3Rep->Caption = "arrêté";
-	}
-
-	if (pTapiris->etatCapteurReturn(4) == 1) {
-		lblCapteur1Rep->Caption = "detécte";
-	}
-	else {
-		lblCapteur1Rep->Caption = "éteint";
-	}
-
-	if (pTapiris->etatCapteurReturn(5) == 1) {
-		lblCapteur2Rep->Caption = "detécte";
-	}
-	else {
-		lblCapteur2Rep->Caption = "éteint";
+	if (btnConnexion->Visible == false) {
+		this->btnDéconnexionClick(Sender);
 	}
 }
 //---------------------------------------------------------------------------

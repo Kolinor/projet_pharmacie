@@ -52,8 +52,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <IncludePath>..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>..\include\threadIHM\;..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\include\threadIHM\;..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -122,7 +122,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="IHM_Pilote.cpp">
-            <Form>Form1</Form>
+            <Form>IHM</Form>
             <FormType>dfm</FormType>
             <DependentOn>IHM_Pilote.h</DependentOn>
             <BuildOrder>2</BuildOrder>
@@ -148,6 +148,10 @@
         <CppCompile Include="..\include\tcpServer\tcpServer.cpp">
             <DependentOn>..\include\tcpServer\tcpServer.h</DependentOn>
             <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\include\threadIHM\threadEtat.cpp">
+            <DependentOn>..\include\threadIHM\threadEtat.h</DependentOn>
+            <BuildOrder>8</BuildOrder>
         </CppCompile>
         <None Include="..\include\vector\Vector.h">
             <BuildOrder>7</BuildOrder>
@@ -221,9 +225,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\Project1.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName=".\Win32\Release\Project1.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>Project1.tds</RemoteName>
+                        <RemoteName>Project1.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -609,13 +613,13 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

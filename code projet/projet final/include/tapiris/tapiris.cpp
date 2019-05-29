@@ -55,6 +55,7 @@ DWORD WINAPI tapiris::threadApiston(LPVOID lpParam)
 	int npiston = apiston->piston;
 	bool verif = false;
 	unsigned int pist;
+	WaitForSingleObject(apiston->tapis->mutex1,INFINITE);
 	if (npiston == 1) {
 		pist = 6;
 		apiston->tapis->etat[1] = 1;
@@ -67,6 +68,7 @@ DWORD WINAPI tapiris::threadApiston(LPVOID lpParam)
 		pist = 5;
 		apiston->tapis->etat[3] = 1;
 	}
+	ReleaseMutex(apiston->tapis->mutex1);
 	if (npiston <= 3 && npiston >= 1) {
 		Sleep(apiston->delay);
 		verif = apiston->tapis->pmodBus->writeWord(pist,1);
@@ -100,19 +102,23 @@ DWORD WINAPI tapiris::threadDpiston(LPVOID lpParam)
 
 bool tapiris::activeTapis()
 {
+	WaitForSingleObject(this->mutex1,INFINITE);
 	bool verif = pmodBus->writeWord(0,0);
 	if (verif == true) {
 		this->etat[0] = 1;
 	}
+	ReleaseMutex(this->mutex1);
 	return verif;
 }
 
 bool tapiris::deactivateTapis()
 {
 	bool verif = pmodBus->writeWord(0,1);
+	WaitForSingleObject(this->mutex1,INFINITE);
 	if (verif == true) {
 		this->etat[0] = 0;
 	}
+	ReleaseMutex(this->mutex1);
 	return verif;
 }
 
@@ -122,6 +128,7 @@ bool tapiris::deactivatePiston(int piston)
 	bool verif = false;
 	unsigned int pist;
 
+	WaitForSingleObject(this->mutex1,INFINITE);
 	if (npiston == 1) {
 		pist = 0006;
 		this->etat[1] = 0;
@@ -137,6 +144,7 @@ bool tapiris::deactivatePiston(int piston)
 	if (npiston <= 3 && npiston >= 1) {
 		verif = pmodBus->writeWord(pist,0000);
 	}
+	ReleaseMutex(this->mutex1);
 	return verif;
 }
 
@@ -162,6 +170,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 		{
 
 			WaitForSingleObject(tapis->mutex,INFINITE);
+			WaitForSingleObject(tapis->mutex1,INFINITE);
 			if (buffer[12] == 1) {
 
 				tapis->etat[4] = 1;
@@ -190,7 +199,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 					caisse2 = tapis->caisse2.pop_front();
 
 					if (caisse2 == 2) {
-						tapis->activePiston(2,290);
+						tapis->activePiston(2,300);
 					}
 
 					captState[1] = true;
@@ -199,10 +208,10 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 			}
 			else
 			{
-                tapis->etat[5] = 0;
+				tapis->etat[5] = 0;
 				captState[1] = false;
 			}
-
+			ReleaseMutex(tapis->mutex1);
 			ReleaseMutex(tapis->mutex);
 		}
 
@@ -242,9 +251,15 @@ int tapiris::test1()
 
 }
 
-int tapiris::etatCapteurReturn(int idx)
+int tapiris::etatReturn(int idx)
 {
-	return etat[idx];
+	int tabCopy[6];
+	WaitForSingleObject(this->mutex1,INFINITE);
+	for (int i = 0; i < 6; i++) {
+		tabCopy[i] = this->etat[i];
+	}
+	ReleaseMutex(this->mutex1);
+	return tabCopy[idx];
 }
 
 

@@ -9,11 +9,12 @@
 #include <Vcl.Forms.hpp>
 #include "../include/tapiris/tapiris.h"
 #include <Vcl.ExtCtrls.hpp>
+#include "threadEtat.h"
 
 using namespace std;
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TIHM : public TForm
 {
 __published:	// Composants gérés par l'EDI
 	TButton *Button1;
@@ -31,7 +32,6 @@ __published:	// Composants gérés par l'EDI
 	TButton *btnDesactiveTapis;
 	TButton *Button7;
 	TEdit *Edit1;
-	TMemo *Memo1;
 	TGroupBox *Etat;
 	TLabel *lblTapis;
 	TLabel *lblCapteur1;
@@ -39,13 +39,12 @@ __published:	// Composants gérés par l'EDI
 	TLabel *lblPiston1;
 	TLabel *lblPiston2;
 	TLabel *lblPiston3;
-	TLabel *lblTapisRep;
-	TLabel *lblCapteur1Rep;
-	TLabel *lblCapteur2Rep;
-	TLabel *lblPiston1Rep;
-	TLabel *lblPiston2Rep;
-	TLabel *lblPiston3Rep;
-	TTimer *tmEtat;
+	TShape *shpTapis;
+	TShape *shpCapteur1;
+	TShape *shpCapteur2;
+	TShape *shpPiston1;
+	TShape *shpPiston2;
+	TShape *shpPiston3;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall btnAllumerTapisClick(TObject *Sender);
 	void __fastcall btnEteindreTapisClick(TObject *Sender);
@@ -55,14 +54,15 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall btnActiveTapisClick(TObject *Sender);
 	void __fastcall btnDesactiveTapisClick(TObject *Sender);
 	void __fastcall Button7Click(TObject *Sender);
-	void __fastcall tmEtatTimer(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	tapiris * pTapiris;
+			threadEtat * pThreadEtat;
 		// Déclarations utilisateur
 public:
 		// Déclarations utilisateur
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TIHM(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TIHM *IHM;
 //---------------------------------------------------------------------------
 #endif

@@ -43,9 +43,10 @@ class tapiris
 		HANDLE Thread;
 		Vector<int> caisse1;
 		Vector<int> caisse2;
-		int etat[5]; // tapis, piston1, piston2, piston3, capteur1, capteur2
+		int etat[6]; // tapis, piston1, piston2, piston3, capteur1, capteur2
 
 		HANDLE mutex;
+		HANDLE mutex1;
 
 		//thread permmettant de ratracter un piston automatiquement
 		static DWORD WINAPI threadDpiston(LPVOID lpParam);
@@ -77,7 +78,7 @@ class tapiris
 
 		void newDrug(int caisse);
 
-		int etatCapteurReturn(int idx);
+		int etatReturn(int idx);
 		int test();
 		int test1();
 

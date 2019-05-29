@@ -1,7 +1,7 @@
-﻿object Form1: TForm1
+﻿object IHM: TIHM
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'IHM'
   ClientHeight = 398
   ClientWidth = 849
   Color = clBtnFace
@@ -11,11 +11,12 @@
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
-    Left = 48
-    Top = 180
+    Left = 8
+    Top = 308
     Width = 75
     Height = 25
     Caption = 'Button1'
@@ -23,8 +24,8 @@
     OnClick = Button1Click
   end
   object Button5: TButton
-    Left = 48
-    Top = 211
+    Left = 8
+    Top = 339
     Width = 75
     Height = 25
     Caption = 'Button5'
@@ -32,7 +33,7 @@
     OnClick = Button5Click
   end
   object GroupBox1: TGroupBox
-    Left = 16
+    Left = 40
     Top = 8
     Width = 249
     Height = 128
@@ -81,7 +82,7 @@
     end
   end
   object Action: TGroupBox
-    Left = 286
+    Left = 328
     Top = 8
     Width = 280
     Height = 128
@@ -128,8 +129,8 @@
     end
   end
   object Button7: TButton
-    Left = 48
-    Top = 242
+    Left = 8
+    Top = 365
     Width = 75
     Height = 25
     Caption = 'Button7'
@@ -137,113 +138,104 @@
     OnClick = Button7Click
   end
   object Edit1: TEdit
-    Left = 144
-    Top = 244
+    Left = 89
+    Top = 365
     Width = 121
     Height = 21
     TabOrder = 5
     Text = 'Edit1'
   end
-  object Memo1: TMemo
-    Left = 608
-    Top = 180
-    Width = 217
-    Height = 210
-    ScrollBars = ssVertical
-    TabOrder = 6
-  end
   object Etat: TGroupBox
-    Left = 584
-    Top = 8
-    Width = 225
-    Height = 128
+    Left = 89
+    Top = 142
+    Width = 480
+    Height = 133
     Caption = 'Etat'
-    TabOrder = 7
+    TabOrder = 6
     Visible = False
     object lblTapis: TLabel
-      Left = 33
-      Top = 27
+      Left = 27
+      Top = 21
       Width = 32
       Height = 13
       Caption = 'Tapis :'
     end
     object lblCapteur1: TLabel
-      Left = 11
-      Top = 40
-      Width = 62
-      Height = 18
+      Left = 91
+      Top = 21
+      Width = 55
+      Height = 13
       Caption = 'Capteur 1 :'
     end
     object lblCapteur2: TLabel
-      Left = 11
-      Top = 55
+      Left = 172
+      Top = 21
       Width = 55
       Height = 13
       Caption = 'Capteur 2 :'
     end
     object lblPiston1: TLabel
-      Left = 21
-      Top = 69
+      Left = 261
+      Top = 21
       Width = 45
       Height = 13
       Caption = 'Piston 1 :'
     end
     object lblPiston2: TLabel
-      Left = 21
-      Top = 81
+      Left = 333
+      Top = 21
       Width = 45
       Height = 13
       Caption = 'Piston 2 :'
     end
     object lblPiston3: TLabel
-      Left = 21
-      Top = 92
+      Left = 413
+      Top = 21
       Width = 45
       Height = 13
       Caption = 'Piston 3 :'
     end
-    object lblTapisRep: TLabel
-      Left = 79
-      Top = 27
-      Width = 3
-      Height = 13
+    object shpTapis: TShape
+      Left = 27
+      Top = 48
+      Width = 48
+      Height = 41
+      Brush.Color = clRed
     end
-    object lblCapteur1Rep: TLabel
-      Left = 79
-      Top = 40
-      Width = 3
-      Height = 13
+    object shpCapteur1: TShape
+      Left = 98
+      Top = 48
+      Width = 48
+      Height = 41
+      Brush.Color = clRed
     end
-    object lblCapteur2Rep: TLabel
-      Left = 79
-      Top = 55
-      Width = 3
-      Height = 13
+    object shpCapteur2: TShape
+      Left = 179
+      Top = 48
+      Width = 48
+      Height = 41
+      Brush.Color = clRed
     end
-    object lblPiston1Rep: TLabel
-      Left = 79
-      Top = 69
-      Width = 3
-      Height = 13
+    object shpPiston1: TShape
+      Left = 258
+      Top = 48
+      Width = 48
+      Height = 41
+      Brush.Color = clRed
     end
-    object lblPiston2Rep: TLabel
-      Left = 79
-      Top = 81
-      Width = 3
-      Height = 13
+    object shpPiston2: TShape
+      Left = 330
+      Top = 48
+      Width = 48
+      Height = 41
+      Brush.Color = clRed
     end
-    object lblPiston3Rep: TLabel
-      Left = 79
-      Top = 92
-      Width = 3
-      Height = 13
+    object shpPiston3: TShape
+      Left = 410
+      Top = 48
+      Width = 48
+      Height = 41
+      Brush.Color = clRed
     end
-  end
-  object tmEtat: TTimer
-    Enabled = False
-    Interval = 100
-    OnTimer = tmEtatTimer
-    Left = 760
-    Top = 24
   end
 end
