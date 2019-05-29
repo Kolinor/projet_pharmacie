@@ -12,16 +12,6 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
-	pTapiris = new tapiris();
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::Button2Click(TObject *Sender)
-{
-	bool verifco = pTapiris->connected("192.168.64.200",502);
-
-
 
 }
 //---------------------------------------------------------------------------
@@ -33,32 +23,142 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button3Click(TObject *Sender)
+void __fastcall TForm1::btnAllumerTapisClick(TObject *Sender)
 {
-    pTapiris->activeTapis();
+	pTapiris->activeTapis();
+	btnAllumerTapis->Visible = false;
+	btnEteindreTapis->Visible = true;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button4Click(TObject *Sender)
+void __fastcall TForm1::btnEteindreTapisClick(TObject *Sender)
 {
 	pTapiris->deactivateTapis();
+	btnAllumerTapis->Visible = true;
+	btnEteindreTapis->Visible = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Button5Click(TObject *Sender)
 {
-//	pTapiris->test();
-//	pTapiris->deactivatePiston(1);
-//	pTapiris->deactivatePiston(2);
-//	pTapiris->deactivatePiston(3);
-	pTapiris->activePiston(1,5000);
+	pTapiris->activePiston(3,0);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::btnConnexionClick(TObject *Sender)
+{
+	wchar_t* ip = edtIp->Text.c_str();
+	wstring ws(ip);
+	string strIp(ws.begin(), ws.end());
+	pTapiris = new tapiris();
+
+
+	if (pTapiris->connected(strIp,edtPort->Text.ToInt()) == true) {
+		shpConnexion->Brush->Color = clLime;
+		btnConnexion->Visible = false;
+		btnDéconnexion->Visible = true;
+		Action->Visible = true;
+		tmEtat->Enabled = true;
+		Etat->Visible = true;
+
+	}
+	else
+	{
+		shpConnexion->Brush->Color = clRed;
+		Action->Visible = false;
+		Etat->Visible = false;
+		tmEtat->Enabled = false;
+
+    }
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::btnDéconnexionClick(TObject *Sender)
+{
+	pTapiris->deactivateTapis();
+	tmEtat->Enabled = true;
+	delete pTapiris;
+
+	shpConnexion->Brush->Color = clRed;
+	btnDéconnexion->Visible = false;
+	btnConnexion->Visible = true;
+	Action->Visible = false;
+	btnActiveTapis->Visible = true;
+	btnDesactiveTapis->Visible = false;
+	btnAllumerTapis->Visible = true;
+	btnEteindreTapis->Visible = false;
+	Etat->Visible = false;
 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button6Click(TObject *Sender)
+void __fastcall TForm1::btnActiveTapisClick(TObject *Sender)
 {
-	pTapiris->disconnect();
+	pTapiris->activeCapteur();
+	btnActiveTapis->Visible = false;
+	btnDesactiveTapis->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::btnDesactiveTapisClick(TObject *Sender)
+{
+	pTapiris->deactivateCapteur();
+	btnActiveTapis->Visible = true;
+	btnDesactiveTapis->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button7Click(TObject *Sender)
+{
+	pTapiris->newDrug(Edit1->Text.ToInt());
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::tmEtatTimer(TObject *Sender)
+{
+
+	if (pTapiris->etatCapteurReturn(0) == 1 ) {
+		lblTapisRep->Caption = "marche";
+	}
+	else {
+		lblTapisRep->Caption = "arret";
+	}
+
+	if (pTapiris->etatCapteurReturn(1) == 1) {
+		lblPiston1Rep->Caption = "actionné";
+	}
+	else {
+		lblPiston1Rep->Caption = "arrêté";
+	}
+
+	if (pTapiris->etatCapteurReturn(2) == 1) {
+		lblPiston2Rep->Caption = "actionné";
+	}
+	else {
+		lblPiston2Rep->Caption = "arrêté";
+	}
+
+	if (pTapiris->etatCapteurReturn(3) == 1) {
+		lblPiston3Rep->Caption = "actionné";
+	}
+	else {
+		lblPiston3Rep->Caption = "arrêté";
+	}
+
+	if (pTapiris->etatCapteurReturn(4) == 1) {
+		lblCapteur1Rep->Caption = "detécte";
+	}
+	else {
+		lblCapteur1Rep->Caption = "éteint";
+	}
+
+	if (pTapiris->etatCapteurReturn(5) == 1) {
+		lblCapteur2Rep->Caption = "detécte";
+	}
+	else {
+		lblCapteur2Rep->Caption = "éteint";
+	}
 }
 //---------------------------------------------------------------------------
 

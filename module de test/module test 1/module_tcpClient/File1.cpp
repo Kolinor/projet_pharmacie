@@ -14,19 +14,19 @@
 #include <windows.h>
 #include "tcpClient.h"
 
- int _tmain(int argc, _TCHAR* argv[]) 
+ int _tmain(int argc, _TCHAR* argv[])
 {
 	tcpClient * pTcpClient;
 	pTcpClient = new tcpClient;
 
-	if (pTcpClient->connected("192.168.65.15",9013) == true)
+	if (pTcpClient->connected("192.168.64.192",9013) == true)
 	{
 		cout << "connecte au serveur" << endl;
 	}
 	system("pause");
 
 	if (pTcpClient->sendString("je suis un test") == true) {
-		cout << "message bien envoye" << endl;
+		cout << "message bien envoye : je suis un test" << endl;
 
     }
 

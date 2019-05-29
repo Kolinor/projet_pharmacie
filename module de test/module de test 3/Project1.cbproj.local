@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/04/26 11:48:24.000.553,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/04/26 11:48:24.000.539,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/05/23 09:52:22.000.533,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/05/23 09:52:22.000.521,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/05/23 09:53:22.000.225,C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.h=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 3\Unit1.h</Transaction>
+    <Transaction>2019/05/23 09:53:22.000.225,C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.dfm=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 3\Unit1.dfm</Transaction>
+    <Transaction>2019/05/23 09:53:22.000.777,C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 3\Project1PCH1.h</Transaction>
+    <Transaction>2019/05/23 09:53:22.000.225,C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 3\Unit1.cpp</Transaction>
+    <Transaction>2019/05/23 09:53:23.000.274,C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1.cbproj=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 3\Project1.cbproj</Transaction>
+    <Transaction>2019/05/23 09:56:31.000.825,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 3\include\tcpClient\tcpClient.cpp</Transaction>
+    <Transaction>2019/05/23 09:56:44.000.033,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 3\include\modBus\modBus.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

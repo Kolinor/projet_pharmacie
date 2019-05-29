@@ -1,0 +1,53 @@
+//---------------------------------------------------------------------------
+
+#ifndef IHM_PiloteH
+#define IHM_PiloteH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "../include/tapiris/tapiris.h"
+#include <Vcl.ExtCtrls.hpp>
+
+using namespace std;
+
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// Composants gérés par l'EDI
+	TButton *Button1;
+	TButton *Button2;
+	TButton *Button3;
+	TButton *Button4;
+	TButton *Button5;
+	TButton *Button6;
+	TGroupBox *GroupBox1;
+	TButton *btnConnexion;
+	TEdit *edtIp;
+	TEdit *edtPort;
+	TShape *shpConnexion;
+	TButton *btnDéconnexion;
+	TButton *btnActiveTapis;
+	TGroupBox *Action;
+	TButton *btnDesactiveTapis;
+	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Button3Click(TObject *Sender);
+	void __fastcall Button4Click(TObject *Sender);
+	void __fastcall Button5Click(TObject *Sender);
+	void __fastcall Button6Click(TObject *Sender);
+	void __fastcall btnConnexionClick(TObject *Sender);
+	void __fastcall btnDéconnexionClick(TObject *Sender);
+	void __fastcall btnActiveTapisClick(TObject *Sender);
+	void __fastcall btnDesactiveTapisClick(TObject *Sender);
+private:	tapiris * pTapiris;
+		// Déclarations utilisateur
+public:
+		// Déclarations utilisateur
+	__fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif
