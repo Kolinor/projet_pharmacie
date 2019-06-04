@@ -26,13 +26,6 @@
     Font.Style = []
     ParentFont = False
   end
-  object Label1: TLabel
-    Left = 576
-    Top = 592
-    Width = 31
-    Height = 13
-    Caption = 'Label1'
-  end
   object Rbt_Automate: TRadioButton
     Left = 520
     Top = 96
@@ -197,28 +190,15 @@
       OnClick = Btn_sendMedicamentClick
     end
   end
-  object StringGrid1: TStringGrid
-    Left = 16
-    Top = 495
-    Width = 305
-    Height = 121
-    TabOrder = 4
-    ColWidths = (
-      64
-      88
-      60
-      815
-      815)
-  end
   object Grb_Ordonance: TGroupBox
     Left = 808
     Top = 135
     Width = 354
     Height = 322
-    TabOrder = 5
+    TabOrder = 4
     object Lbl_numeroCaisse: TLabel
-      Left = 24
-      Top = 114
+      Left = 4
+      Top = 24
       Width = 84
       Height = 13
       Caption = 'Numero de caisse'
@@ -253,6 +233,13 @@
       Height = 13
       Caption = 'Nombre de m'#233'dicament a ajout'#233
     end
+    object Label1: TLabel
+      Left = 72
+      Top = 56
+      Width = 31
+      Height = 13
+      Caption = 'Label1'
+    end
     object Btn_sendOrdonnance: TButton
       Left = 264
       Top = 288
@@ -263,8 +250,8 @@
       TabOrder = 0
     end
     object Edit_numeroCaisse: TEdit
-      Left = 192
-      Top = 111
+      Left = 94
+      Top = 21
       Width = 121
       Height = 21
       TabOrder = 1
@@ -293,12 +280,21 @@
       TabOrder = 4
     end
     object Cmb_medicamentOrdonnance: TComboBox
-      Left = 168
+      Left = 176
       Top = 184
       Width = 145
       Height = 21
       TabOrder = 5
       Text = 'M'#233'dicament a ajouter'
+    end
+    object Bt_CreateOrdonnance: TButton
+      Left = 240
+      Top = 19
+      Width = 111
+      Height = 25
+      Caption = 'Create Ordonnance'
+      TabOrder = 6
+      OnClick = Bt_CreateOrdonnanceClick
     end
   end
   object Rbt_Ordonnance: TRadioButton
@@ -307,7 +303,7 @@
     Width = 113
     Height = 17
     Caption = 'Ordonnance'
-    TabOrder = 6
+    TabOrder = 5
     OnClick = Rbt_OrdonnanceClick
   end
   object Grb_update: TGroupBox
@@ -315,7 +311,7 @@
     Top = 292
     Width = 410
     Height = 197
-    TabOrder = 7
+    TabOrder = 6
     object Lbl_Consigne: TLabel
       Left = 16
       Top = 16
@@ -332,6 +328,7 @@
       Height = 21
       TabOrder = 0
       Text = 'M'#233'dicament a modifier'
+      OnEnter = Cmb_MedicamentModifierEnter
     end
     object Btn_modifierMedicament: TButton
       Left = 324
@@ -342,6 +339,19 @@
       Enabled = False
       TabOrder = 1
     end
+    object DBGrid1: TDBGrid
+      Left = 16
+      Top = 62
+      Width = 377
+      Height = 84
+      DataSource = DataSource_update
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+    end
   end
   object Rbt_Update: TRadioButton
     Left = 543
@@ -349,17 +359,8 @@
     Width = 113
     Height = 17
     Caption = 'Modifier M'#233'dicament'
-    TabOrder = 8
+    TabOrder = 7
     OnClick = Rbt_UpdateClick
-  end
-  object Bt_Grid: TButton
-    Left = 543
-    Top = 611
-    Width = 75
-    Height = 25
-    Caption = 'Bt_Grid'
-    TabOrder = 9
-    OnClick = Bt_GridClick
   end
   object FDGUIxWaitCursor_Pharma: TFDGUIxWaitCursor
     Provider = 'Forms'
@@ -385,8 +386,17 @@
       'Password=pharma'
       'Server=192.168.64.111'
       'DriverID=MySQL')
-    Connected = True
     Left = 680
     Top = 584
+  end
+  object DataSource_update: TDataSource
+    DataSet = FDQuery_update
+    Left = 888
+    Top = 520
+  end
+  object FDQuery_update: TFDQuery
+    Connection = FDConnection_Pharma
+    Left = 784
+    Top = 520
   end
 end

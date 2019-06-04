@@ -135,8 +135,8 @@ void __fastcall TForm1::Bt_CreateOrdonnanceClick(TObject *Sender)
 
 	caisse=this->Edit_numeroCaisse->Text;
 	this->manager->createOrdonnance(caisse);
-    Label1->Caption = caisse;
-	this->manager->insertOrdonnance(caisse,"Doliprane","42"); //C'EST ICI KEVIN QUE FAUT METTRE A LA PLACE DE DOLIPRAN LE COMBOBOX
+	Label1->Caption = caisse;
+	this->manager->insertOrdonnance(caisse,"Doliprane","42"); // C'EST ICI KEVIN QUE FAUT METTRE A LA PLACE DE DOLIPRAN LE COMBOBOX
 	this->Edit_numeroCaisse->Clear();
 }
 //---------------------------------------------------------------------------
