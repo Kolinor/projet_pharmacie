@@ -63,7 +63,7 @@ class tapiris
 		bool connected(string adress, unsigned short port);
 		//permet d'arreter la connexion au tapiris
 		void disconnect();
-		//permet d'avtiver un piston avec un delay en ms
+		//permet d'avtiver un piston (1,2,3) avec un delay en ms
 		void activePiston(int piston,int delay);
 		//permet de déactiver un piston sert pour le debogage
 		bool deactivatePiston(int piston);
@@ -75,7 +75,7 @@ class tapiris
 		void activeCapteur();
 
 		void deactivateCapteur();
-
+		//permet de sortir le médicament à la caisse associée(1,2,3)
 		void newDrug(int caisse);
 
 		int etatReturn(int idx);

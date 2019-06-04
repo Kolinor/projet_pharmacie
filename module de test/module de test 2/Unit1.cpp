@@ -226,7 +226,7 @@ void __fastcall TForm1::Button11Click(TObject *Sender)
 	trame[8] = 0x00;
 	trame[9] = 0x01;
 	trame[10] = 0x00;
-	trame[11] = 0x03;
+	trame[11] = 0x04;
 
 	tcp->sendChar(trame,12);
 	delete trame;
@@ -258,7 +258,14 @@ void __fastcall TForm1::Button11Click(TObject *Sender)
 		else {
 			Memo1->Lines->Add("capteur 3 etteint");
 		}
-    }
+		if (buffer[16] == 1) {
+			Memo1->Lines->Add("capteur 4 allume");
+		}
+		else {
+			Memo1->Lines->Add("capteur 4 etteint");
+		}
+	}
+
 
 }
 //---------------------------------------------------------------------------

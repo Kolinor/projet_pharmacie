@@ -16,38 +16,44 @@
   TextHeight = 13
   object Button1: TButton
     Left = 8
-    Top = 308
-    Width = 75
+    Top = 335
+    Width = 85
     Height = 25
-    Caption = 'Button1'
+    Caption = 'je suis un test'
     TabOrder = 0
     OnClick = Button1Click
   end
-  object Button5: TButton
-    Left = 8
-    Top = 339
-    Width = 75
-    Height = 25
-    Caption = 'Button5'
-    TabOrder = 1
-    OnClick = Button5Click
-  end
-  object GroupBox1: TGroupBox
+  object lblIp: TGroupBox
     Left = 40
     Top = 8
     Width = 249
     Height = 128
     Caption = 'Connexion'
-    TabOrder = 2
+    TabOrder = 1
     object shpConnexion: TShape
-      Left = 184
-      Top = 48
+      Left = 197
+      Top = 46
       Width = 41
       Height = 35
+      Brush.Color = clRed
+    end
+    object Label1: TLabel
+      Left = 26
+      Top = 22
+      Width = 20
+      Height = 13
+      Caption = 'Ip : '
+    end
+    object lblPort: TLabel
+      Left = 15
+      Top = 51
+      Width = 27
+      Height = 13
+      Caption = 'Port :'
     end
     object btnConnexion: TButton
-      Left = 48
-      Top = 80
+      Left = 76
+      Top = 75
       Width = 89
       Height = 25
       Caption = 'connexion'
@@ -55,7 +61,7 @@
       OnClick = btnConnexionClick
     end
     object edtIp: TEdit
-      Left = 32
+      Left = 59
       Top = 21
       Width = 121
       Height = 21
@@ -63,7 +69,7 @@
       Text = '192.168.64.200'
     end
     object edtPort: TEdit
-      Left = 32
+      Left = 59
       Top = 48
       Width = 121
       Height = 21
@@ -71,8 +77,8 @@
       Text = '502'
     end
     object btnDéconnexion: TButton
-      Left = 48
-      Top = 80
+      Left = 76
+      Top = 75
       Width = 89
       Height = 25
       Caption = 'd'#233'connexion'
@@ -87,62 +93,52 @@
     Width = 280
     Height = 128
     Caption = 'Action'
-    TabOrder = 3
+    TabOrder = 2
     Visible = False
-    object btnActiveTapis: TButton
-      Left = 64
-      Top = 35
-      Width = 144
-      Height = 25
-      Caption = 'activer lecture du tapis'
-      TabOrder = 0
-      OnClick = btnActiveTapisClick
-    end
-    object btnDesactiveTapis: TButton
-      Left = 64
-      Top = 35
-      Width = 145
-      Height = 25
-      Caption = 'd'#233'sactiver lecture du tapis'
-      TabOrder = 1
-      Visible = False
-      OnClick = btnDesactiveTapisClick
-    end
     object btnAllumerTapis: TButton
       Left = 64
-      Top = 74
+      Top = 35
       Width = 145
       Height = 25
       Caption = 'allumer tapis'
-      TabOrder = 2
+      TabOrder = 0
       OnClick = btnAllumerTapisClick
     end
     object btnEteindreTapis: TButton
       Left = 64
-      Top = 74
+      Top = 34
       Width = 145
       Height = 25
       Caption = #233'teindre tapis'
-      TabOrder = 3
+      TabOrder = 1
       Visible = False
       OnClick = btnEteindreTapisClick
+    end
+    object btnNouveauMédicament: TButton
+      Left = 64
+      Top = 75
+      Width = 145
+      Height = 25
+      Caption = 'nouveau m'#233'dicament'
+      TabOrder = 2
+      OnClick = btnNouveauMédicamentClick
     end
   end
   object Button7: TButton
     Left = 8
-    Top = 365
-    Width = 75
+    Top = 366
+    Width = 85
     Height = 25
-    Caption = 'Button7'
-    TabOrder = 4
+    Caption = 'je suis un test 2'
+    TabOrder = 3
     OnClick = Button7Click
   end
   object Edit1: TEdit
-    Left = 89
-    Top = 365
+    Left = 99
+    Top = 369
     Width = 121
     Height = 21
-    TabOrder = 5
+    TabOrder = 4
     Text = 'Edit1'
   end
   object Etat: TGroupBox
@@ -151,7 +147,7 @@
     Width = 480
     Height = 133
     Caption = 'Etat'
-    TabOrder = 6
+    TabOrder = 5
     Visible = False
     object lblTapis: TLabel
       Left = 27

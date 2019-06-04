@@ -20,16 +20,13 @@ __published:	// Composants gérés par l'EDI
 	TButton *Button1;
 	TButton *btnAllumerTapis;
 	TButton *btnEteindreTapis;
-	TButton *Button5;
-	TGroupBox *GroupBox1;
+	TGroupBox *lblIp;
 	TButton *btnConnexion;
 	TEdit *edtIp;
 	TEdit *edtPort;
 	TShape *shpConnexion;
 	TButton *btnDéconnexion;
-	TButton *btnActiveTapis;
 	TGroupBox *Action;
-	TButton *btnDesactiveTapis;
 	TButton *Button7;
 	TEdit *Edit1;
 	TGroupBox *Etat;
@@ -45,16 +42,18 @@ __published:	// Composants gérés par l'EDI
 	TShape *shpPiston1;
 	TShape *shpPiston2;
 	TShape *shpPiston3;
+	TLabel *Label1;
+	TLabel *lblPort;
+	TButton *btnNouveauMédicament;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall btnAllumerTapisClick(TObject *Sender);
 	void __fastcall btnEteindreTapisClick(TObject *Sender);
-	void __fastcall Button5Click(TObject *Sender);
 	void __fastcall btnConnexionClick(TObject *Sender);
 	void __fastcall btnDéconnexionClick(TObject *Sender);
-	void __fastcall btnActiveTapisClick(TObject *Sender);
-	void __fastcall btnDesactiveTapisClick(TObject *Sender);
 	void __fastcall Button7Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall btnNouveauMédicamentClick(TObject *Sender);
+
 private:	tapiris * pTapiris;
 			threadEtat * pThreadEtat;
 		// Déclarations utilisateur

@@ -63,7 +63,7 @@ void __fastcall threadEtat::Execute()
 		else {
 			Synchronize(shpCapteur2E);
 		}
-		Sleep(20);
+		Sleep(10);
 	}
 }
 //---------------------------------------------------------------------------

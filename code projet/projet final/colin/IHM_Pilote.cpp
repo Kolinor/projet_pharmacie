@@ -39,12 +39,6 @@ void __fastcall TIHM::btnEteindreTapisClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TIHM::Button5Click(TObject *Sender)
-{
-	pTapiris->activePiston(3,0);
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TIHM::btnConnexionClick(TObject *Sender)
 {
 	wchar_t* ip = edtIp->Text.c_str();
@@ -60,11 +54,17 @@ void __fastcall TIHM::btnConnexionClick(TObject *Sender)
 		Action->Visible = true;
 		Etat->Visible = true;
 
+		pTapiris->activeCapteur();
 		//threadEtat
 		pThreadEtat = new threadEtat(false, pTapiris);
 	}
 	else
 	{
+		 MessageBox(
+		  NULL,
+		  L"Ip ou/et port non connue(s)",
+		  NULL,
+		  MB_OK);
 		shpConnexion->Brush->Color = clRed;
 		Action->Visible = false;
 		Etat->Visible = false;
@@ -74,6 +74,7 @@ void __fastcall TIHM::btnConnexionClick(TObject *Sender)
 
 void __fastcall TIHM::btnDéconnexionClick(TObject *Sender)
 {
+	pTapiris->deactivateCapteur();
 	pTapiris->deactivateTapis();
 	delete pThreadEtat;
 	pThreadEtat = NULL;
@@ -83,28 +84,10 @@ void __fastcall TIHM::btnDéconnexionClick(TObject *Sender)
 	btnDéconnexion->Visible = false;
 	btnConnexion->Visible = true;
 	Action->Visible = false;
-	btnActiveTapis->Visible = true;
-	btnDesactiveTapis->Visible = false;
 	btnAllumerTapis->Visible = true;
 	btnEteindreTapis->Visible = false;
 	Etat->Visible = false;
 
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::btnActiveTapisClick(TObject *Sender)
-{
-	pTapiris->activeCapteur();
-	btnActiveTapis->Visible = false;
-	btnDesactiveTapis->Visible = true;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::btnDesactiveTapisClick(TObject *Sender)
-{
-	pTapiris->deactivateCapteur();
-	btnActiveTapis->Visible = true;
-	btnDesactiveTapis->Visible = false;
 }
 //---------------------------------------------------------------------------
 
@@ -120,6 +103,12 @@ void __fastcall TIHM::FormClose(TObject *Sender, TCloseAction &Action)
 	if (btnConnexion->Visible == false) {
 		this->btnDéconnexionClick(Sender);
 	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TIHM::btnNouveauMédicamentClick(TObject *Sender)
+{
+	pTapiris->activePiston(3,0);
 }
 //---------------------------------------------------------------------------
 

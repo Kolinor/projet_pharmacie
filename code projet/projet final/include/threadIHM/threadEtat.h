@@ -7,10 +7,10 @@
 //---------------------------------------------------------------------------
 class threadEtat : public TThread
 {
-private:
-	tapiris * tapis;
-	bool etatThread;
-protected:
+	private:
+		tapiris * tapis;
+		bool etatThread;
+	protected:
 		void __fastcall Execute();
 		void __fastcall shpTapisM();
 		void __fastcall shpTapisA();
@@ -25,8 +25,7 @@ protected:
 		void __fastcall shpCapteur2D();
 		void __fastcall shpCapteur2E();
 
-
-public:
+	public:
 		__fastcall threadEtat(bool CreateSuspended,tapiris * tapis);
 		__fastcall ~threadEtat();
 };
