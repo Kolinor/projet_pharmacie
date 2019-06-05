@@ -31,12 +31,15 @@ bool tapiris::connected(string adress, unsigned short port)
 void tapiris::activeCapteur()
 {
 	this->etatCapteur = true;
+	this->testb = true;
+	Thread1 = CreateThread(NULL,0,this->threadTest,this,0,NULL);
 	Thread = CreateThread(NULL,0,this->threadCapteur,this,0,NULL);
 }
 
 void tapiris::deactivateCapteur()
 {
 	this->etatCapteur = false;
+	this->testb = false;
 }
 
 void tapiris::disconnect()
@@ -157,14 +160,15 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 	int bytes;
 	int caisse1, caisse2;
 
-	bool captState[1];
+	bool captState[2];
 	captState[0] = false;
 	captState[1] = false;
+	captState[2] = false;
 
 	while(tapis->etatCapteur == true)
 	{
 		ZeroMemory(buffer, 4096);
-		tapis->pmodBus->readWord(1,3,buffer);
+		tapis->pmodBus->readWord(1,4,buffer);
 
 		if(buffer[7] == 0x04)
 		{
@@ -211,6 +215,21 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 				tapis->etat[5] = 0;
 				captState[1] = false;
 			}
+
+			if (buffer[16] == 1) {
+
+				tapis->etat[6] =1;
+				if (captState[2] == false) {
+//					tapis->activePiston(3,300);
+				}
+			}
+			else
+			{
+				tapis->etat[6] = 0;
+				captState[1] = false;
+			}
+
+
 			ReleaseMutex(tapis->mutex1);
 			ReleaseMutex(tapis->mutex);
 		}
@@ -253,13 +272,50 @@ int tapiris::test1()
 
 int tapiris::etatReturn(int idx)
 {
-	int tabCopy[6];
+	int tabCopy[7];
 	WaitForSingleObject(this->mutex1,INFINITE);
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 7; i++) {
 		tabCopy[i] = this->etat[i];
 	}
 	ReleaseMutex(this->mutex1);
 	return tabCopy[idx];
 }
+
+DWORD WINAPI tapiris::threadTest(LPVOID lpParam)
+{
+	tapiris * tapis = (tapiris*)lpParam;
+
+    char buffer[4096];
+	int bytes;
+
+	while (tapis->testb == true)
+	{
+		ZeroMemory(buffer, 4096);
+		tapis->pmodBus->readWord(4,4,buffer);
+
+		WaitForSingleObject(tapis->mutex,INFINITE);
+		WaitForSingleObject(tapis->mutex1,INFINITE);
+
+		if (buffer[10] == 1) {
+
+			tapis->etat[6] = 1;
+			tapis->activePiston(3,300);
+
+		}
+		else
+		{
+			tapis->etat[6] = 0;
+		}
+
+
+		ReleaseMutex(tapis->mutex1);
+		ReleaseMutex(tapis->mutex);
+		Sleep(2500);
+	}
+
+
+		return 0;
+}
+
 
 

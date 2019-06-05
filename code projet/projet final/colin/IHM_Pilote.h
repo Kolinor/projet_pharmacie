@@ -8,6 +8,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include "../include/tapiris/tapiris.h"
+#include "../include/RS232/RS232.h"
 #include <Vcl.ExtCtrls.hpp>
 #include "threadEtat.h"
 
@@ -45,6 +46,9 @@ __published:	// Composants gérés par l'EDI
 	TLabel *Label1;
 	TLabel *lblPort;
 	TButton *btnNouveauMédicament;
+	TButton *Button2;
+	TLabel *Label2;
+	TLabel *Label3;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall btnAllumerTapisClick(TObject *Sender);
 	void __fastcall btnEteindreTapisClick(TObject *Sender);
@@ -53,9 +57,11 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall Button7Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall btnNouveauMédicamentClick(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
 
 private:	tapiris * pTapiris;
 			threadEtat * pThreadEtat;
+			RS232 * com;
 		// Déclarations utilisateur
 public:
 		// Déclarations utilisateur

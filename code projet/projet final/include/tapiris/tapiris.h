@@ -41,9 +41,11 @@ class tapiris
 		modBus * pmodBus;
 		DWORD dwChars;
 		HANDLE Thread;
+		HANDLE Thread1;
+		bool testb;
 		Vector<int> caisse1;
 		Vector<int> caisse2;
-		int etat[6]; // tapis, piston1, piston2, piston3, capteur1, capteur2
+		int etat[7]; // tapis, piston1, piston2, piston3, capteur1, capteur2, capteur3
 
 		HANDLE mutex;
 		HANDLE mutex1;
@@ -54,6 +56,8 @@ class tapiris
 		static DWORD WINAPI threadCapteur(LPVOID lpParam);
 		//thread permmettant d'activer un piston avec le numéro du piston et un delay en ms
 		static DWORD WINAPI threadApiston(LPVOID lpParam);
+
+		static DWORD WINAPI threadTest(LPVOID lpParam);
 
 	public:
 

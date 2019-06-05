@@ -14,6 +14,20 @@
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
+  object Label2: TLabel
+    Left = 512
+    Top = 368
+    Width = 73
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label3: TLabel
+    Left = 504
+    Top = 336
+    Width = 65
+    Height = 13
+    Caption = 'Label3'
+  end
   object Button1: TButton
     Left = 8
     Top = 335
@@ -233,5 +247,14 @@
       Height = 41
       Brush.Color = clRed
     end
+  end
+  object Button2: TButton
+    Left = 416
+    Top = 360
+    Width = 75
+    Height = 25
+    Caption = 'Button2'
+    TabOrder = 6
+    OnClick = Button2Click
   end
 end

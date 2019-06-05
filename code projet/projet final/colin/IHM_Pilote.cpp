@@ -12,6 +12,10 @@ TIHM *IHM;
 __fastcall TIHM::TIHM(TComponent* Owner)
 	: TForm(Owner)
 {
+	com = new RS232();
+	if (com->ouverture() == false) {
+		IHM->Close();
+	}
 
 }
 //---------------------------------------------------------------------------
@@ -109,6 +113,15 @@ void __fastcall TIHM::FormClose(TObject *Sender, TCloseAction &Action)
 void __fastcall TIHM::btnNouveauMédicamentClick(TObject *Sender)
 {
 	pTapiris->activePiston(3,0);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TIHM::Button2Click(TObject *Sender)
+{
+
+	Label3->Caption = "test";
+	Label2->Caption = com->vectorCodeBarre();
+
 }
 //---------------------------------------------------------------------------
 
