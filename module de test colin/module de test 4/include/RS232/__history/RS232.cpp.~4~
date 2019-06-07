@@ -1,0 +1,86 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "RS232.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+RS232::RS232()
+{
+	this->etatThread = true;
+}
+
+RS232::~RS232()
+{
+	this->etatThread = false;
+}
+
+bool RS232::ouverture()
+{
+	hcom = CreateFile(L"COM1",GENERIC_WRITE|GENERIC_READ,0,NULL,OPEN_EXISTING,FILE_FLAG_NO_BUFFERING,NULL);
+
+	if (hcom == INVALID_HANDLE_VALUE) {
+//		MessageBox(NULL,"Impossible d'ouvrir le com","test",MB_ICONSTOP);
+		return false;
+	}
+
+	GetCommState(hcom,&serie);
+	serie.BaudRate = 9600;
+	serie.ByteSize = 8;
+	serie.Parity = NOPARITY;
+	serie.StopBits = ONESTOPBIT;
+	SetCommState(hcom,&serie);
+	return true;
+}
+
+void RS232::fermer()
+{
+	CloseHandle(hcom);
+}
+
+bool RS232::ecriture(char * str)
+{
+
+
+	unsigned long pt = 0;
+
+	WriteFile(hcom, str, strlen(str), &pt, NULL);
+	PurgeComm(hcom, PURGE_TXCLEAR);
+
+	return true;
+
+	
+}
+
+void RS232::lecture()
+{
+	Thread = CreateThread(NULL,0,this->threadLecture,this,0,NULL);
+}
+
+DWORD WINAPI RS232::threadLecture(LPVOID lpParam)
+{
+	RS232 * com = (RS232*)lpParam;
+	int taille = 10;
+	char *chaine;
+	unsigned long pt = 0;
+
+	while (com->etatThread == true) {
+
+
+		chaine = new char[taille+1];
+		chaine[0]='\0';
+
+		ReadFile(com->hcom,chaine,taille,&pt,NULL);
+		PurgeComm(com->hcom,PURGE_RXCLEAR);
+
+		return 0;
+	}
+}
+
+void RS232::recup(char * chaine)
+{
+	codeBarre.push_back(chaine);
+}
+
+

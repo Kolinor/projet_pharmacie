@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/04/26 11:48:24.000.553,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/04/26 11:48:24.000.539,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/06/06 09:38:56.000.434,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/06/06 09:38:56.000.421,=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/06/06 09:42:08.000.031,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\Unit1.h=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.h</Transaction>
+    <Transaction>2019/06/06 09:42:08.000.031,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\Unit1.dfm=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.dfm</Transaction>
+    <Transaction>2019/06/06 09:42:08.000.623,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\Project1PCH1.h=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2019/06/06 09:42:08.000.031,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\Unit1.cpp=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/06/06 09:42:09.000.124,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\Project1.cbproj=C:\Users\Administrateur\Documents\Embarcadero\Studio\Projets\Project1.cbproj</Transaction>
+    <Transaction>2019/06/06 09:52:24.000.086,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\include\tcpClient\tcpClient.cpp</Transaction>
+    <Transaction>2019/06/06 09:52:32.000.478,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\include\tapiris\tapiris.cpp</Transaction>
+    <Transaction>2019/06/06 09:52:42.000.773,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\module de test\module de test 4\include\modBus\modBus.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

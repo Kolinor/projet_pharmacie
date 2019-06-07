@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------
+
+#ifndef Class_CarteH
+#define Class_CarteH
+#include "K8055D.h"
+//---------------------------------------------------------------------------
+#endif
+class carte
+{
+	public:
+	//methodes
+	carte();
+	~carte();
+	int Connexion(int adr);
+	int lecture_analog(int chan);
+
+
+	private:
+	//attribus
+	int adr;
+	int chan;
+};

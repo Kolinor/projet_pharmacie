@@ -1,0 +1,29 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "Class_Carte.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+carte::carte() : adr(0) {
+
+}
+
+int carte::Connexion(int adr)
+{                                             //on effectue une connexion à la carte ici sur l'adresse numéro0
+	 int var = OpenDevice(adr);
+	 return var;
+}
+
+int carte::lecture_analog(int chan)
+{
+	int var = ReadAnalogChannel(chan);           //lit se qui se trouve sur l'entré analogique numéro 2 ici
+	return var;
+};
+
+
+carte::~carte()
+{                                             //on se déconnecte de la carte
+	CloseDevice;
+}
