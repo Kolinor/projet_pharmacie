@@ -142,3 +142,9 @@ void __fastcall TForm1::Bt_CreateOrdonnanceClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+	this->manager->insertOrdonnance(1,"Doliprane",1);
+}
+//---------------------------------------------------------------------------
+

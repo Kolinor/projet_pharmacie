@@ -50,7 +50,7 @@ bool BDDSQL::insert(string requete)
 	}
 	else
 	{
-		MessageBox(NULL, L"Echec pour la requete INSERT verfiez que les codes barres ne soient pas identique",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		MessageBox(NULL, L"Echec de la requete",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 

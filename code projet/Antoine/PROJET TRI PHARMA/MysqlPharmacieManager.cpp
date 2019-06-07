@@ -49,7 +49,7 @@ bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse, String Nom_Med
 	id=this->mySql->select(req1);
 
 	}
-	if (numeroCaisse==2){
+	else if (numeroCaisse==2){
 
 	String requeteCaisse2="SELECT `ID_Ordonnance` FROM `Ordonnance`WHERE `Numero_Caisse`= '2' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 0,1;";
 	wchar_t * wStrReq2 = requeteCaisse2.c_str();
@@ -59,7 +59,7 @@ bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse, String Nom_Med
 	id=this->mySql->select(req2);
 
 	}
-	if (numeroCaisse==3){
+	else if (numeroCaisse==3){
 
 	String requeteCaisse3="SELECT `ID_Ordonnance` FROM `Ordonnance`WHERE `Numero_Caisse`= '3' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 0,1;";
 	wchar_t * wStrReq3 = requeteCaisse3.c_str();
@@ -70,7 +70,7 @@ bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse, String Nom_Med
 
 	}
 
-	//dans les valeurs je  cherche a mettre le nom du combobox et la quantité magl
+	//dans les valeurs je  cherche a mettre le nom du combobox et la quantité
 	String requeteOrdonnance="INSERT INTO `Ordonnance_Medicament_Association`(`ID_Ordonnance`, `Nom_Medicament`, `Quantite_Demande`, `Quantite_Delivree`) VALUES ('";
 	 requeteOrdonnance+= id[0][0].c_str();
 	 requeteOrdonnance+="','";
