@@ -11,9 +11,9 @@ Compilation : c++ builder
 
 #ifndef tapirisH
 #define tapirisH
-#include "../include/modBus/modBus.h"
-#include "../include/vector/Vector.h"
-#include "../include/carte/carte.h"
+#include "../modBus/modBus.h"
+#include "../vector/Vector.h"
+#include "../carte/carte.h"
 
 using namespace std;
 class tapiris;
@@ -41,8 +41,12 @@ class tapiris
 		modBus * pmodBus;
 		DWORD dwChars;
 		HANDLE Thread;
-		Vector<int> caisse;
+		Vector<int> caisse1;
+		Vector<int> caisse2;
+		int etat[6]; // tapis, piston1, piston2, piston3, capteur1, capteur2, capteur3
+
 		HANDLE mutex;
+		HANDLE mutex1;
 
 		//thread permmettant de ratracter un piston automatiquement
 		static DWORD WINAPI threadDpiston(LPVOID lpParam);
@@ -59,7 +63,7 @@ class tapiris
 		bool connected(string adress, unsigned short port);
 		//permet d'arreter la connexion au tapiris
 		void disconnect();
-		//permet d'avtiver un piston avec un delay en ms
+		//permet d'avtiver un piston (1,2,3) avec un delay en ms
 		void activePiston(int piston,int delay);
 		//permet de déactiver un piston sert pour le debogage
 		bool deactivatePiston(int piston);
@@ -71,8 +75,10 @@ class tapiris
 		void activeCapteur();
 
 		void deactivateCapteur();
-
+		//permet de sortir le médicament à la caisse associée(1,2,3)
 		void newDrug(int caisse);
+
+		int etatReturn(int idx);
 		int test();
 		int test1();
 

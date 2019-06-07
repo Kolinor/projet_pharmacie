@@ -161,6 +161,10 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 	captState[0] = false;
 	captState[1] = false;
 
+	HANDLE Thread;
+
+	tapis->etatCapt3 = 1;
+
 	while(tapis->etatCapteur == true)
 	{
 		ZeroMemory(buffer, 4096);
@@ -212,6 +216,13 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 			{
 				tapis->etat[5] = 0;
 				captState[1] = false;
+			}
+
+			if (buffer[16] == 1) {
+				if (tapis->etatCapt3 == 1) {
+					tapis->etatCapt3 = 0;
+					CreateThread(NULL,0,threadCapt3,tapis,0,NULL);
+				}
 			}
 
 
@@ -266,4 +277,15 @@ int tapiris::etatReturn(int idx)
 	return tabCopy[idx];
 }
 
+DWORD WINAPI tapiris::threadCapt3(LPVOID lpParam)
+{
+	tapiris * tapis = (tapiris*)lpParam;
+
+	tapis->activePiston(3,0);
+	Sleep(1500);
+	tapis->etatCapt3 = 1;
+
+
+	return 0;
+}
 
