@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 /*******************************************************
 Nom ......... : tapiris.h
-Role ........ : faire les actions demandé par l'utilisateur sur le tapis
+Role ........ : faire les actions demandï¿½ par l'utilisateur sur le tapis
 Auteur ...... : Colin.B
 Version ..... : V1.1 du 03/05/2019
 
@@ -52,9 +52,9 @@ class tapiris
 		static DWORD WINAPI threadDpiston(LPVOID lpParam);
 		//thread permettant le mise en fonction automatique du tapiris
 		static DWORD WINAPI threadCapteur(LPVOID lpParam);
-		//thread permmettant d'activer un piston avec le numéro du piston et un delay en ms
+		//thread permmettant d'activer un piston avec le numï¿½ro du piston et un delay en ms
 		static DWORD WINAPI threadApiston(LPVOID lpParam);
-
+		//thread permmettant d'actionner le piston pour pousser les mÃ©dicaments sur le convoyeur
 		static DWORD WINAPI threadCapt3(LPVOID lpParam);
 
 	public:
@@ -67,7 +67,7 @@ class tapiris
 		void disconnect();
 		//permet d'avtiver un piston (1,2,3) avec un delay en ms
 		void activePiston(int piston,int delay);
-		//permet de déactiver un piston sert pour le debogage
+		//permet de dï¿½activer un piston sert pour le debogage
 		bool deactivatePiston(int piston);
 		//permet d'allumer le moteur du tapis
 		bool activeTapis();
@@ -77,7 +77,7 @@ class tapiris
 		void activeCapteur();
 
 		void deactivateCapteur();
-		//permet de sortir le médicament à la caisse associée(1,2,3)
+		//permet de sortir le mï¿½dicament ï¿½ la caisse associï¿½e(1,2,3)
 		void newDrug(int caisse);
 
 		int etatReturn(int idx);
