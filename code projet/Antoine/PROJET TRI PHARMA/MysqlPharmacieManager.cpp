@@ -40,17 +40,15 @@ bool MysqlPharmacieManager::insertOrdonnance(String numeroCaisse, String Nom_Med
 
 	if (numeroCaisse=="1")
 	{
-
 	String requeteCaisse1="SELECT `ID_Ordonnance` FROM `Ordonnance`WHERE `Numero_Caisse`= '1' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 0,1;";
 	wchar_t * wStrReq1 = requeteCaisse1.c_str();
 	int reqLength1 = wcslen(wStrReq1);
 	char * req1 = new char[reqLength1 + 1];
 	wcstombs(req1, wStrReq1, reqLength1);
 	id=this->mySql->select(req1);
-
 	}
-	else if (numeroCaisse==2){
 
+	else if (numeroCaisse==2){
 	String requeteCaisse2="SELECT `ID_Ordonnance` FROM `Ordonnance`WHERE `Numero_Caisse`= '2' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 0,1;";
 	wchar_t * wStrReq2 = requeteCaisse2.c_str();
 	int reqLength2 = wcslen(wStrReq2);
@@ -126,6 +124,38 @@ bool MysqlPharmacieManager::insertTapiris(String cle,String value)
 	delete req;
 }
 bool MysqlPharmacieManager::selectMedicament()
+{
+
+}
+
+bool MysqlPharmacieManager::BilanAnnee()
+{
+	vector < vector<string> > bilan;
+
+	String requete= " SELECT DISTINCT  `Medicament`.`Nom_Medicament`, `Medicament`.`Prix`, `Medicament`.`Nombre_Unite_Vendu` " ;
+	requete+= " FROM `Medicament` , `Ordonnance` , `Ordonnance_Medicament_Association` " ;
+	requete+= " WHERE `Ordonnance`.`ID_Ordonnance`= `Ordonnance_Medicament_Association`.`ID_Ordonnance` " ;
+	requete+= " AND `Medicament`.`Nom_Medicament`=`Ordonnance_Medicament_Association`.`Nom_Medicament` " ;
+	requete+= " AND YEAR(`Ordonnance`.`Date_Saisie_Ordonnance`) = YEAR(NOW()) " ;
+
+	wchar_t * wStrReq = requete.c_str();
+	int reqLength = wcslen(wStrReq1);
+	char * req = new char[reqLength1 + 1];
+	wcstombs(req, wStrReq, reqLength);
+	bilan=this->mySql->select(req);
+}
+
+bool MysqlPharmacieManager::BilanMois()
+{
+
+}
+
+bool MysqlPharmacieManager::BilanSemaine()
+{
+
+}
+
+bool MysqlPharmacieManager::BilanJour()
 {
 
 }

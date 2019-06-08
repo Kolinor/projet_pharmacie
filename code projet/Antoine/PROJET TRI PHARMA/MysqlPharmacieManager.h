@@ -25,10 +25,10 @@ class MysqlPharmacieManager
 		bool updateMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		bool insertTapiris(String cle,String value);
 		bool selectMedicament();
-		bool BilanMois(String mois, String caisse, String medicament);
-		bool BilanAnnee(String annee, String caisse, String medicament);
-		bool BilanJour(String jour, String caisse, String medicament);
-		bool BilanDate(String jour, String mois, String annee);
+		bool BilanMois();
+		bool BilanAnnee();
+		bool BilanSemaine();
+		bool BilanJour();
 		//SELECT `Nom_Medicament`, `Prix`, `Nombre_Unite_Vendu` FROM `Medicament` WHERE 1
 		bool etatCommande(String idCommande);
 		bool deleteMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
