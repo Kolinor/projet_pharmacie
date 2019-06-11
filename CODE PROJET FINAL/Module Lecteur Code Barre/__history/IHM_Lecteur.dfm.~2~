@@ -1,0 +1,97 @@
+object Form_RS232: TForm_RS232
+  Left = 0
+  Top = 0
+  Caption = 'Lecteur de code barre'
+  ClientHeight = 271
+  ClientWidth = 359
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label3: TLabel
+    Left = 34
+    Top = 114
+    Width = 24
+    Height = 2
+    Caption = 'Baud'
+  end
+  object Label_DataSize: TLabel
+    Left = 26
+    Top = 151
+    Width = 45
+    Height = 13
+    Caption = 'Data Size'
+  end
+  object Label_Baud: TLabel
+    Left = 26
+    Top = 95
+    Width = 24
+    Height = 13
+    Caption = 'Baud'
+  end
+  object Label_Name: TLabel
+    Left = 26
+    Top = 39
+    Width = 27
+    Height = 13
+    Caption = 'Name'
+  end
+  object GroupBox_Serial: TGroupBox
+    Left = 17
+    Top = 18
+    Width = 128
+    Height = 233
+    Caption = 'Serial'
+    TabOrder = 5
+  end
+  object Memo_RS232: TMemo
+    Left = 192
+    Top = 18
+    Width = 145
+    Height = 233
+    TabOrder = 0
+  end
+  object Bouton_Connexion: TButton
+    Left = 26
+    Top = 215
+    Width = 104
+    Height = 25
+    Caption = 'Bouton_Connexion'
+    TabOrder = 4
+  end
+  object ComboBox_DataSize: TComboBox
+    Left = 26
+    Top = 170
+    Width = 104
+    Height = 21
+    TabOrder = 3
+    Text = '8'
+  end
+  object ComboBox3: TComboBox
+    Left = 26
+    Top = 114
+    Width = 104
+    Height = 21
+    TabOrder = 2
+    Text = '9 600'
+  end
+  object ComboBox_Com: TComboBox
+    Left = 26
+    Top = 58
+    Width = 104
+    Height = 21
+    TabOrder = 1
+    Text = 'COM1'
+  end
+  object Timer_RS232: TTimer
+    Interval = 500
+    OnTimer = Timer_RS232Timer
+    Left = 312
+    Top = 16
+  end
+end
