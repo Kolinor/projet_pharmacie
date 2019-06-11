@@ -36,7 +36,7 @@ bool BDDSQL::connect(string host,string user,string password,string dbname)
 	}
 	else
 	{
-		MessageBox(NULL, L"Echec de connexion !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		MessageBox(NULL, "Echec de connexion !","Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 }
@@ -50,7 +50,7 @@ bool BDDSQL::insert(string requete)
 	}
 	else
 	{
-		MessageBox(NULL, L"Echec pour la requete INSERT verfiez que les codes barres ne soient pas identique",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		MessageBox(NULL, "Echec pour la requete INSERT verfiez que les codes barres ne soient pas identique","Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 

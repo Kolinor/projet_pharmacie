@@ -52,8 +52,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <IncludePath>..\include\RS232\;..\include\threadIHM\;..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>..\include\RS232\;..\include\threadIHM\;..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>..\include\include SQL\;..\include\BDDSQL\;..\include\BDD\;..\include\MysqlPharmacieManager\;..\include\RS232\;..\include\threadIHM\;..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\include\include SQL\;..\include\BDDSQL\;..\include\BDD\;..\include\MysqlPharmacieManager\;..\include\RS232\;..\include\threadIHM\;..\include\vector\;..\include\tapiris\;..\include\modBus\;..\include\tcpClient\;..\include\tcpServer\;..\..\..\GitHub\projet_pharmacie\code projet\projet final\colin\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -72,6 +72,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <ILINK_LibraryPath>C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\lib\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
@@ -108,6 +109,9 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <_TCHARMapping>char</_TCHARMapping>
         <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -133,14 +137,198 @@
         <PCHCompile Include="Project1PCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
+        <CppCompile Include="..\include\BDDSQL\BDDSQL.cpp">
+            <DependentOn>..\include\BDDSQL\BDDSQL.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\include\BDD\BDD.cpp">
+            <DependentOn>..\include\BDD\BDD.h</DependentOn>
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\include SQL\big_endian.h">
+            <BuildOrder>55</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\byte_order_generic.h">
+            <BuildOrder>54</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\byte_order_generic_x86.h">
+            <BuildOrder>53</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\byte_order_generic_x86_64.h">
+            <BuildOrder>52</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\decimal.h">
+            <BuildOrder>51</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\errmsg.h">
+            <BuildOrder>50</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\keycache.h">
+            <BuildOrder>49</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\little_endian.h">
+            <BuildOrder>48</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysql.h">
+            <BuildOrder>31</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysqld_ername.h">
+            <BuildOrder>25</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysqld_error.h">
+            <BuildOrder>24</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysql_com.h">
+            <BuildOrder>30</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysql_com_server.h">
+            <BuildOrder>29</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysql_embed.h">
+            <BuildOrder>28</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysql_time.h">
+            <BuildOrder>27</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\mysql_version.h">
+            <BuildOrder>26</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_alloc.h">
+            <BuildOrder>45</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_attribute.h">
+            <BuildOrder>44</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_byteorder.h">
+            <BuildOrder>43</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_compiler.h">
+            <BuildOrder>42</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_config.h">
+            <BuildOrder>41</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_dbug.h">
+            <BuildOrder>40</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_dir.h">
+            <BuildOrder>39</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_getopt.h">
+            <BuildOrder>38</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_global.h">
+            <BuildOrder>37</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_list.h">
+            <BuildOrder>36</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_net.h">
+            <BuildOrder>35</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_pthread.h">
+            <BuildOrder>34</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_sys.h">
+            <BuildOrder>33</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\my_xml.h">
+            <BuildOrder>32</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\m_ctype.h">
+            <BuildOrder>47</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\m_string.h">
+            <BuildOrder>46</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\plugin.h">
+            <BuildOrder>23</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\plugin_audit.h">
+            <BuildOrder>22</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\plugin_ftparser.h">
+            <BuildOrder>21</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\plugin_validate_password.h">
+            <BuildOrder>20</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\sql_common.h">
+            <BuildOrder>19</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\sql_state.h">
+            <BuildOrder>18</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\sslopt-case.h">
+            <BuildOrder>17</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\sslopt-longopts.h">
+            <BuildOrder>16</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\sslopt-vars.h">
+            <BuildOrder>15</BuildOrder>
+        </None>
+        <None Include="..\include\include SQL\typelib.h">
+            <BuildOrder>14</BuildOrder>
+        </None>
+        <LibFiles Include="..\include\lib\k8055d.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>13</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="..\include\lib\libmysql.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>56</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
         <CppCompile Include="..\include\modBus\modBus.cpp">
             <DependentOn>..\include\modBus\modBus.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
-        <CppCompile Include="..\include\RS232\RS232.cpp">
-            <DependentOn>..\include\RS232\RS232.h</DependentOn>
-            <BuildOrder>9</BuildOrder>
+        <CppCompile Include="..\include\MysqlPharmacieManager\MysqlPharmacieManager.cpp">
+            <DependentOn>..\include\MysqlPharmacieManager\MysqlPharmacieManager.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\include\RS232\CRS232.cpp">
+            <BuildOrder>70</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\RS232\CRS232.h">
+            <BuildOrder>69</BuildOrder>
+        </None>
+        <CppCompile Include="..\include\RS232\LineParser.cpp">
+            <BuildOrder>68</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\RS232\LineParser.h">
+            <BuildOrder>67</BuildOrder>
+        </None>
+        <CppCompile Include="..\include\RS232\Message.cpp">
+            <BuildOrder>66</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\RS232\Message.h">
+            <BuildOrder>65</BuildOrder>
+        </None>
+        <CppCompile Include="..\include\RS232\Parser.cpp">
+            <BuildOrder>64</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\RS232\Parser.h">
+            <BuildOrder>63</BuildOrder>
+        </None>
+        <CppCompile Include="..\include\RS232\SerialEventListener.cpp">
+            <BuildOrder>61</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\RS232\SerialEventListener.h">
+            <BuildOrder>60</BuildOrder>
+        </None>
+        <CppCompile Include="..\include\RS232\SharedData.cpp">
+            <BuildOrder>59</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\RS232\SharedData.h">
+            <BuildOrder>58</BuildOrder>
+        </None>
+        <CppCompile Include="..\include\RS232\SynchroEventListener.cpp">
+            <BuildOrder>57</BuildOrder>
+        </CppCompile>
+        <None Include="..\include\RS232\SynchroEventListener.h">
+            <BuildOrder>56</BuildOrder>
+        </None>
         <CppCompile Include="..\include\tapiris\tapiris.cpp">
             <DependentOn>..\include\tapiris\tapiris.h</DependentOn>
             <BuildOrder>6</BuildOrder>
@@ -187,14 +375,15 @@
                 <Source>
                     <Source Name="MainSource">Project1.cpp</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k220.bpl">Package Serveurs Office 2000 Embarcadero C++Builder</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp220.bpl">Package Serveurs Office XP Embarcadero C++Builder</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k220.bpl">Composants Microsoft Office 2000 Sample Automation Server Wrapper</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp220.bpl">Composants Microsoft Office XP Sample Automation Server Wrapper</Excluded_Packages>
+                </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="2">
                 <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64220mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -204,8 +393,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64220.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
+                <DeployFile LocalName=".\Win32\Debug\Project1.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>Project1.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -219,6 +409,28 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName=".\Win32\Release\Project1.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Project1.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\include\lib\libmysql.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64220mt.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64220.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -229,15 +441,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Release\Project1.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="..\include\lib\k8055d.lib" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
-                        <RemoteName>Project1.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\Project1.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>Project1.tds</RemoteName>
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -627,9 +833,9 @@
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

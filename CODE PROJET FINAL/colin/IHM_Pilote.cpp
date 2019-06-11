@@ -12,10 +12,19 @@ TIHM *IHM;
 __fastcall TIHM::TIHM(TComponent* Owner)
 	: TForm(Owner)
 {
-	com = new RS232();
-	if (com->ouverture() == false) {
-		IHM->Close();
-	}
+	listener = new SynchroEventListener();
+	parser = new LineParser();
+
+	UnicodeString test = "COM1";
+	wchar_t * COM = test.c_str();
+	int len = wcslen(COM);
+	char * conversion = new char[len + 1];
+	wcstombs(conversion, COM, len);
+	conversion[len] = '\0';
+	parser->addSerialEventListener(listener) ;
+	com = new CRS232(conversion,115200,8,NOPARITY,ONESTOPBIT, parser);
+	sql = new MysqlPharmacieManager();
+
 
 }
 //---------------------------------------------------------------------------
@@ -52,6 +61,9 @@ void __fastcall TIHM::btnConnexionClick(TObject *Sender)
 
 
 	if (pTapiris->connected(strIp,edtPort->Text.ToInt()) == true) {
+
+
+
 		shpConnexion->Brush->Color = clLime;
 		btnConnexion->Visible = false;
 		btnDéconnexion->Visible = true;
@@ -61,12 +73,14 @@ void __fastcall TIHM::btnConnexionClick(TObject *Sender)
 		pTapiris->activeCapteur();
 		//threadEtat
 		pThreadEtat = new threadEtat(false, pTapiris);
+
+		tmRS232->Enabled = true;
 	}
 	else
 	{
 		 MessageBox(
 		  NULL,
-		  L"Ip ou/et port non connue(s)",
+		  "Ip ou/et port non connue(s)",
 		  NULL,
 		  MB_OK);
 		shpConnexion->Brush->Color = clRed;
@@ -120,8 +134,30 @@ void __fastcall TIHM::Button2Click(TObject *Sender)
 {
 
 	Label3->Caption = "test";
-	Label2->Caption = com->vectorCodeBarre();
+//	Label2->Caption = com->vectorCodeBarre();
 
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TIHM::tmRS232Timer(TObject *Sender)
+{
+
+	Label4->Caption = listener->getMessages().Size();
+	while (listener->getMessages().Size() > 0)
+	{
+		Message * msg = listener->getMessages().Get();
+		UnicodeString str = UnicodeString();
+		for (int i = 0; i < msg->getData().size(); i++)
+		{   if (msg->getData()[i] != '\r') {
+				str += msg->getData()[i];
+			}
+
+		}
+
+		int caisse = sql->selectCaisse(str);
+		pTapiris->newDrug(caisse);
+		delete msg;
+	}
 }
 //---------------------------------------------------------------------------
 

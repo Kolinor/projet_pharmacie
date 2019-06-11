@@ -129,3 +129,37 @@ bool MysqlPharmacieManager::selectMedicament()
 {
 
 }
+
+int MysqlPharmacieManager::selectCaisse(String caisse)
+{
+	vector < vector<string> > repCaisse;
+
+	String requete = "SELECT `Ordonnance`.`Numero_Caisse`, `Ordonnance`.`ID_Ordonnance`";
+	requete += "FROM `Ordonnance` INNER JOIN `Ordonnance_Medicament_Association` ON";
+	requete += "`Ordonnance`.`ID_Ordonnance` = `Ordonnance_Medicament_Association`.`ID_Ordonnance`";
+	requete += "INNER JOIN `Medicament` ON `Medicament`.`Nom_Medicament` = `Ordonnance_Medicament_Association`.`Nom_Medicament`";
+	requete += "WHERE `Medicament`.`Code_Barre` =";
+	requete += caisse;
+	requete+=" ";
+	requete += "AND `Ordonnance_Medicament_Association`.`Quantite_Delivree` <";
+	requete += "`Ordonnance_Medicament_Association`.`Quantite_Demande` AND";
+	requete += "`Ordonnance`.`Etat` = 'en attente' order by `Ordonnance`.`Date_Saisie_Ordonnance` asc limit 1;";
+
+
+	wchar_t * wStrReq = requete.c_str();
+	int reqLength = wcslen(wStrReq);
+	char * req = new char[reqLength +1];
+	wcstombs(req,wStrReq, reqLength);
+	repCaisse = this->mySql->select(req);
+
+	int t;
+	if (repCaisse.size() != 0) {
+		t = atoi(repCaisse[0][0].c_str());
+	}
+	else {
+		t = 3;
+	}
+
+	return t;
+
+}

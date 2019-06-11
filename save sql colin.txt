@@ -1,0 +1,6 @@
+SELECT `Ordonnance`.`Numero_Caisse` 
+FROM `Ordonnance` 
+INNER JOIN `Ordonnance_Medicament_Association` ON `Ordonnance`.`ID_Ordonnance` = `Ordonnance_Medicament_Association`.`ID_Ordonnance` 
+INNER JOIN `Medicament` ON `Medicament`.`Nom_Medicament` = `Ordonnance_Medicament_Association`.`Nom_Medicament` 
+WHERE `Medicament`.`Code_Barre` = 4 AND `Ordonnance_Medicament_Association`.`Quantite_Delivree` < `Ordonnance_Medicament_Association`.`Quantite_Demande`
+order by `Ordonnance`.`Date_Saisie_Ordonnance` asc limit 1;

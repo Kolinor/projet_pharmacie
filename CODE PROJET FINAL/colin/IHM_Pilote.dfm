@@ -17,16 +17,23 @@
   object Label2: TLabel
     Left = 512
     Top = 368
-    Width = 73
+    Width = 31
     Height = 13
     Caption = 'Label2'
   end
   object Label3: TLabel
     Left = 504
     Top = 336
-    Width = 65
+    Width = 31
     Height = 13
     Caption = 'Label3'
+  end
+  object Label4: TLabel
+    Left = 648
+    Top = 328
+    Width = 105
+    Height = 13
+    Caption = 'Label4'
   end
   object Button1: TButton
     Left = 8
@@ -256,5 +263,11 @@
     Caption = 'Button2'
     TabOrder = 6
     OnClick = Button2Click
+  end
+  object tmRS232: TTimer
+    Enabled = False
+    OnTimer = tmRS232Timer
+    Left = 240
+    Top = 328
   end
 end

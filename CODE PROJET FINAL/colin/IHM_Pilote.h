@@ -9,8 +9,14 @@
 #include <Vcl.Forms.hpp>
 #include "../include/tapiris/tapiris.h"
 #include "../include/RS232/RS232.h"
+#include "../include/MysqlPharmacieManager/MysqlPharmacieManager.h"
+#include "../include/RS232/CRS232.h"
+#include "../include/RS232/LineParser.h"
+#include "../include/RS232/SynchroEventListener.h"
 #include <Vcl.ExtCtrls.hpp>
 #include "threadEtat.h"
+#include <iostream>
+#include <conio.h>
 
 using namespace std;
 
@@ -49,6 +55,8 @@ __published:	// Composants gérés par l'EDI
 	TButton *Button2;
 	TLabel *Label2;
 	TLabel *Label3;
+	TTimer *tmRS232;
+	TLabel *Label4;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall btnAllumerTapisClick(TObject *Sender);
 	void __fastcall btnEteindreTapisClick(TObject *Sender);
@@ -58,10 +66,14 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall btnNouveauMédicamentClick(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall tmRS232Timer(TObject *Sender);
 
 private:	tapiris * pTapiris;
 			threadEtat * pThreadEtat;
-			RS232 * com;
+			SynchroEventListener * listener;
+			Parser * parser;
+			CRS232 * com;
+			MysqlPharmacieManager * sql;
 		// Déclarations utilisateur
 public:
 		// Déclarations utilisateur
