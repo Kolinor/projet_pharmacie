@@ -1,12 +1,9 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "BDDSQL.h"
 #define __WIN__
-
-//---------------------------------------------------------------------------
 #pragma package(smart_init)
+//---------------------------------------------------------------------------
 
 BDDSQL::BDDSQL()
 {
@@ -14,11 +11,13 @@ BDDSQL::BDDSQL()
 	mysql_init(mysql);
 }
 //---------------------------------------------------------------------------
+
 BDDSQL::~BDDSQL()
 {
   mysql_close(mysql);
 }
 //---------------------------------------------------------------------------
+
 bool BDDSQL::connect(string host,string user,string password,string dbname)
 {
 	if (mysql_real_connect(
@@ -31,31 +30,32 @@ bool BDDSQL::connect(string host,string user,string password,string dbname)
 							NULL,
 							0)!= NULL)
 	{
-		//MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return true;
 	}
+
 	else
 	{
-		MessageBox(NULL, "Echec de connexion !","Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		MessageBox(NULL, L"Echec de connexion !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 }
 //---------------------------------------------------------------------------
+
 bool BDDSQL::insert(string requete)
 {
 	if(mysql_query(mysql,requete.c_str())==0)
 	{
-		//MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return true;
 	}
 	else
 	{
-		MessageBox(NULL, "Echec pour la requete INSERT verfiez que les codes barres ne soient pas identique","Alert", MB_ICONWARNING | MB_YESNOCANCEL);
+		MessageBox(NULL, L"Echec pour la requete INSERT",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 
 }
 //---------------------------------------------------------------------------
+
 vector< vector<std::string> > BDDSQL::select(string requete)
 {
 	std::vector< std::vector<string> > resultatRequete;
@@ -66,7 +66,6 @@ vector< vector<std::string> > BDDSQL::select(string requete)
 
 	mysql_query(this->mysql,requete.c_str());
 	res = mysql_store_result(this->mysql);
-	//resultatRequete.resize(mysql_num_rows(res)); //commenter selon Mr Gremont
 	nbColones =  mysql_num_fields(res);
 
 
@@ -89,16 +88,16 @@ vector< vector<std::string> > BDDSQL::select(string requete)
 	return resultatRequete;
 }
 //---------------------------------------------------------------------------
-bool BDDSQL::update(string requete){
 
+bool BDDSQL::update(string requete)
+{
 	if(mysql_query(mysql,requete.c_str())==0)
 	{
-		//MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return true;
 	}
 	else
 	{
-//		MessageBox(NULL, "Echec pour la requete INSERT verfiez que les codes barres ne soient pas identique","Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 }
+//---------------------------------------------------------------------------

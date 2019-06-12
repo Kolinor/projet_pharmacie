@@ -1,13 +1,11 @@
 //---------------------------------------------------------------------------
-
 #ifndef MysqlPharmacieManagerH
 #define MysqlPharmacieManagerH
-//---------------------------------------------------------------------------
-
 #include "BDD.h"
 #include "BDDSQL.h"
 #include <Vcl.Grids.hpp>
-//Crée la requete
+//---------------------------------------------------------------------------
+
 class MysqlPharmacieManager
 {
 	private :
@@ -18,21 +16,23 @@ class MysqlPharmacieManager
 	public :
 		MysqlPharmacieManager();
 		~MysqlPharmacieManager();
-		bool selectOrdonnance(TStringGrid *excelOrdo);
 		bool createOrdonnance(String numeroCaisse);
 		bool insertOrdonnance(String numeroCaisse, String Nom_Medicament, String quantite);
 		bool insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		bool updateMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		bool insertTapiris(String cle,String value);
-		bool selectMedicament();
-		bool BilanMois(String mois, String caisse, String medicament);
-		bool BilanAnnee(String annee, String caisse, String medicament);
-		bool BilanJour(String jour, String caisse, String medicament);
-		bool BilanDate(String jour, String mois, String annee);
-		//SELECT `Nom_Medicament`, `Prix`, `Nombre_Unite_Vendu` FROM `Medicament` WHERE 1
-		bool etatCommande(String idCommande);
-		bool deleteMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
 		int selectCaisse(String codeBarre);
 		bool changerEtat(String etat, String id_ordonnance);
+
+		// Méthodes pour télécharger les bilans des ventes
+		vector < vector<string> > BilanAnnee();
+		vector < vector<string> > BilanSemaine();
+		vector < vector<string> > BilanMois();
+		vector < vector<string> > BilanJour();
+		vector < vector<string> > BilanAnneeMedicament(String medicament);
+		vector < vector<string> > BilanSemaineMedicament(String medicament);
+		vector < vector<string> > BilanMoisMedicament(String medicament);
+		vector < vector<string> > BilanJourMedicament(String medicament);
 };
+
 #endif
