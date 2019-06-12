@@ -17,6 +17,7 @@
 #include "threadEtat.h"
 #include <iostream>
 #include <conio.h>
+#include <IniFiles.hpp>
 
 using namespace std;
 
@@ -24,18 +25,12 @@ using namespace std;
 class TIHM : public TForm
 {
 __published:	// Composants gérés par l'EDI
-	TButton *Button1;
-	TButton *btnAllumerTapis;
-	TButton *btnEteindreTapis;
 	TGroupBox *lblIp;
 	TButton *btnConnexion;
 	TEdit *edtIp;
 	TEdit *edtPort;
 	TShape *shpConnexion;
 	TButton *btnDéconnexion;
-	TGroupBox *Action;
-	TButton *Button7;
-	TEdit *Edit1;
 	TGroupBox *Etat;
 	TLabel *lblTapis;
 	TLabel *lblCapteur1;
@@ -51,29 +46,17 @@ __published:	// Composants gérés par l'EDI
 	TShape *shpPiston3;
 	TLabel *Label1;
 	TLabel *lblPort;
-	TButton *btnNouveauMédicament;
-	TButton *Button2;
-	TLabel *Label2;
-	TLabel *Label3;
 	TTimer *tmRS232;
-	TLabel *Label4;
-	void __fastcall Button1Click(TObject *Sender);
-	void __fastcall btnAllumerTapisClick(TObject *Sender);
-	void __fastcall btnEteindreTapisClick(TObject *Sender);
-	void __fastcall btnConnexionClick(TObject *Sender);
 	void __fastcall btnDéconnexionClick(TObject *Sender);
-	void __fastcall Button7Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall btnNouveauMédicamentClick(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall tmRS232Timer(TObject *Sender);
-
 private:	tapiris * pTapiris;
 			threadEtat * pThreadEtat;
 			SynchroEventListener * listener;
 			Parser * parser;
 			CRS232 * com;
 			MysqlPharmacieManager * sql;
+			TIniFile * conf;
 		// Déclarations utilisateur
 public:
 		// Déclarations utilisateur

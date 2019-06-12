@@ -14,43 +14,13 @@
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
-  object Label2: TLabel
-    Left = 512
-    Top = 368
-    Width = 31
-    Height = 13
-    Caption = 'Label2'
-  end
-  object Label3: TLabel
-    Left = 504
-    Top = 336
-    Width = 31
-    Height = 13
-    Caption = 'Label3'
-  end
-  object Label4: TLabel
-    Left = 648
-    Top = 328
-    Width = 105
-    Height = 13
-    Caption = 'Label4'
-  end
-  object Button1: TButton
-    Left = 8
-    Top = 335
-    Width = 85
-    Height = 25
-    Caption = 'je suis un test'
-    TabOrder = 0
-    OnClick = Button1Click
-  end
   object lblIp: TGroupBox
     Left = 40
     Top = 8
     Width = 249
     Height = 128
     Caption = 'Connexion'
-    TabOrder = 1
+    TabOrder = 0
     object shpConnexion: TShape
       Left = 197
       Top = 46
@@ -79,7 +49,6 @@
       Height = 25
       Caption = 'connexion'
       TabOrder = 0
-      OnClick = btnConnexionClick
     end
     object edtIp: TEdit
       Left = 59
@@ -108,68 +77,13 @@
       OnClick = btnDéconnexionClick
     end
   end
-  object Action: TGroupBox
-    Left = 328
-    Top = 8
-    Width = 280
-    Height = 128
-    Caption = 'Action'
-    TabOrder = 2
-    Visible = False
-    object btnAllumerTapis: TButton
-      Left = 64
-      Top = 35
-      Width = 145
-      Height = 25
-      Caption = 'allumer tapis'
-      TabOrder = 0
-      OnClick = btnAllumerTapisClick
-    end
-    object btnEteindreTapis: TButton
-      Left = 64
-      Top = 34
-      Width = 145
-      Height = 25
-      Caption = #233'teindre tapis'
-      TabOrder = 1
-      Visible = False
-      OnClick = btnEteindreTapisClick
-    end
-    object btnNouveauMédicament: TButton
-      Left = 64
-      Top = 75
-      Width = 145
-      Height = 25
-      Caption = 'nouveau m'#233'dicament'
-      TabOrder = 2
-      OnClick = btnNouveauMédicamentClick
-    end
-  end
-  object Button7: TButton
-    Left = 8
-    Top = 366
-    Width = 85
-    Height = 25
-    Caption = 'je suis un test 2'
-    TabOrder = 3
-    OnClick = Button7Click
-  end
-  object Edit1: TEdit
-    Left = 99
-    Top = 369
-    Width = 121
-    Height = 21
-    TabOrder = 4
-    Text = 'Edit1'
-  end
   object Etat: TGroupBox
     Left = 89
     Top = 142
     Width = 480
     Height = 133
     Caption = 'Etat'
-    TabOrder = 5
-    Visible = False
+    TabOrder = 1
     object lblTapis: TLabel
       Left = 27
       Top = 21
@@ -255,19 +169,10 @@
       Brush.Color = clRed
     end
   end
-  object Button2: TButton
-    Left = 416
-    Top = 360
-    Width = 75
-    Height = 25
-    Caption = 'Button2'
-    TabOrder = 6
-    OnClick = Button2Click
-  end
   object tmRS232: TTimer
     Enabled = False
     OnTimer = tmRS232Timer
-    Left = 240
-    Top = 328
+    Left = 648
+    Top = 32
   end
 end

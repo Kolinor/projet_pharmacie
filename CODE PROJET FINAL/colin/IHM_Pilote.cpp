@@ -22,53 +22,20 @@ __fastcall TIHM::TIHM(TComponent* Owner)
 	wcstombs(conversion, COM, len);
 	conversion[len] = '\0';
 	parser->addSerialEventListener(listener) ;
-	com = new CRS232(conversion,115200,8,NOPARITY,ONESTOPBIT, parser);
+	com = new CRS232(conversion,9600,8,NOPARITY,ONESTOPBIT, parser);
 	sql = new MysqlPharmacieManager();
-
-
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::Button1Click(TObject *Sender)
-{
-	pTapiris->activePiston(1,0);
-	pTapiris->activePiston(2,0);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::btnAllumerTapisClick(TObject *Sender)
-{
-	pTapiris->activeTapis();
-	btnAllumerTapis->Visible = false;
-	btnEteindreTapis->Visible = true;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::btnEteindreTapisClick(TObject *Sender)
-{
-	pTapiris->deactivateTapis();
-	btnAllumerTapis->Visible = true;
-	btnEteindreTapis->Visible = false;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::btnConnexionClick(TObject *Sender)
-{
-	wchar_t* ip = edtIp->Text.c_str();
-	wstring ws(ip);
-	string strIp(ws.begin(), ws.end());
 	pTapiris = new tapiris();
+	conf = new TIniFile("C:\\Users\\Administrateur\\Documents\\GitHub\\projet_pharmacie\\CODE PROJET FINAL\\colin\\conf.ini");
 
+	char adrSave[50];
+	char portSave[50];
 
-	if (pTapiris->connected(strIp,edtPort->Text.ToInt()) == true) {
+	String adresse = conf->ReadString("Adresse","adr","");
+	wcstombs(adrSave,adresse.c_str(),adresse.Length()+1);
+	String port = conf->ReadString("Port","port","");
+	wcstombs(portSave,port.c_str(),port.Length()+1);
 
-
-
-		shpConnexion->Brush->Color = clLime;
-		btnConnexion->Visible = false;
-		btnDéconnexion->Visible = true;
-		Action->Visible = true;
-		Etat->Visible = true;
+	if (pTapiris->connected(adrSave,atoi(portSave)) == true) {
 
 		pTapiris->activeCapteur();
 		//threadEtat
@@ -76,42 +43,25 @@ void __fastcall TIHM::btnConnexionClick(TObject *Sender)
 
 		tmRS232->Enabled = true;
 	}
-	else
-	{
-		 MessageBox(
+	else {
+         MessageBox(
 		  NULL,
-		  "Ip ou/et port non connue(s)",
+		  "Impossible de se connecter",
 		  NULL,
-		  MB_OK);
-		shpConnexion->Brush->Color = clRed;
-		Action->Visible = false;
-		Etat->Visible = false;
+		  MB_RETRYCANCEL);
+		IHM->Close();
 	}
+
+
 }
 //---------------------------------------------------------------------------
-
 void __fastcall TIHM::btnDéconnexionClick(TObject *Sender)
 {
-	pTapiris->deactivateCapteur();
-	pTapiris->deactivateTapis();
-	delete pThreadEtat;
-	pThreadEtat = NULL;
-	delete pTapiris;
-
-	shpConnexion->Brush->Color = clRed;
-	btnDéconnexion->Visible = false;
-	btnConnexion->Visible = true;
-	Action->Visible = false;
-	btnAllumerTapis->Visible = true;
-	btnEteindreTapis->Visible = false;
-	Etat->Visible = false;
-
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::Button7Click(TObject *Sender)
-{
-	pTapiris->newDrug(Edit1->Text.ToInt());
+//	pTapiris->deactivateCapteur();
+//	pTapiris->deactivateTapis();
+//	delete pThreadEtat;
+//	pThreadEtat = NULL;
+//	delete pTapiris;
 }
 
 //---------------------------------------------------------------------------
@@ -124,25 +74,8 @@ void __fastcall TIHM::FormClose(TObject *Sender, TCloseAction &Action)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TIHM::btnNouveauMédicamentClick(TObject *Sender)
-{
-	pTapiris->activePiston(3,0);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::Button2Click(TObject *Sender)
-{
-
-	Label3->Caption = "test";
-//	Label2->Caption = com->vectorCodeBarre();
-
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TIHM::tmRS232Timer(TObject *Sender)
 {
-
-	Label4->Caption = listener->getMessages().Size();
 	while (listener->getMessages().Size() > 0)
 	{
 		Message * msg = listener->getMessages().Get();
@@ -160,4 +93,3 @@ void __fastcall TIHM::tmRS232Timer(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-
