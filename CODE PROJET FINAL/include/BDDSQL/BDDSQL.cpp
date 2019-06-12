@@ -91,17 +91,14 @@ vector< vector<std::string> > BDDSQL::select(string requete)
 //---------------------------------------------------------------------------
 bool BDDSQL::update(string requete){
 
-	// Exécute une requête SQL
-	mysql_query(this->mysql,requete.c_str());
-	//si au moins une ligne à etait affecté on retourne true sinon false
-
-	if(mysql_affected_rows(this->mysql)>0)
+	if(mysql_query(mysql,requete.c_str())==0)
 	{
+		//MessageBox(NULL, L"C'est un succès !",L"Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return true;
 	}
-
 	else
 	{
+//		MessageBox(NULL, "Echec pour la requete INSERT verfiez que les codes barres ne soient pas identique","Alert", MB_ICONWARNING | MB_YESNOCANCEL);
 		return false;
 	}
 }

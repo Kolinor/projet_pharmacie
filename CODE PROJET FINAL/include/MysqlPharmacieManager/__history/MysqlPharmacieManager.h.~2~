@@ -1,0 +1,37 @@
+//---------------------------------------------------------------------------
+
+#ifndef MysqlPharmacieManagerH
+#define MysqlPharmacieManagerH
+//---------------------------------------------------------------------------
+
+#include "BDD.h"
+#include "BDDSQL.h"
+#include <Vcl.Grids.hpp>
+//Crée la requete
+class MysqlPharmacieManager
+{
+	private :
+		String deriereCommandeCAISSE1;
+		String deriereCommandeCAISSE2;
+		String deriereCommandeCAISSE3;
+		BDD *mySql;
+	public :
+		MysqlPharmacieManager();
+		~MysqlPharmacieManager();
+		bool selectOrdonnance(TStringGrid *excelOrdo);
+		bool createOrdonnance(String numeroCaisse);
+		bool insertOrdonnance(String numeroCaisse, String Nom_Medicament, String quantite);
+		bool insertMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
+		bool updateMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
+		bool insertTapiris(String cle,String value);
+		bool selectMedicament();
+		bool BilanMois(String mois, String caisse, String medicament);
+		bool BilanAnnee(String annee, String caisse, String medicament);
+		bool BilanJour(String jour, String caisse, String medicament);
+		bool BilanDate(String jour, String mois, String annee);
+		//SELECT `Nom_Medicament`, `Prix`, `Nombre_Unite_Vendu` FROM `Medicament` WHERE 1
+		bool etatCommande(String idCommande);
+		bool deleteMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
+		int selectCaisse(String caisse);
+};
+#endif

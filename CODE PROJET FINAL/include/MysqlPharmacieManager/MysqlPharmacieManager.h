@@ -32,6 +32,7 @@ class MysqlPharmacieManager
 		//SELECT `Nom_Medicament`, `Prix`, `Nombre_Unite_Vendu` FROM `Medicament` WHERE 1
 		bool etatCommande(String idCommande);
 		bool deleteMedicament(String nomMedicament,String hauteur, String largeur, String longueur, String codeBarre, String prix);
-		int selectCaisse(String caisse);
+		int selectCaisse(String codeBarre);
+		bool changerEtat(String etat, String id_ordonnance);
 };
 #endif
