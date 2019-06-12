@@ -37,43 +37,27 @@ __fastcall TIHM::TIHM(TComponent* Owner)
 
 	if (pTapiris->connected(adrSave,atoi(portSave)) == true) {
 
+		lbl_adr->Caption = adresse;
+		lbl_port->Caption = port;
 		pTapiris->activeCapteur();
 		//threadEtat
 		pThreadEtat = new threadEtat(false, pTapiris);
 
 		tmRS232->Enabled = true;
+//        pTapiris->activeTapis();
 	}
 	else {
          MessageBox(
 		  NULL,
 		  "Impossible de se connecter",
 		  NULL,
-		  MB_RETRYCANCEL);
+		  MB_OK);
 		IHM->Close();
 	}
 
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TIHM::btnDéconnexionClick(TObject *Sender)
-{
-//	pTapiris->deactivateCapteur();
-//	pTapiris->deactivateTapis();
-//	delete pThreadEtat;
-//	pThreadEtat = NULL;
-//	delete pTapiris;
-}
-
-//---------------------------------------------------------------------------
-
-void __fastcall TIHM::FormClose(TObject *Sender, TCloseAction &Action)
-{
-	if (btnConnexion->Visible == false) {
-		this->btnDéconnexionClick(Sender);
-	}
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TIHM::tmRS232Timer(TObject *Sender)
 {
 	while (listener->getMessages().Size() > 0)
@@ -93,3 +77,9 @@ void __fastcall TIHM::tmRS232Timer(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TIHM::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	pTapiris->deactivateTapis();
+}
+//---------------------------------------------------------------------------
+

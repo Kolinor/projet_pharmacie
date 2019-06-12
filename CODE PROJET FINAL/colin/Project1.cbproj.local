@@ -80,12 +80,12 @@
     <Transaction>2019/06/11 10:38:48.000.188,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\Message.h</Transaction>
     <Transaction>2019/06/11 10:38:48.000.138,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\SerialEventListener.h</Transaction>
     <Transaction>2019/06/11 10:38:48.000.231,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\CRS232.h</Transaction>
-    <Transaction>2019/06/11 10:38:48.000.220,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\LineParser.cpp</Transaction>
-    <Transaction>2019/06/11 10:38:48.000.117,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\SharedData.h</Transaction>
     <Transaction>2019/06/11 10:38:48.000.209,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\LineParser.h</Transaction>
-    <Transaction>2019/06/11 10:38:48.000.096,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\SynchroEventListener.h</Transaction>
-    <Transaction>2019/06/11 10:38:48.000.199,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\Message.cpp</Transaction>
+    <Transaction>2019/06/11 10:38:48.000.117,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\SharedData.h</Transaction>
+    <Transaction>2019/06/11 10:38:48.000.220,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\LineParser.cpp</Transaction>
     <Transaction>2019/06/11 10:38:48.000.167,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\Parser.h</Transaction>
+    <Transaction>2019/06/11 10:38:48.000.199,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\Message.cpp</Transaction>
+    <Transaction>2019/06/11 10:38:48.000.096,=C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\SynchroEventListener.h</Transaction>
     <Transaction>2019/06/11 10:54:07.000.101,C:\Users\Administrateur\Documents\GitHub\projet_pharmacie\CODE PROJET FINAL\include\RS232\RS232.cpp=</Transaction>
   </Transactions>
 </BorlandProject>

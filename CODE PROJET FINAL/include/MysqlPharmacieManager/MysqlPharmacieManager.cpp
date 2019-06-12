@@ -182,6 +182,8 @@ int MysqlPharmacieManager::selectCaisse(String codeBarre)
 		wcstombs(req2,wStrReq2, reqLength2);
 		repOrdo = this->mySql->select(req2);
 
+
+
 		if (repOrdo.size() == 0 )
 		{
 			string etat = "terminer";

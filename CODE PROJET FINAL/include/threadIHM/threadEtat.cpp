@@ -63,6 +63,15 @@ void __fastcall threadEtat::Execute()
 		else {
 			Synchronize(shpCapteur2E);
 		}
+
+		if (tapis->etatReturn(6) == 1) {
+			Synchronize(shpCapteur3D);
+		}
+		else {
+			Synchronize(shpCapteur3E);
+		}
+
+
 		Sleep(10);
 	}
 }
@@ -125,4 +134,14 @@ void __fastcall threadEtat::shpCapteur2D()
 void __fastcall threadEtat::shpCapteur2E()
 {
 	IHM->shpCapteur2->Brush->Color = clRed;
+}
+
+void __fastcall threadEtat::shpCapteur3D()
+{
+	IHM->shpCapteur3->Brush->Color = clLime;
+}
+
+void __fastcall threadEtat::shpCapteur3E()
+{
+	IHM->shpCapteur3->Brush->Color = clRed;
 }

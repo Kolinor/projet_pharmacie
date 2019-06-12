@@ -43,8 +43,9 @@ class tapiris
 		HANDLE Thread;
 		Vector<int> caisse1;
 		Vector<int> caisse2;
-		int etat[6]; // tapis, piston1, piston2, piston3, capteur1, capteur2, capteur3
+		int etat[7]; // tapis, piston1, piston2, piston3, capteur1, capteur2, capteur3
 		int etatCapt3;
+		int testDtapis;
 		HANDLE mutex;
 		HANDLE mutex1;
 
@@ -56,6 +57,7 @@ class tapiris
 		static DWORD WINAPI threadApiston(LPVOID lpParam);
 		//thread permmettant d'actionner le piston pour pousser les médicaments sur le convoyeur
 		static DWORD WINAPI threadCapt3(LPVOID lpParam);
+		static DWORD WINAPI threadAtapis(LPVOID lpParam);
 
 	public:
 

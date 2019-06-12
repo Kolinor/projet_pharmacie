@@ -26,11 +26,6 @@ class TIHM : public TForm
 {
 __published:	// Composants gérés par l'EDI
 	TGroupBox *lblIp;
-	TButton *btnConnexion;
-	TEdit *edtIp;
-	TEdit *edtPort;
-	TShape *shpConnexion;
-	TButton *btnDéconnexion;
 	TGroupBox *Etat;
 	TLabel *lblTapis;
 	TLabel *lblCapteur1;
@@ -44,12 +39,15 @@ __published:	// Composants gérés par l'EDI
 	TShape *shpPiston1;
 	TShape *shpPiston2;
 	TShape *shpPiston3;
-	TLabel *Label1;
+	TLabel *lbl;
 	TLabel *lblPort;
 	TTimer *tmRS232;
-	void __fastcall btnDéconnexionClick(TObject *Sender);
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	TLabel *lbl_adr;
+	TLabel *lbl_port;
+	TShape *shpCapteur3;
+	TLabel *lblCapteur3;
 	void __fastcall tmRS232Timer(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	tapiris * pTapiris;
 			threadEtat * pThreadEtat;
 			SynchroEventListener * listener;

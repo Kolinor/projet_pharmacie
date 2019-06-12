@@ -1,9 +1,9 @@
-﻿object IHM: TIHM
+object IHM: TIHM
   Left = 0
   Top = 0
   Caption = 'IHM'
-  ClientHeight = 398
-  ClientWidth = 849
+  ClientHeight = 320
+  ClientWidth = 667
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,20 +15,13 @@
   PixelsPerInch = 96
   TextHeight = 13
   object lblIp: TGroupBox
-    Left = 40
-    Top = 8
+    Left = 153
+    Top = 32
     Width = 249
-    Height = 128
+    Height = 81
     Caption = 'Connexion'
     TabOrder = 0
-    object shpConnexion: TShape
-      Left = 197
-      Top = 46
-      Width = 41
-      Height = 35
-      Brush.Color = clRed
-    end
-    object Label1: TLabel
+    object lbl: TLabel
       Left = 26
       Top = 22
       Width = 20
@@ -42,45 +35,23 @@
       Height = 13
       Caption = 'Port :'
     end
-    object btnConnexion: TButton
-      Left = 76
-      Top = 75
-      Width = 89
-      Height = 25
-      Caption = 'connexion'
-      TabOrder = 0
+    object lbl_adr: TLabel
+      Left = 56
+      Top = 24
+      Width = 3
+      Height = 13
     end
-    object edtIp: TEdit
-      Left = 59
-      Top = 21
-      Width = 121
-      Height = 21
-      TabOrder = 1
-      Text = '192.168.64.200'
-    end
-    object edtPort: TEdit
-      Left = 59
-      Top = 48
-      Width = 121
-      Height = 21
-      TabOrder = 2
-      Text = '502'
-    end
-    object btnDéconnexion: TButton
-      Left = 76
-      Top = 75
-      Width = 89
-      Height = 25
-      Caption = 'd'#233'connexion'
-      TabOrder = 3
-      Visible = False
-      OnClick = btnDéconnexionClick
+    object lbl_port: TLabel
+      Left = 56
+      Top = 51
+      Width = 3
+      Height = 13
     end
   end
   object Etat: TGroupBox
-    Left = 89
+    Left = 55
     Top = 142
-    Width = 480
+    Width = 562
     Height = 133
     Caption = 'Etat'
     TabOrder = 1
@@ -106,21 +77,21 @@
       Caption = 'Capteur 2 :'
     end
     object lblPiston1: TLabel
-      Left = 261
+      Left = 307
       Top = 21
       Width = 45
       Height = 13
       Caption = 'Piston 1 :'
     end
     object lblPiston2: TLabel
-      Left = 333
+      Left = 384
       Top = 21
       Width = 45
       Height = 13
       Caption = 'Piston 2 :'
     end
     object lblPiston3: TLabel
-      Left = 413
+      Left = 463
       Top = 21
       Width = 45
       Height = 13
@@ -141,38 +112,52 @@
       Brush.Color = clRed
     end
     object shpCapteur2: TShape
-      Left = 179
+      Left = 173
       Top = 48
       Width = 48
       Height = 41
       Brush.Color = clRed
     end
     object shpPiston1: TShape
-      Left = 258
+      Left = 307
       Top = 48
       Width = 48
       Height = 41
       Brush.Color = clRed
     end
     object shpPiston2: TShape
-      Left = 330
+      Left = 384
       Top = 48
       Width = 48
       Height = 41
       Brush.Color = clRed
     end
     object shpPiston3: TShape
-      Left = 410
+      Left = 461
       Top = 48
       Width = 48
       Height = 41
       Brush.Color = clRed
     end
+    object shpCapteur3: TShape
+      Left = 243
+      Top = 48
+      Width = 48
+      Height = 41
+      Brush.Color = clRed
+    end
+    object lblCapteur3: TLabel
+      Left = 239
+      Top = 21
+      Width = 55
+      Height = 13
+      Caption = 'Capteur 3 :'
+    end
   end
   object tmRS232: TTimer
     Enabled = False
     OnTimer = tmRS232Timer
-    Left = 648
-    Top = 32
+    Left = 464
+    Top = 56
   end
 end

@@ -24,6 +24,8 @@ class threadEtat : public TThread
 		void __fastcall shpCapteur1E();
 		void __fastcall shpCapteur2D();
 		void __fastcall shpCapteur2E();
+		void __fastcall shpCapteur3D();
+		void __fastcall shpCapteur3E();
 
 	public:
 		__fastcall threadEtat(bool CreateSuspended,tapiris * tapis);

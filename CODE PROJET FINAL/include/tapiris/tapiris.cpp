@@ -18,6 +18,7 @@ tapiris::~tapiris()
 	this->deactivatePiston(3);
 
 	this->etatCapteur = false;
+    this->deactivateTapis();
 	delete pmodBus;
 }
 
@@ -184,7 +185,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 				{
 					caisse1 = tapis->caisse1.pop_front();
 					if (caisse1 == 1) {
-						tapis->activePiston(1,300);
+						tapis->activePiston(1,310);
 					}
 					captState[0] = true;
 				}
@@ -205,7 +206,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 					caisse2 = tapis->caisse2.pop_front();
 
 					if (caisse2 == 2) {
-						tapis->activePiston(2,300);
+						tapis->activePiston(2,320);
 					}
 
 					captState[1] = true;
@@ -219,11 +220,22 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 			}
 
 			if (buffer[16] == 1) {
+				tapis->etat[6] = 1;
 				if (tapis->etatCapt3 == 1) {
+					if (tapis->testDtapis == 0) {
+						tapis->activeTapis();
+					}
+
 					tapis->etatCapt3 = 0;
+					tapis->testDtapis = 1;
 					CreateThread(NULL,0,threadCapt3,tapis,0,NULL);
+					CreateThread(NULL,0,threadAtapis,tapis,0,NULL);
 				}
 			}
+			else {
+				tapis->etat[6] = 0;
+				tapis->testDtapis = 0;
+            }
 
 
 			ReleaseMutex(tapis->mutex1);
@@ -268,9 +280,9 @@ int tapiris::test1()
 
 int tapiris::etatReturn(int idx)
 {
-	int tabCopy[6];
+	int tabCopy[7];
 	WaitForSingleObject(this->mutex1,INFINITE);
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 7; i++) {
 		tabCopy[i] = this->etat[i];
 	}
 	ReleaseMutex(this->mutex1);
@@ -284,6 +296,24 @@ DWORD WINAPI tapiris::threadCapt3(LPVOID lpParam)
 	tapis->activePiston(3,0);
 	Sleep(1500);
 	tapis->etatCapt3 = 1;
+
+
+	return 0;
+}
+
+DWORD WINAPI tapiris::threadAtapis(LPVOID lpParam)
+{
+	tapiris * tapis = (tapiris*)lpParam;
+	int i;
+	for (i = 0; i < 150; i++) {
+		Sleep(100);
+		if (tapis->testDtapis == 1) {
+			i = 0;
+		}
+	}
+	tapis->deactivateTapis();
+
+
 
 
 	return 0;
