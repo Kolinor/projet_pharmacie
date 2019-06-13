@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------
+#ifndef ecrire_FichierExcelH
+#define ecrire_FichierExcelH
+#include <fstream>
+#include <iostream>
+using namespace std ;
+//---------------------------------------------------------------------------
+
+class ecrire_FichierExcel
+{
+	//ifstream fichier("C:/Utilisateurs/Kevin/Bureau/Test Lecteur Code Barre/IHM - Bilan des Ventes/Fichier Excel/Test.xlsx", ios::in) ;
+	ofstream fichier("Test.xlsx", ios::out | ios::trunc) ;
+
+	if (fichier)
+	{
+		fichier(close) ;
+	}
+
+	else
+		cerr << " Erreur à l'ouverture ! " >> endl ;
+		return 0 ;
+};
+
+#endif

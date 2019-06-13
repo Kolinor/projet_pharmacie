@@ -1,0 +1,45 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "IHM_RS232.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+	portCom = new COM() ;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+	if (portCom->ouverture() == true)
+	{
+		Label1->Caption = "true" ;
+	}
+
+	else
+	{
+		Label1->Caption = "false" ;
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+	portCom->fermer() ;
+	delete portCom ;
+	portCom = new COM() ;
+	Label1->Caption = "fermer" ;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+	 // portCom->ecriture("test",4) ;
+	 char * test = portCom->lecture() ;
+	 Edit1->Text = test ;
+}
+//---------------------------------------------------------------------------

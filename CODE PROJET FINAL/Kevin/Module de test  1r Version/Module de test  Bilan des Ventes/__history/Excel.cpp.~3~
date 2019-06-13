@@ -1,0 +1,36 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "Excel.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+
+bool Excel::ouvrirFichier()
+{
+	ofstream fichier("C:/Utilisateurs/Kevin/Bureau/Test Lecteur Code Barre/IHM - Bilan des Ventes/Fichier Excel/Test.xlsx", ios::out) ;
+	// ofstream fichier("Test.xlsx", ios::out) ;
+
+	if (fichier)
+	{
+		fichier.close();
+	}
+
+	else
+		cerr << "Erreur à l'ouverture !" << endl ;
+
+	return 0 ;
+}
+
+void Excel::ecrireFichier()
+{
+/*
+	if (fichier)
+	{
+		fichier.close();
+	}
+
+	else
+		cerr << "Erreur à l'ouverture !" << endl ;
+
+	return 0 ;
+*/
+}

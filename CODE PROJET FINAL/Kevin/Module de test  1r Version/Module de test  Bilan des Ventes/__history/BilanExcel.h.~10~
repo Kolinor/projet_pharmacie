@@ -1,0 +1,27 @@
+//---------------------------------------------------------------------------
+//-- Classe BilanExcel -----------------------------------------------------------
+//-- Développé par VUILLEMENOT Kevin (BTS SN2) ------------------------------
+//-- Projet : Tri Pharmacie  ------------------------------------------------
+//-- En collaboration avec : BEAUVISAGE Colin et VALENTINI Antoine ----------
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+#ifndef BilanExcelH
+#define BilanExcelH
+#include <fstream>
+#include <iostream>
+using namespace std ;
+//---------------------------------------------------------------------------
+
+class BilanExcel
+{
+	public :
+		// Création du fichier template Excel s'il n'existe pas deja
+		Excel() ;
+		// Recuperation des informations de la BDD puis inscription dans le fichier Excel
+		void  recupererInformations() ;
+		// Inscription des informations dans le fichier Excel
+		void ecrireInformations(std::string nomMedicament, long quantiteMedicamentVendu, double prixMedicament, long double TotalePrixMedicamentVendu) ;
+};
+
+#endif

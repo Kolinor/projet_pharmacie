@@ -1,0 +1,48 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+#include "Etat.h"
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+
+#include "ThreadEtat.h"
+
+TForm_Etat *Form_Etat;
+//---------------------------------------------------------------------------
+
+__fastcall TForm_Etat::TForm_Etat(TComponent* Owner) : TForm(Owner)
+{
+	Thread = new ThreadEtat(false, this) ;
+
+	StringGrid_Etat->Cells[0][0]= "Caisse n°" ;
+	StringGrid_Etat->Cells[1][0] = "Etat de la commande" ; 
+	StringGrid_Etat->Cells[2][0] = "Date de la commande" ;
+
+	/*
+	FDQuery1->Open("SELECT `Numero_Caisse`,`Etat`,`Date_Saisie_Ordonnance` FROM `Ordonnance` WHERE `Numero_Caisse`= '1' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 1");
+	StringGrid_Etat->Cells[0][1] = DataSource1->DataSet->FieldByName("Numero_Caisse")->AsString ;
+	StringGrid_Etat->Cells[1][1] = DataSource1->DataSet->FieldByName("Etat")->AsString ;
+	StringGrid_Etat->Cells[2][1] = DataSource1->DataSet->FieldByName("Date_Saisie_Ordonnance")->AsString ;
+
+	FDQuery1->Open("SELECT `Numero_Caisse`,`Etat`,`Date_Saisie_Ordonnance` FROM `Ordonnance` WHERE `Numero_Caisse`= '2' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 1");
+	StringGrid_Etat->Cells[0][2] = DataSource1->DataSet->FieldByName("Numero_Caisse")->AsString ;
+	StringGrid_Etat->Cells[1][2] = DataSource1->DataSet->FieldByName("Etat")->AsString ;
+	StringGrid_Etat->Cells[2][2] = DataSource1->DataSet->FieldByName("Date_Saisie_Ordonnance")->AsString ;
+
+	FDQuery1->Open("SELECT `Numero_Caisse`,`Etat`,`Date_Saisie_Ordonnance` FROM `Ordonnance` WHERE `Numero_Caisse`= '3' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 1");
+	StringGrid_Etat->Cells[0][3] = DataSource1->DataSet->FieldByName("Numero_Caisse")->AsString ;
+	StringGrid_Etat->Cells[1][3] = DataSource1->DataSet->FieldByName("Etat")->AsString ;
+	StringGrid_Etat->Cells[2][3] = DataSource1->DataSet->FieldByName("Date_Saisie_Ordonnance")->AsString ;
+	*/
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm_Etat::Bouton_QuitterClick(TObject *Sender)
+{
+	Thread->Terminate();
+    delete Thread;
+	Form_Etat->Visible = false ;
+	delete Form_Etat ;
+}
+//---------------------------------------------------------------------------
+

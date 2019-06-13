@@ -1,0 +1,38 @@
+//---------------------------------------------------------------------------
+//-- IHM_BilanDesVentes.cpp -------------------------------------------------
+//-- Développé par VUILLEMENOT Kevin (BTS SN2) ------------------------------
+//-- Projet : Tri Pharmacie  ------------------------------------------------
+//-- En collaboration avec : BEAUVISAGE Colin et VALENTINI Antoine ----------
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+#ifndef IHM_BilanDesVentesH
+#define IHM_BilanDesVentesH
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "IHM_Confirmation_BilanDesVentes.h"
+#include "BilanExcel.h"
+//---------------------------------------------------------------------------
+
+class TForm1 : public TForm
+{
+	// Composants gérés par l'EDI
+	__published:
+	TButton *Bouton_BilanVentes;
+	void __fastcall Bouton_BilanVentesClick(TObject *Sender);
+
+	// Déclarations utilisateur
+	private:
+
+	// Déclarations utilisateur
+	public:
+		__fastcall TForm1(TComponent* Owner);
+		BilanExcel * Bilan ;
+};
+
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif
