@@ -1,0 +1,34 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+#include "IHM_Lecteur.h"
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm_RS232 *Form_RS232;
+//---------------------------------------------------------------------------
+
+__fastcall TForm_RS232::TForm_RS232(TComponent* Owner) : TForm(Owner)
+{
+	char COM[] = "COM1" ;
+	listener = new SynchroEventListener() ;
+	parser = new LineParser() ;
+	parser->addSerialEventListener(listener) ;
+
+	comm = new CRS232(COM, 9600, 8, NOPARITY, ONESTOPBIT, parser) ;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm_RS232::Timer_RS232Timer(TObject *Sender)
+{
+	while (listener->getMessages().Size() > 0)
+	{
+		Message * msg = listener->getMessages().Get();
+		std::cout << "Ligne reçue : ";
+		for (int i = 0; i < msg->getData().size(); i++)
+		std::cout << msg->getData()[i];
+		std::cout << std::endl;
+		delete msg;
+	}
+}
+//---------------------------------------------------------------------------

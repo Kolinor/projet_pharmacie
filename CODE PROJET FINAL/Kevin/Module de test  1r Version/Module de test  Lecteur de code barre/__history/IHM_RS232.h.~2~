@@ -1,0 +1,33 @@
+//---------------------------------------------------------------------------
+
+#ifndef IHM_RS232H
+#define IHM_RS232H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "RS232.h"
+#include <Vcl.ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// Composants gérés par l'EDI
+	TEdit *Edit1;
+	TTimer *Timer1;
+	TButton *Button1;
+	TButton *Button2;
+	TLabel *Label1;
+	TButton *Button3;
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Button3Click(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
+private:	// Déclarations utilisateur
+public:		// Déclarations utilisateur
+	__fastcall TForm1(TComponent* Owner);
+	COM * portCom ;
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif

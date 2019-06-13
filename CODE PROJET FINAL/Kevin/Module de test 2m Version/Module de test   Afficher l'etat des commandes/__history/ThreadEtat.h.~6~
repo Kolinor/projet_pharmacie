@@ -1,0 +1,25 @@
+//---------------------------------------------------------------------------
+#ifndef ThreadEtatH
+#define ThreadEtatH
+#include "Etat.h"
+#include <vcl.h>
+//---------------------------------------------------------------------------
+
+class ThreadEtat : public TThread
+{
+	private:
+		bool etatThread;
+		TForm_Etat * ihm;
+
+	protected:
+		void __fastcall Execute();
+		void __fastcall EtatCaisse1();
+		void __fastcall EtatCaisse2();
+		void __fastcall EtatCaisse3();
+
+	public:
+		__fastcall ThreadEtat(bool CreateSuspended, TForm_Etat * ihm);
+		__fastcall ~ThreadEtat();
+};
+
+#endif

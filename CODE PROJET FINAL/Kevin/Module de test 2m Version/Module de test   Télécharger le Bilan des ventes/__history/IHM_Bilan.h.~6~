@@ -1,0 +1,56 @@
+//---------------------------------------------------------------------------
+#ifndef IHM_BilanH
+#define IHM_BilanH
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Data.DB.hpp>
+#include <FireDAC.Comp.Client.hpp>
+#include <FireDAC.Comp.DataSet.hpp>
+#include <FireDAC.Comp.UI.hpp>
+#include <FireDAC.DApt.hpp>
+#include <FireDAC.DApt.Intf.hpp>
+#include <FireDAC.DatS.hpp>
+#include <FireDAC.Phys.hpp>
+#include <FireDAC.Phys.Intf.hpp>
+#include <FireDAC.Phys.MySQL.hpp>
+#include <FireDAC.Phys.MySQLDef.hpp>
+#include <FireDAC.Stan.Async.hpp>
+#include <FireDAC.Stan.Def.hpp>
+#include <FireDAC.Stan.Error.hpp>
+#include <FireDAC.Stan.Intf.hpp>
+#include <FireDAC.Stan.Option.hpp>
+#include <FireDAC.Stan.Param.hpp>
+#include <FireDAC.Stan.Pool.hpp>
+#include <FireDAC.UI.Intf.hpp>
+#include <FireDAC.VCLUI.Wait.hpp>
+//---------------------------------------------------------------------------
+
+class TForm_Bilan : public TForm
+{
+	// Composants gérés par l'EDI
+	__published:
+		TComboBox *ComboBox_Periode;
+		TComboBox *ComboBox_Medicament;
+		TLabel *Label_Periode;
+		TButton *Bouton_Telecharger;
+		TFDConnection *f;
+		TFDQuery *FDQuery1;
+		TDataSource *DataSource1;
+		TFDGUIxWaitCursor *FDGUIxWaitCursor1;
+		void __fastcall FormCreate(TObject *Sender);
+		void __fastcall Bouton_TelechargerClick(TObject *Sender);
+
+	// Déclarations utilisateur
+	private:
+
+	// Déclarations utilisateur
+	public:
+		__fastcall TForm_Bilan(TComponent* Owner);
+};
+
+//---------------------------------------------------------------------------
+extern PACKAGE TForm_Bilan *Form_Bilan;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,56 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "ThreadEtat.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+
+__fastcall ThreadEtat::ThreadEtat(bool CreateSuspended) : TThread(CreateSuspended)
+{
+	this->etatThread = true;
+}
+//---------------------------------------------------------------------------
+
+__fastcall ThreadEtat::~ThreadEtat()
+{
+	this->etatThread = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall ThreadEtat::EtatCaisse1()
+{
+	FDQuery1->Open("SELECT `Numero_Caisse`,`Etat`,`Date_Saisie_Ordonnance` FROM `Ordonnance` WHERE `Numero_Caisse`= '1' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 1");
+	StringGrid_Etat->Cells[0][1] = DataSource1->DataSet->FieldByName("Numero_Caisse")->AsString ;
+	StringGrid_Etat->Cells[1][1] = DataSource1->DataSet->FieldByName("Etat")->AsString ;
+	StringGrid_Etat->Cells[2][1] = DataSource1->DataSet->FieldByName("Date_Saisie_Ordonnance")->AsString ;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall ThreadEtat::EtatCaisse2()
+{
+	FDQuery1->Open("SELECT `Numero_Caisse`,`Etat`,`Date_Saisie_Ordonnance` FROM `Ordonnance` WHERE `Numero_Caisse`= '2' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 1");
+	StringGrid_Etat->Cells[0][2] = DataSource1->DataSet->FieldByName("Numero_Caisse")->AsString ;
+	StringGrid_Etat->Cells[1][2] = DataSource1->DataSet->FieldByName("Etat")->AsString ;
+	StringGrid_Etat->Cells[2][2] = DataSource1->DataSet->FieldByName("Date_Saisie_Ordonnance")->AsString ;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall ThreadEtat::EtatCaisse3()
+{
+	FDQuery1->Open("SELECT `Numero_Caisse`,`Etat`,`Date_Saisie_Ordonnance` FROM `Ordonnance` WHERE `Numero_Caisse`= '3' ORDER BY `Date_Saisie_Ordonnance` DESC LIMIT 1");
+	StringGrid_Etat->Cells[0][3] = DataSource1->DataSet->FieldByName("Numero_Caisse")->AsString ;
+	StringGrid_Etat->Cells[1][3] = DataSource1->DataSet->FieldByName("Etat")->AsString ;
+	StringGrid_Etat->Cells[2][3] = DataSource1->DataSet->FieldByName("Date_Saisie_Ordonnance")->AsString ;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall ThreadEtat::Execute()
+{
+	while(this->etatThread == true)
+	{
+		synchronize(EtatCaisse1) ;
+		synchronize(EtatCaisse2) ;
+		synchronize(EtatCaisse3) ;
+		Sleep(100);
+    }
+}
+//---------------------------------------------------------------------------

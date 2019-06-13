@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/10/01 14:39:47.000.024,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2018/10/01 14:39:47.000.012,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project2PCH1.h</Transaction>
+    <Transaction>2018/10/09 13:56:06.000.290,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project2PCH1.h</Transaction>
+    <Transaction>2018/10/09 13:56:06.000.303,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2018/10/18 10:24:08.000.200,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2018/10/18 10:24:08.000.187,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project2PCH1.h</Transaction>
+    <Transaction>2018/11/19 15:37:13.000.605,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project2PCH1.h</Transaction>
+    <Transaction>2018/11/19 15:37:13.000.620,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/05/06 16:24:07.000.141,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/05/06 16:24:07.000.126,=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project2PCH1.h</Transaction>
+    <Transaction>2019/05/06 16:24:15.000.363,C:\Users\Kevin\Desktop\TEST 2\Unit1.cpp=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2019/05/06 16:24:15.000.363,C:\Users\Kevin\Desktop\TEST 2\Unit1.dfm=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.dfm</Transaction>
+    <Transaction>2019/05/06 16:24:15.000.363,C:\Users\Kevin\Desktop\TEST 2\Unit1.h=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Unit1.h</Transaction>
+    <Transaction>2019/05/06 16:24:17.000.978,C:\Users\Kevin\Desktop\TEST 2\Project2PCH1.h=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project2PCH1.h</Transaction>
+    <Transaction>2019/05/06 16:24:19.000.897,C:\Users\Kevin\Desktop\TEST 2\Project2.cbproj=C:\Users\Kevin\Documents\Embarcadero\Studio\Projets\Project2.cbproj</Transaction>
+    <Transaction>2019/05/06 16:24:41.000.636,=C:\Users\Kevin\Desktop\TEST 2\RS232.cpp</Transaction>
+    <Transaction>2019/05/06 16:25:15.000.775,C:\Users\Kevin\Desktop\TEST 2\IHM.cpp=C:\Users\Kevin\Desktop\TEST 2\Unit1.cpp</Transaction>
+    <Transaction>2019/05/06 16:25:15.000.775,C:\Users\Kevin\Desktop\TEST 2\IHM.h=C:\Users\Kevin\Desktop\TEST 2\Unit1.h</Transaction>
+    <Transaction>2019/05/06 16:25:15.000.775,C:\Users\Kevin\Desktop\TEST 2\IHM.dfm=C:\Users\Kevin\Desktop\TEST 2\Unit1.dfm</Transaction>
+    <Transaction>2019/05/06 16:40:57.000.473,C:\Users\Kevin\Desktop\TEST 2\IHM_RS232.dfm=C:\Users\Kevin\Desktop\TEST 2\IHM.dfm</Transaction>
+    <Transaction>2019/05/06 16:40:57.000.473,C:\Users\Kevin\Desktop\TEST 2\IHM_RS232.h=C:\Users\Kevin\Desktop\TEST 2\IHM.h</Transaction>
+    <Transaction>2019/05/06 16:40:57.000.473,C:\Users\Kevin\Desktop\TEST 2\IHM_RS232.cpp=C:\Users\Kevin\Desktop\TEST 2\IHM.cpp</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="IHM_RS232.cpp"/>
+    <File Path="IHM_RS232.cpp"/>
+    <File Path="IHM_RS232.dfm"/>
+    <File Path="IHM_RS232.h"/>
+    <File Path="RS232.cpp"/>
+    <File Path="RS232.cpp"/>
+    <File Path="RS232.h"/>
+    <File Path="Project2.cpp"/>
+    <File Path="Project2PCH1.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

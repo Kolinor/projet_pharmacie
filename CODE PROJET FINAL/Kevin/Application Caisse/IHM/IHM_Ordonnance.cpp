@@ -1,0 +1,92 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+#include "IHM_Ordonnance.h"
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TOrdonnance *Ordonnance;
+//---------------------------------------------------------------------------
+
+// IHM de la saisie d'ordonnance, création de l'objet BDD
+__fastcall TOrdonnance::TOrdonnance(TComponent* Owner) : TForm(Owner)
+{
+	BDD = new MysqlPharmacieManager() ;
+
+	// Liste derroulante affichant es médicaments disponible dans la BDD
+	FDQuery_Ordonnance->Open("SELECT * FROM `Medicament` WHERE `Quantite_Restante` != 0");
+	for (int i = 0; i < FDQuery_Ordonnance->RowsAffected; i++)
+	{
+		ComboBox_Medicaments->Items->Add(DataSource_Ordonnance->DataSet->FieldByName("Nom_Medicament")->AsString);
+		DataSource_Ordonnance->DataSet->FindNext();
+	}
+
+	StringGrid_Ordonnance->Cells[0][0]= "Médicaments" ;
+	StringGrid_Ordonnance->Cells[1][0] = "Quantité" ;
+}
+//---------------------------------------------------------------------------
+
+// Bouton Ok qui valide l'entrée d'un médicaments avec sa quantité dans la liste ordonnance
+void __fastcall TOrdonnance::Bouton_OKClick(TObject *Sender)
+{
+	bool Doublon_Medicament = false ;
+
+	for (int ligne = 1; ligne < StringGrid_Ordonnance->RowCount; ligne++)
+	{
+		if (ComboBox_Medicaments->Text == StringGrid_Ordonnance->Cells[0][ligne])
+		{
+			StringGrid_Ordonnance->Cells[1][ligne] = StringGrid_Ordonnance->Cells[1][ligne].ToInt() + Edit_Quantite->Text.ToInt() ;
+			Doublon_Medicament = true ;
+		}
+	}
+
+	if (ComboBox_Medicaments->Text !="" && Doublon_Medicament == false )
+	{
+		StringGrid_Ordonnance->Cells[0][StringGrid_Ordonnance->RowCount]= ComboBox_Medicaments->Text ;
+		StringGrid_Ordonnance->Cells[1][StringGrid_Ordonnance->RowCount] = Edit_Quantite->Text ;
+		StringGrid_Ordonnance->RowCount++ ;
+	}
+}
+//---------------------------------------------------------------------------
+
+// Bouton Supprimer qui supprime un médicament séléctionner de l'ordonnance
+void __fastcall TOrdonnance::Bouton_SupprimerClick(TObject *Sender)
+{
+	int ligneASupprimer = StringGrid_Ordonnance->Row;
+
+	if (StringGrid_Ordonnance->Row != 0)
+	{
+		for(int ligne = ligneASupprimer + 1; ligne < StringGrid_Ordonnance->RowCount; ligne++)
+		{
+			for(int colonne = 0; colonne < StringGrid_Ordonnance->ColCount; colonne++)
+			{
+				StringGrid_Ordonnance->Cells[colonne][ligne - 1] = StringGrid_Ordonnance->Cells[colonne][ligne];
+			}
+		}
+
+	StringGrid_Ordonnance->RowCount-- ;
+	}
+}
+//---------------------------------------------------------------------------
+
+// Bouton Valider qui valide l'envoie d'un formulaire
+void __fastcall TOrdonnance::Bouton_ValiderClick(TObject *Sender)
+{
+	int caisse = IHM->ComboBox_Caisse->Text.ToInt() ; String medicament, quantite ;
+
+	for (int ligne = 1; ligne < StringGrid_Ordonnance->RowCount; ligne++)
+	{
+			medicament = StringGrid_Ordonnance->Cells[0][ligne] ;
+			quantite = StringGrid_Ordonnance->Cells[1][ligne] ;
+			BDD->insertOrdonnance(caisse, medicament, quantite) ;
+	}
+
+	Ordonnance->Visible = false ;
+
+	for (int i = StringGrid_Ordonnance->RowCount; i !=0 ; i--)
+	{
+		StringGrid_Ordonnance->RowCount-- ;
+	}
+
+}
+//---------------------------------------------------------------------------
+

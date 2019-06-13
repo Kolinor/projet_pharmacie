@@ -1,0 +1,18 @@
+//---------------------------------------------------------------------------
+#ifndef BilanExcelH
+#define BilanExcelH
+#include <fstream>
+#include <iostream>
+using namespace std ;
+//---------------------------------------------------------------------------
+
+class Excel
+{
+	private :
+
+	public :
+
+		bool ecrireFichier() ;
+};
+
+#endif

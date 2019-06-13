@@ -1,0 +1,30 @@
+//---------------------------------------------------------------------------
+//-- Classe BilanExcel ------------------------------------------------------
+//-- Développé par VUILLEMENOT Kevin (BTS SN2) ------------------------------
+//-- Projet : Tri Pharmacie  ------------------------------------------------
+//-- En collaboration avec : BEAUVISAGE Colin et VALENTINI Antoine ----------
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+#ifndef BilanExcelH
+#define BilanExcelH
+#include <fstream>
+#include <iostream>
+using namespace std ;
+#include "MysqlPharmacieManager.h"
+//---------------------------------------------------------------------------
+
+class BilanExcel
+{
+	public :
+		// Création du fichier template Excel s'il n'existe pas deja
+		BilanExcel() ;
+
+		// Recuperation des informations de la BDD puis inscription dans le fichier Excel
+		void  ecrireFichier(String periode) ;
+
+		// Objet BDD
+		MysqlPharmacieManager * BDD ;
+};
+
+#endif
