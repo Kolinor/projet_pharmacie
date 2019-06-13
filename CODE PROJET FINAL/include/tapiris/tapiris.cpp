@@ -311,7 +311,7 @@ DWORD WINAPI tapiris::threadAtapis(LPVOID lpParam)
 
 	tapis->testAtapis = 1;
 	int i;
-	for (i = 0; i < 150; i++) {
+	for (i = 0; i < 140; i++) {
 		Sleep(100);
 		if (tapis->testDtapis == 1) {
 			i = 0;

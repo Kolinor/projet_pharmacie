@@ -23,7 +23,6 @@ class MysqlPharmacieManager
 		bool insertTapiris(String cle,String value);
 		int selectCaisse(String codeBarre);
 		bool changerEtat(String etat, String id_ordonnance);
-		void updateQuantiteMedoc(String medicament, String quantite);
 
 		// Méthodes pour télécharger les bilans des ventes
 		vector < vector<string> > BilanAnnee();

@@ -9,6 +9,7 @@
 tapiris::tapiris()
 {
 	this->mutex = CreateMutex(NULL,FALSE,NULL);
+	this->testAtapis = 0;
 }
 
 tapiris::~tapiris()
@@ -18,6 +19,7 @@ tapiris::~tapiris()
 	this->deactivatePiston(3);
 
 	this->etatCapteur = false;
+    this->deactivateTapis();
 	delete pmodBus;
 }
 
@@ -31,15 +33,12 @@ bool tapiris::connected(string adress, unsigned short port)
 void tapiris::activeCapteur()
 {
 	this->etatCapteur = true;
-	this->testb = true;
-	Thread1 = CreateThread(NULL,0,this->threadTest,this,0,NULL);
 	Thread = CreateThread(NULL,0,this->threadCapteur,this,0,NULL);
 }
 
 void tapiris::deactivateCapteur()
 {
 	this->etatCapteur = false;
-	this->testb = false;
 }
 
 void tapiris::disconnect()
@@ -163,14 +162,17 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 	bool captState[2];
 	captState[0] = false;
 	captState[1] = false;
-	captState[2] = false;
+
+	HANDLE Thread;
+
+	tapis->etatCapt3 = 1;
 
 	while(tapis->etatCapteur == true)
 	{
 		ZeroMemory(buffer, 4096);
-		int transactionId = tapis->pmodBus->readWord(1,4,buffer);
+		tapis->pmodBus->readWord(1,4,buffer);
 
-        int recvTId = (buffer[0] << 8) | buffer[1];
+
 
 		if(buffer[7] == 0x04)
 		{
@@ -184,7 +186,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 				{
 					caisse1 = tapis->caisse1.pop_front();
 					if (caisse1 == 1) {
-						tapis->activePiston(1,300);
+						tapis->activePiston(1,310);
 					}
 					captState[0] = true;
 				}
@@ -205,7 +207,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 					caisse2 = tapis->caisse2.pop_front();
 
 					if (caisse2 == 2) {
-						tapis->activePiston(2,300);
+						tapis->activePiston(2,320);
 					}
 
 					captState[1] = true;
@@ -219,17 +221,25 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 			}
 
 			if (buffer[16] == 1) {
+				tapis->etat[6] = 1;
+				if (tapis->etatCapt3 == 1) {
+					if (tapis->testDtapis == 0) {
+						tapis->activeTapis();
+					}
 
-				tapis->etat[6] =1;
-				if (captState[2] == false) {
-//					tapis->activePiston(3,300);
+					tapis->etatCapt3 = 0;
+					tapis->testDtapis = 1;
+					CreateThread(NULL,0,threadCapt3,tapis,0,NULL);
+						if (tapis->testAtapis == 0) {
+							CreateThread(NULL,0,threadAtapis,tapis,0,NULL);
+						}
+
 				}
 			}
-			else
-			{
+			else {
 				tapis->etat[6] = 0;
-				captState[1] = false;
-			}
+				tapis->testDtapis = 0;
+            }
 
 
 			ReleaseMutex(tapis->mutex1);
@@ -283,42 +293,36 @@ int tapiris::etatReturn(int idx)
 	return tabCopy[idx];
 }
 
-DWORD WINAPI tapiris::threadTest(LPVOID lpParam)
+DWORD WINAPI tapiris::threadCapt3(LPVOID lpParam)
 {
 	tapiris * tapis = (tapiris*)lpParam;
 
-//	char buffer2[4096];
-//	int bytes;
-//
-//	while (tapis->testb == true)
-//	{
-//		ZeroMemory(buffer2, 4096);
-//		tapis->pmodBus->readWord(1,4,buffer2);
-//
-//		WaitForSingleObject(tapis->mutex,INFINITE);
-//		WaitForSingleObject(tapis->mutex1,INFINITE);
-//
-//		if (buffer2[16] == 1) {
-//
-//			tapis->etat[6] = 1;
-//			tapis->activePiston(3,0);
-//			Sleep(500);
-//
-//		}
-//		else
-//		{
-//			tapis->etat[6] = 0;
-//		}
-//
-//
-//		ReleaseMutex(tapis->mutex1);
-//		ReleaseMutex(tapis->mutex);
-//		Sleep(2000);
-//	}
+	tapis->activePiston(3,0);
+	Sleep(1500);
+	tapis->etatCapt3 = 1;
 
 
-		return 0;
+	return 0;
 }
 
+DWORD WINAPI tapiris::threadAtapis(LPVOID lpParam)
+{
+	tapiris * tapis = (tapiris*)lpParam;
 
+	tapis->testAtapis = 1;
+	int i;
+	for (i = 0; i < 150; i++) {
+		Sleep(100);
+		if (tapis->testDtapis == 1) {
+			i = 0;
+		}
+	}
+	tapis->testAtapis = 0;
+	tapis->deactivateTapis();
+
+
+
+
+	return 0;
+}
 

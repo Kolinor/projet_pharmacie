@@ -405,18 +405,3 @@ vector < vector<string> > MysqlPharmacieManager::BilanJourMedicament(String medi
 }
 //---------------------------------------------------------------------------
 
-void MysqlPharmacieManager::updateQuantiteMedoc(String medicament, String quantite)
-{
-	String requete= "UPDATE `Medicament` SET `Quantite_Restante` = Quantite_Restante + ";
-	requete += quantite;
-	requete += " WHERE `Nom_Medicament` = '";
-	requete += medicament;
-	requete += "'";
-
-	wchar_t * wStrReq = requete.c_str();
-	int reqLength = wcslen(wStrReq);
-	char * req = new char[reqLength + 1];
-	wcstombs(req, wStrReq, reqLength);
-	this->mySql->update(req);
-}
-
