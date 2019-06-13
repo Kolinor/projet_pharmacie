@@ -169,8 +169,8 @@ int MysqlPharmacieManager::selectCaisse(String codeBarre)
 		repQuantite = this->mySql->select(req4);
 
 
-		int reste = atoi(repQuantite[0][1].c_str());
-		if (reste > 0) {
+
+		if (atoi(repQuantite[0][1].c_str()) > 0) {
 
 
 			String requete1 = "UPDATE `Ordonnance_Medicament_Association` SET `Quantite_Delivree`= Quantite_Delivree+1 ";
@@ -199,7 +199,7 @@ int MysqlPharmacieManager::selectCaisse(String codeBarre)
 			wcstombs(req2,wStrReq2, reqLength2);
 			repOrdo = this->mySql->select(req2);
 
-			String requete3 = "UPDATE `Medicament` SET `Quantite_Restante`= Quantite_Restante-1, ";
+			String requete3 = "UPDATE `Medicament` SET `Quantite_Restante`= Quantite_Restante-1, =";
 			requete3 += "`Nombre_Unite_Vendu`= Nombre_Unite_Vendu+1 WHERE `Nom_Medicament` ='";
 			requete3 += medicament.c_str();
 			requete3 += "' AND Quantite_Restante > 0";

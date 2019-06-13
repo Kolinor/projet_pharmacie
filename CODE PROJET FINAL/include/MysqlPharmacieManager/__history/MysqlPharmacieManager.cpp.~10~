@@ -156,71 +156,39 @@ int MysqlPharmacieManager::selectCaisse(String codeBarre)
 		id = repCaisse[0][1];
 		medicament = repCaisse[0][2];
 
-		vector < vector<string> > repQuantite;
+		String requete1 = "UPDATE `Ordonnance_Medicament_Association` SET `Quantite_Delivree`= Quantite_Delivree+1 ";
+		requete1 += "WHERE `Quantite_Demande` > `Quantite_Delivree` ";
+		requete1 += "AND `Ordonnance_Medicament_Association`.`ID_Ordonnance` = ";
+		requete1 += id.c_str();
+		requete1 += " AND `Ordonnance_Medicament_Association`.`Nom_Medicament` = '";
+		requete1 += medicament.c_str();
+		requete1 += "'";
+		wchar_t * wStrReq1 = requete1.c_str();
+		int reqLength1 = wcslen(wStrReq1);
+		char * req1 = new char[reqLength1 +1];
+		wcstombs(req1,wStrReq1, reqLength1);
+		this->mySql->update(req1);
 
-		String requete4 = "SELECT `Nom_Medicament`, `Quantite_Restante` FROM `Medicament` WHERE Nom_Medicament = '";
-		requete4 += medicament.c_str();
-		requete4 += "'";
+		String requete2 = "SELECT `Ordonnance_Medicament_Association`.`ID_Ordonnance`, `Ordonnance_Medicament_Association`.`Quantite_Demande`, `Ordonnance_Medicament_Association`.`Quantite_Delivree` FROM `Ordonnance` ";
+		requete2 += "INNER JOIN `Ordonnance_Medicament_Association` ON `Ordonnance`.`ID_Ordonnance` = `Ordonnance_Medicament_Association`.`ID_Ordonnance` ";
+		requete2 += "INNER JOIN `Medicament` ON `Medicament`.`Nom_Medicament` = `Ordonnance_Medicament_Association`.`Nom_Medicament` ";
+		requete2 += "WHERE `Ordonnance_Medicament_Association`.`Quantite_Delivree` < `Ordonnance_Medicament_Association`.`Quantite_Demande` ";
+		requete2 += "AND `Ordonnance_Medicament_Association`.`ID_Ordonnance` = ";
+		requete2 += id.c_str();
 
-		wchar_t * wStrReq4 = requete4.c_str();
-		int reqLength4 = wcslen(wStrReq4);
-		char * req4 = new char[reqLength4 +1];
-		wcstombs(req4,wStrReq4, reqLength4);
-		repQuantite = this->mySql->select(req4);
-
-
-		int reste = atoi(repQuantite[0][1].c_str());
-		if (reste > 0) {
-
-
-			String requete1 = "UPDATE `Ordonnance_Medicament_Association` SET `Quantite_Delivree`= Quantite_Delivree+1 ";
-			requete1 += "WHERE `Quantite_Demande` > `Quantite_Delivree` ";
-			requete1 += "AND `Ordonnance_Medicament_Association`.`ID_Ordonnance` = ";
-			requete1 += id.c_str();
-			requete1 += " AND `Ordonnance_Medicament_Association`.`Nom_Medicament` = '";
-			requete1 += medicament.c_str();
-			requete1 += "'";
-			wchar_t * wStrReq1 = requete1.c_str();
-			int reqLength1 = wcslen(wStrReq1);
-			char * req1 = new char[reqLength1 +1];
-			wcstombs(req1,wStrReq1, reqLength1);
-			this->mySql->update(req1);
-
-			String requete2 = "SELECT `Ordonnance_Medicament_Association`.`ID_Ordonnance`, `Ordonnance_Medicament_Association`.`Quantite_Demande`, `Ordonnance_Medicament_Association`.`Quantite_Delivree` FROM `Ordonnance` ";
-			requete2 += "INNER JOIN `Ordonnance_Medicament_Association` ON `Ordonnance`.`ID_Ordonnance` = `Ordonnance_Medicament_Association`.`ID_Ordonnance` ";
-			requete2 += "INNER JOIN `Medicament` ON `Medicament`.`Nom_Medicament` = `Ordonnance_Medicament_Association`.`Nom_Medicament` ";
-			requete2 += "WHERE `Ordonnance_Medicament_Association`.`Quantite_Delivree` < `Ordonnance_Medicament_Association`.`Quantite_Demande` ";
-			requete2 += "AND `Ordonnance_Medicament_Association`.`ID_Ordonnance` = ";
-			requete2 += id.c_str();
-
-			wchar_t * wStrReq2 = requete2.c_str();
-			int reqLength2 = wcslen(wStrReq2);
-			char * req2 = new char[reqLength2 +1];
-			wcstombs(req2,wStrReq2, reqLength2);
-			repOrdo = this->mySql->select(req2);
-
-			String requete3 = "UPDATE `Medicament` SET `Quantite_Restante`= Quantite_Restante-1, ";
-			requete3 += "`Nombre_Unite_Vendu`= Nombre_Unite_Vendu+1 WHERE `Nom_Medicament` ='";
-			requete3 += medicament.c_str();
-			requete3 += "' AND Quantite_Restante > 0";
-
-			wchar_t * wStrReq3 = requete3.c_str();
-			int reqLength3 = wcslen(wStrReq3);
-			char * req3 = new char[reqLength3 +1];
-			wcstombs(req3,wStrReq3, reqLength3);
-			this->mySql->update(req3);
+		wchar_t * wStrReq2 = requete2.c_str();
+		int reqLength2 = wcslen(wStrReq2);
+		char * req2 = new char[reqLength2 +1];
+		wcstombs(req2,wStrReq2, reqLength2);
+		repOrdo = this->mySql->select(req2);
 
 
 
-			if (repOrdo.size() == 0 )
-			{
-				string etat = "terminer";
-				this->changerEtat(etat.c_str(),id.c_str());
-			}
+		if (repOrdo.size() == 0 )
+		{
+			string etat = "terminer";
+			this->changerEtat(etat.c_str(),id.c_str());
 		}
-		else {
-			caisse = 3;
-        }
 	}
 
 	else

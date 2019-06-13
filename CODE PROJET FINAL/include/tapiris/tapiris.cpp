@@ -9,6 +9,7 @@
 tapiris::tapiris()
 {
 	this->mutex = CreateMutex(NULL,FALSE,NULL);
+	this->testAtapis = 0;
 }
 
 tapiris::~tapiris()
@@ -229,7 +230,10 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 					tapis->etatCapt3 = 0;
 					tapis->testDtapis = 1;
 					CreateThread(NULL,0,threadCapt3,tapis,0,NULL);
-					CreateThread(NULL,0,threadAtapis,tapis,0,NULL);
+						if (tapis->testAtapis == 0) {
+							CreateThread(NULL,0,threadAtapis,tapis,0,NULL);
+						}
+
 				}
 			}
 			else {
@@ -304,6 +308,8 @@ DWORD WINAPI tapiris::threadCapt3(LPVOID lpParam)
 DWORD WINAPI tapiris::threadAtapis(LPVOID lpParam)
 {
 	tapiris * tapis = (tapiris*)lpParam;
+
+	tapis->testAtapis = 1;
 	int i;
 	for (i = 0; i < 150; i++) {
 		Sleep(100);
@@ -311,6 +317,7 @@ DWORD WINAPI tapiris::threadAtapis(LPVOID lpParam)
 			i = 0;
 		}
 	}
+	tapis->testAtapis = 0;
 	tapis->deactivateTapis();
 
 

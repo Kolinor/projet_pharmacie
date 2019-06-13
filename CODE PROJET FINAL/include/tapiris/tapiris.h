@@ -46,6 +46,7 @@ class tapiris
 		int etat[7]; // tapis, piston1, piston2, piston3, capteur1, capteur2, capteur3
 		int etatCapt3;
 		int testDtapis;
+		int testAtapis;
 		HANDLE mutex;
 		HANDLE mutex1;
 
