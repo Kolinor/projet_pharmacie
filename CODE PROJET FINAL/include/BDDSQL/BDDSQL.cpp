@@ -15,6 +15,7 @@ BDDSQL::BDDSQL()
 BDDSQL::~BDDSQL()
 {
   mysql_close(mysql);
+  delete mysql;
 }
 //---------------------------------------------------------------------------
 

@@ -3,6 +3,7 @@
 #define BDDH
 #include <vector>
 #include <stdlib.h>
+#include "../include SQL/mysql.h"
 using namespace std;
 //---------------------------------------------------------------------------
 

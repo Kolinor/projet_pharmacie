@@ -186,7 +186,7 @@ DWORD WINAPI tapiris::threadCapteur(LPVOID lpParam)
 				{
 					caisse1 = tapis->caisse1.pop_front();
 					if (caisse1 == 1) {
-						tapis->activePiston(1,310);
+						tapis->activePiston(1,320);
 					}
 					captState[0] = true;
 				}

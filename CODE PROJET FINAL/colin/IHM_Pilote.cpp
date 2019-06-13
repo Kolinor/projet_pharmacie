@@ -25,8 +25,9 @@ __fastcall TIHM::TIHM(TComponent* Owner)
 	com = new CRS232(conversion,9600,8,NOPARITY,ONESTOPBIT, parser);
 	sql = new MysqlPharmacieManager();
 	pTapiris = new tapiris();
-	conf = new TIniFile("C:\\Users\\Administrateur\\Documents\\GitHub\\projet_pharmacie\\CODE PROJET FINAL\\colin\\conf.ini");
-
+	conf = new TIniFile("C:\\Program Files (x86)\\PharmaciePilote\\conf.ini");
+							  //C:\\Program_Files_(x86)\\PharmaciePilote\\conf.ini
+							  //C:\\Users\\Administrateur\\Documents\\GitHub\\projet_pharmacie\\CODE PROJET FINAL\\colin\\conf.ini
 	char adrSave[50];
 	char portSave[50];
 

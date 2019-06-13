@@ -1,8 +1,7 @@
 //---------------------------------------------------------------------------
 #ifndef BDDSQLH
 #define BDDSQLH
-#include "mysql.h"
-#include "BDD.h"
+#include "../BDD/BDD.h"
 #include <stdlib.h>
 #include <vcl.h>
 #include <windows.h>

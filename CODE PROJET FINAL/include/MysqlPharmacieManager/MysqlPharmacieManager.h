@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------
 #ifndef MysqlPharmacieManagerH
 #define MysqlPharmacieManagerH
-#include "BDD.h"
-#include "BDDSQL.h"
+#include "../BDD/BDD.h"
+#include "../BDDSQL/BDDSQL.h"
 #include <Vcl.Grids.hpp>
 //---------------------------------------------------------------------------
 
