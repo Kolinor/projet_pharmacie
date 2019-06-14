@@ -71,6 +71,16 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 		{
 			Memo1->Lines->Add("capteur 3 etteint");
 		}
+
+		if (buffer[16] == 1) {
+			Memo1->Lines->Add("capteur 4 allume");
+		}
+		else
+		{
+			Memo1->Lines->Add("capteur 4 etteint");
+		}
+
+
 	}
 
 
