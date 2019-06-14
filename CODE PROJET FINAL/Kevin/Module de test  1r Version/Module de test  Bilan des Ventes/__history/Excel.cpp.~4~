@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "Excel.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+
+bool Excel::ecrireFichier()
+{
+	ofstream fichierTest("C:/Utilisateurs/Kevin/Bureau/Test Lecteur Code Barre/IHM - Bilan des Ventes/Fichier Excel/Test.txt", ios::out) ;
+
+	if (fichierTest)
+	{
+		string contenu = "test" ;
+		int testnb = 12 ;
+		fichierTest << testnb << endl ;
+
+		fichierTest.close();
+	}
+
+	else
+		cerr << "Erreur à l'ouverture !" << endl ;
+   return 0 ;
+}

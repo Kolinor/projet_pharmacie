@@ -1,0 +1,66 @@
+object Form_Etat: TForm_Etat
+  Left = 0
+  Top = 0
+  Caption = 'Etat des commandes'
+  ClientHeight = 267
+  ClientWidth = 374
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid_Etat: TStringGrid
+    Left = 24
+    Top = 24
+    Width = 241
+    Height = 177
+    ColCount = 2
+    DefaultColWidth = 125
+    RowCount = 1
+    FixedRows = 0
+    TabOrder = 0
+    RowHeights = (
+      24)
+  end
+  object Bouton_Quitter: TButton
+    Left = 283
+    Top = 96
+    Width = 75
+    Height = 25
+    Caption = 'Quitter'
+    TabOrder = 1
+    OnClick = Bouton_QuitterClick
+  end
+  object f: TFDConnection
+    Params.Strings = (
+      'Database=pharmacie'
+      'User_Name=pharma'
+      'Password=pharma'
+      'Server=192.168.64.111'
+      'DriverID=MySQL')
+    Connected = True
+    Left = 24
+    Top = 216
+  end
+  object FDQuery1: TFDQuery
+    Connection = f
+    SQL.Strings = (
+      'SELECT `Numero_Caisse`,`Etat` FROM `Ordonnance` WHERE 1')
+    Left = 88
+    Top = 216
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 152
+    Top = 216
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 216
+    Top = 216
+  end
+end

@@ -1,0 +1,32 @@
+//---------------------------------------------------------------------------
+
+#ifndef RS232H
+#define RS232H
+#include <windows.h>
+//---------------------------------------------------------------------------
+class RS232
+{
+	private:
+		HANDLE hcom;
+		DCB serie;
+		OVERLAPPED over;
+
+		DWORD dwChars;
+		HANDLE Thread;
+
+		static DWORD WINAPI threadLecture(LPVOID lpParam);
+
+	public:
+
+		bool ouverture();
+		void fermer();
+		bool ecriture(char* str);
+		char* lecture();
+
+
+};
+
+
+
+
+#endif

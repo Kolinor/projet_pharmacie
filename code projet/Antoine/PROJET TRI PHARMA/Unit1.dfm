@@ -26,13 +26,6 @@
     Font.Style = []
     ParentFont = False
   end
-  object Label1: TLabel
-    Left = 576
-    Top = 592
-    Width = 31
-    Height = 13
-    Caption = 'Label1'
-  end
   object Rbt_Automate: TRadioButton
     Left = 520
     Top = 96
@@ -204,8 +197,8 @@
     Height = 322
     TabOrder = 4
     object Lbl_numeroCaisse: TLabel
-      Left = 24
-      Top = 114
+      Left = 4
+      Top = 24
       Width = 84
       Height = 13
       Caption = 'Numero de caisse'
@@ -240,6 +233,13 @@
       Height = 13
       Caption = 'Nombre de m'#233'dicament a ajout'#233
     end
+    object Label1: TLabel
+      Left = 72
+      Top = 56
+      Width = 31
+      Height = 13
+      Caption = 'Label1'
+    end
     object Btn_sendOrdonnance: TButton
       Left = 264
       Top = 288
@@ -250,8 +250,8 @@
       TabOrder = 0
     end
     object Edit_numeroCaisse: TEdit
-      Left = 192
-      Top = 111
+      Left = 94
+      Top = 21
       Width = 121
       Height = 21
       TabOrder = 1
@@ -280,12 +280,21 @@
       TabOrder = 4
     end
     object Cmb_medicamentOrdonnance: TComboBox
-      Left = 168
+      Left = 176
       Top = 184
       Width = 145
       Height = 21
       TabOrder = 5
       Text = 'M'#233'dicament a ajouter'
+    end
+    object Bt_CreateOrdonnance: TButton
+      Left = 240
+      Top = 19
+      Width = 111
+      Height = 25
+      Caption = 'Create Ordonnance'
+      TabOrder = 6
+      OnClick = Bt_CreateOrdonnanceClick
     end
   end
   object Rbt_Ordonnance: TRadioButton
@@ -353,6 +362,15 @@
     TabOrder = 7
     OnClick = Rbt_UpdateClick
   end
+  object Button1: TButton
+    Left = 184
+    Top = 560
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 8
+    OnClick = Button1Click
+  end
   object FDGUIxWaitCursor_Pharma: TFDGUIxWaitCursor
     Provider = 'Forms'
     Left = 1008
@@ -377,7 +395,6 @@
       'Password=pharma'
       'Server=192.168.64.111'
       'DriverID=MySQL')
-    Connected = True
     Left = 680
     Top = 584
   end

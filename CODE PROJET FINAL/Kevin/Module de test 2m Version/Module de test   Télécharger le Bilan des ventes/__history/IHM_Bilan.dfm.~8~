@@ -1,0 +1,97 @@
+object Form_Bilan: TForm_Bilan
+  Left = 0
+  Top = 0
+  Caption = 'Bilan des ventes'
+  ClientHeight = 377
+  ClientWidth = 572
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label_Periode: TLabel
+    Left = 32
+    Top = 123
+    Width = 95
+    Height = 13
+    Caption = '* Champ obligatoire'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+  end
+  object Label_Avertissement: TLabel
+    Left = 8
+    Top = 8
+    Width = 345
+    Height = 13
+    Caption = 
+      'Pensez '#224' sauvegarder l'#39'ancien bilan des ventes, celui_ci le supp' +
+      'rimera'
+  end
+  object ComboBox_Periode: TComboBox
+    Left = 24
+    Top = 96
+    Width = 145
+    Height = 21
+    TabOrder = 0
+    Text = 'P'#233'riode de vente'
+    Items.Strings = (
+      'Jour'
+      'Semaine'
+      'Mois'
+      'Ann'#233'e')
+  end
+  object ComboBox_Medicament: TComboBox
+    Left = 194
+    Top = 96
+    Width = 145
+    Height = 21
+    TabOrder = 1
+    Text = 'M'#233'dicament'
+  end
+  object Bouton_Telecharger: TButton
+    Left = 194
+    Top = 144
+    Width = 145
+    Height = 25
+    Caption = 'T'#233'l'#233'charger'
+    TabOrder = 2
+    OnClick = Bouton_TelechargerClick
+  end
+  object f: TFDConnection
+    Params.Strings = (
+      'Database=pharmacie'
+      'User_Name=pharma'
+      'Password=pharma'
+      'Server=192.168.64.111'
+      'DriverID=MySQL')
+    Left = 24
+    Top = 143
+  end
+  object FDQuery1: TFDQuery
+    Connection = f
+    SQL.Strings = (
+      'SELECT * FROM `Medicament` WHERE `Quantite_Restante` != 0')
+    Left = 56
+    Top = 143
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 88
+    Top = 143
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 120
+    Top = 143
+  end
+end

@@ -11,7 +11,7 @@ Compilation : c++ builder
 
 #ifndef modBusH
 #define modBusH
-#include "../include/tcpClient/tcpClient.h"
+#include "../tcpClient/tcpClient.h"
 //---------------------------------------------------------------------------
 
 class modBus {

@@ -1,0 +1,13 @@
+﻿[ComboBox_Periode]
+Coordinates=121,10,129,124
+
+[Label_Periode]
+Coordinates=10,144,98,58
+Visible=True
+
+[]
+Coordinates=118,144,53,58
+
+[ComboBox_Medicament]
+Coordinates=10,10,101,124
+

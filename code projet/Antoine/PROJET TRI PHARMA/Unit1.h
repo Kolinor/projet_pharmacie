@@ -82,10 +82,12 @@ __published:	// Composants gérés par l'EDI
 	TDataSource *DataSource_Pharma;
 	TFDQuery *FDQuery_Pharma;
 	TFDConnection *FDConnection_Pharma;
-	TLabel *Label1;
 	TDBGrid *DBGrid1;
 	TDataSource *DataSource_update;
 	TFDQuery *FDQuery_update;
+	TButton *Bt_CreateOrdonnance;
+	TLabel *Label1;
+	TButton *Button1;
 	void __fastcall Btn_sendAutomateClick(TObject *Sender);
 	void __fastcall Btn_sendMedicamentClick(TObject *Sender);
 	void __fastcall Rbt_addMedicamentClick(TObject *Sender);
@@ -93,6 +95,8 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall Rbt_OrdonnanceClick(TObject *Sender);
 	void __fastcall Rbt_UpdateClick(TObject *Sender);
 	void __fastcall Cmb_MedicamentModifierEnter(TObject *Sender);
+	void __fastcall Bt_CreateOrdonnanceClick(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
 private: BDDSQL sql;	// Déclarations utilisateur
 		 MysqlPharmacieManager *manager;
 public:		// Déclarations utilisateur

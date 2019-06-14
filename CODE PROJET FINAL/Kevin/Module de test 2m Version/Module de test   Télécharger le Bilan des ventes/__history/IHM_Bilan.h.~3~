@@ -1,0 +1,30 @@
+//---------------------------------------------------------------------------
+#ifndef IHM_BilanH
+#define IHM_BilanH
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+//---------------------------------------------------------------------------
+
+class TForm_Bilan : public TForm
+{
+	// Composants gérés par l'EDI
+	__published:
+		TComboBox *ComboBox_Periode;
+		TComboBox *ComboBox_Medicament;
+		TLabel *Label_Periode;
+		TButton *Bouton_Telecharger;
+
+	// Déclarations utilisateur
+	private:
+
+	// Déclarations utilisateur
+	public:
+		__fastcall TForm_Bilan(TComponent* Owner);
+};
+
+//---------------------------------------------------------------------------
+extern PACKAGE TForm_Bilan *Form_Bilan;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,29 @@
+#ifndef Unit2H
+#define Unit2H
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include "../include/tapiris/tapiris.h"
+//---------------------------------------------------------------------------
+class threadEtat : public TThread
+{
+private:
+	tapiris * tapis;
+	bool etatThread;
+protected:
+		void __fastcall Execute();
+		void __fastcall lblTapisM();
+		void __fastcall lblTapisA();
+		void __fastcall lblPiston1M();
+		void __fastcall lblPiston1A();
+		void __fastcall lblPiston2M();
+		void __fastcall lblPiston2A();
+		void __fastcall lblPiston3M();
+		void __fastcall lblPiston3A();
+
+
+public:
+		__fastcall threadEtat(bool CreateSuspended,tapiris * tapis);
+		__fastcall ~threadEtat();
+};
+//---------------------------------------------------------------------------
+#endif

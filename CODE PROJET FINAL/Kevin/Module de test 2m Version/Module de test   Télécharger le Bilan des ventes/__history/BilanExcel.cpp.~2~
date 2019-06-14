@@ -1,0 +1,114 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "BilanExcel.h"
+#pragma package(smart_init)
+//---------------------------------------------------------------------------
+
+// Création du fichier template Excel s'il n'existe pas deja
+BilanExcel::BilanExcel()
+{
+	BDD = new MysqlPharmacieManager() ;
+}
+
+// Recuperation des informations de la BDD puis inscription dans le fichier Excel
+void BilanExcel::ecrireFichier(String periode)
+{
+	vector < vector<string> > bilan ;
+	string medicament, prix, quantiteVendu ;
+
+	if (periode == "Jour" )
+	{
+		bilan = BDD->BilanJour();
+		ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes quotidient.csv", ios::out | ios::trunc) ;
+		fichierBilan << "Bilan du jour " << endl << endl ;
+		fichierBilan << "Médicaments" << ";;" << "Quantité vendu" << ";;" << "Prix unitaire" << ";;" << "Prix totale\n" << endl ;
+
+		// Appele de la méthode pour DL le bilan du jour
+		for(int i=0; i < bilan.size(); ++i)
+		{
+			string medicament = bilan[i][0].c_str() ;
+			int prix = atoi(bilan[i][1].c_str());
+			int quantiteVendu = atoi(bilan[i][2].c_str()) ;
+			long double Totale = quantiteVendu * prix ;
+
+			fichierBilan << medicament.c_str() << ";;" ;
+			fichierBilan << quantiteVendu<< ";;" ;
+			fichierBilan << prix << " €" << ";;" ;
+			fichierBilan << Totale << " €" << endl;
+		}
+		fichierBilan.close();
+	}
+
+	else if (periode == "Semaine" )
+	{
+		ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes hebdomadaire.csv", ios::out | ios::trunc) ;
+		fichierBilan << "Bilan de la semaine " << endl << endl ;
+		fichierBilan << "Médicaments" << ";;" << "Quantité vendu" << ";;" << "Prix unitaire" << ";;" << "Prix totale\n" << endl ;
+		bilan = BDD->BilanSemaine();
+
+		// Appele de la méthode pour DL le bilan de la semaine
+		for(int i=0; i < bilan.size(); ++i)
+		{
+			string medicament = bilan[i][0].c_str() ;
+			int prix = atoi(bilan[i][1].c_str());
+			int quantiteVendu = atoi(bilan[i][2].c_str()) ;
+			long double Totale = quantiteVendu * prix ;
+
+			fichierBilan << medicament.c_str() << ";;" ;
+			fichierBilan << quantiteVendu<< ";;" ;
+			fichierBilan << prix << " €" << ";;" ;
+			fichierBilan << Totale << " €" << endl;
+		}
+		fichierBilan.close();
+	}
+
+	else if (periode == "Mois" )
+	{
+		ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes mensuelle.csv", ios::out | ios::trunc) ;
+		fichierBilan << "Bilan du mois " << endl << endl ;
+		fichierBilan << "Médicaments" << ";;" << "Quantité vendu" << ";;" << "Prix unitaire" << ";;" << "Prix totale\n" << endl ;
+		bilan = BDD->BilanMois();
+
+		// Appele de la méthode pour DL le bilan du mois
+		for(int i=0; i < bilan.size(); ++i)
+		{
+			string medicament = bilan[i][0].c_str() ;
+			int prix = atoi(bilan[i][1].c_str());
+			int quantiteVendu = atoi(bilan[i][2].c_str()) ;
+			long double Totale = quantiteVendu * prix ;
+
+			fichierBilan << medicament.c_str() << ";;" ;
+			fichierBilan << quantiteVendu<< ";;" ;
+			fichierBilan << prix << " €" << ";;" ;
+			fichierBilan << Totale << " €" << endl;
+		}
+		fichierBilan.close();
+	}
+
+	else if (periode == "Année" )
+	{
+		ofstream fichierBilan("D:/Utilisateur/Kevin/Bureau/Bilan des ventes annuelle.csv", ios::out | ios::trunc) ;
+		fichierBilan << "Bilan pde l'année " << endl << endl ;
+		fichierBilan << "Médicaments" << ";;" << "Quantité vendu" << ";;" << "Prix unitaire" << ";;" << "Prix totale\n" << endl ;
+		bilan = BDD->BilanAnnee();
+
+		// Appele de la méthode pour DL le bilan de l'année
+		for(int i=0; i < bilan.size(); ++i)
+		{
+			string medicament = bilan[i][0].c_str() ;
+			int prix = atoi(bilan[i][1].c_str());
+			int quantiteVendu = atoi(bilan[i][2].c_str()) ;
+			long double Totale = quantiteVendu * prix ;
+
+			fichierBilan << medicament.c_str() << ";;" ;
+			fichierBilan << quantiteVendu<< ";;" ;
+			fichierBilan << prix << " €" << ";;" ;
+			fichierBilan << Totale << " €" << endl;
+		}
+		fichierBilan.close();
+	}
+
+
+}
+
+

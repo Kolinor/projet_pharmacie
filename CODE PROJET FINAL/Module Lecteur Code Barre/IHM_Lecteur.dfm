@@ -1,0 +1,214 @@
+object Form_RS232: TForm_RS232
+  Left = 0
+  Top = 0
+  Caption = 'Lecteur de code barre'
+  ClientHeight = 271
+  ClientWidth = 359
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label3: TLabel
+    Left = 34
+    Top = 114
+    Width = 24
+    Height = 13
+    Caption = 'Baud'
+  end
+  object Label_DataSize: TLabel
+    Left = 26
+    Top = 151
+    Width = 45
+    Height = 13
+    Caption = 'Data Size'
+  end
+  object Label_Baud: TLabel
+    Left = 26
+    Top = 95
+    Width = 24
+    Height = 13
+    Caption = 'Baud'
+  end
+  object Label_Name: TLabel
+    Left = 26
+    Top = 39
+    Width = 27
+    Height = 13
+    Caption = 'Name'
+  end
+  object GroupBox_Serial: TGroupBox
+    Left = 17
+    Top = 18
+    Width = 128
+    Height = 233
+    Caption = 'Serial'
+    TabOrder = 5
+  end
+  object Memo_RS232: TMemo
+    Left = 192
+    Top = 18
+    Width = 145
+    Height = 233
+    TabOrder = 0
+  end
+  object Bouton_Connexion: TButton
+    Left = 26
+    Top = 215
+    Width = 104
+    Height = 25
+    Caption = 'Connexion'
+    TabOrder = 4
+    OnClick = Bouton_ConnexionClick
+  end
+  object ComboBox_DataSize: TComboBox
+    Left = 26
+    Top = 170
+    Width = 104
+    Height = 21
+    TabOrder = 3
+    Text = '8'
+    Items.Strings = (
+      '7'
+      '8')
+  end
+  object ComboBox_Baud: TComboBox
+    Left = 26
+    Top = 114
+    Width = 104
+    Height = 21
+    TabOrder = 2
+    Text = '9600'
+    Items.Strings = (
+      '600'
+      '1200'
+      '2400'
+      '4800'
+      '9600'
+      '14400'
+      '19200'
+      '38400'
+      '56000'
+      '57600'
+      '115200')
+  end
+  object ComboBox_Com: TComboBox
+    Left = 26
+    Top = 58
+    Width = 104
+    Height = 21
+    TabOrder = 1
+    Text = 'COM1'
+    Items.Strings = (
+      'COM1'
+      'COM2'
+      'COM3'
+      'COM4'
+      'COM5'
+      'COM6'
+      'COM7'
+      'COM8'
+      'COM9'
+      'COM10'
+      'COM11'
+      'COM12'
+      'COM13'
+      'COM14'
+      'COM15'
+      'COM16'
+      'COM17'
+      'COM18'
+      'COM19'
+      'COM20'
+      'COM21'
+      'COM22'
+      'COM23'
+      'COM24'
+      'COM25'
+      'COM26'
+      'COM27'
+      'COM28'
+      'COM29'
+      'COM30'
+      'COM31'
+      'COM32'
+      'COM33'
+      'COM34'
+      'COM35'
+      'COM36'
+      'COM37'
+      'COM38'
+      'COM39'
+      'COM40'
+      'COM41'
+      'COM42'
+      'COM43'
+      'COM44'
+      'COM45'
+      'COM46'
+      'COM47'
+      'COM48'
+      'COM49'
+      'COM50'
+      'COM51'
+      'COM52'
+      'COM53'
+      'COM54'
+      'COM55'
+      'COM56'
+      'COM57'
+      'COM58'
+      'COM59'
+      'COM60'
+      'COM61'
+      'COM62'
+      'COM63'
+      'COM64'
+      'COM65'
+      'COM66'
+      'COM67'
+      'COM68'
+      'COM69'
+      'COM70'
+      'COM71'
+      'COM72'
+      'COM73'
+      'COM74'
+      'COM75'
+      'COM76'
+      'COM77'
+      'COM78'
+      'COM79'
+      'COM80'
+      'COM81'
+      'COM82'
+      'COM83'
+      'COM84'
+      'COM85'
+      'COM86'
+      'COM87'
+      'COM88'
+      'COM89'
+      'COM90'
+      'COM91'
+      'COM92'
+      'COM93'
+      'COM94'
+      'COM95'
+      'COM96'
+      'COM97'
+      'COM98'
+      'COM99'
+      'COM100')
+  end
+  object Timer_RS232: TTimer
+    Interval = 500
+    OnTimer = Timer_RS232Timer
+    Left = 312
+    Top = 16
+  end
+end

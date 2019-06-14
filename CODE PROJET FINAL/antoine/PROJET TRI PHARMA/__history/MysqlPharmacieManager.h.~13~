@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------
+
+#ifndef MysqlPharmacieManagerH
+#define MysqlPharmacieManagerH
+//---------------------------------------------------------------------------
+
+#include "BDD.h"
+#include "BDDSQL.h"
+#include <Vcl.Grids.hpp>
+
+class MysqlPharmacieManager
+{
+	private :
+		BDD *mySql;
+	public :
+		MysqlPharmacieManager();
+		void selectOrdonnance(TStringGrid *excelOrdo);
+		bool insertOrdonnance();
+		bool insertMedicament();
+
+};
+#endif

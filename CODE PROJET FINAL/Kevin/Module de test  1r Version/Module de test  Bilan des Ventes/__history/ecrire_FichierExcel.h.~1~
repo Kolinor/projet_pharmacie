@@ -1,0 +1,14 @@
+//---------------------------------------------------------------------------
+#ifndef ecireExcelH
+#define ecireExcelH
+#include <fstream>
+#include <iostream>
+#include <string>
+//---------------------------------------------------------------------------
+
+class ecrireExcel
+{
+
+};
+
+#endif

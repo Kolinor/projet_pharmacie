@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 /*******************************************************
 Nom ......... : tapiris.h
-Role ........ : faire les actions demandé par l'utilisateur sur le tapis
+Role ........ : faire les actions demandï¿½ par l'utilisateur sur le tapis
 Auteur ...... : Colin.B
 Version ..... : V1.1 du 03/05/2019
 
@@ -11,8 +11,9 @@ Compilation : c++ builder
 
 #ifndef tapirisH
 #define tapirisH
-#include "../include/modBus/modBus.h"
-#include "../include/vector/Vector.h"
+#include "../modBus/modBus.h"
+#include "../vector/Vector.h"
+#include "../carte/carte.h"
 
 using namespace std;
 class tapiris;
@@ -40,6 +41,22 @@ class tapiris
 		modBus * pmodBus;
 		DWORD dwChars;
 		HANDLE Thread;
+		Vector<int> caisse1;
+		Vector<int> caisse2;
+		int etat[6]; // tapis, piston1, piston2, piston3, capteur1, capteur2, capteur3
+		int etatCapt3;
+		HANDLE mutex;
+		HANDLE mutex1;
+
+		//thread permmettant de ratracter un piston automatiquement
+		static DWORD WINAPI threadDpiston(LPVOID lpParam);
+		//thread permettant le mise en fonction automatique du tapiris
+		static DWORD WINAPI threadCapteur(LPVOID lpParam);
+		//thread permmettant d'activer un piston avec le numï¿½ro du piston et un delay en ms
+		static DWORD WINAPI threadApiston(LPVOID lpParam);
+		//thread permmettant d'actionner le piston pour pousser les mÃ©dicaments sur le convoyeur
+		static DWORD WINAPI threadCapt3(LPVOID lpParam);
+
 	public:
 
 		tapiris();
@@ -48,9 +65,9 @@ class tapiris
 		bool connected(string adress, unsigned short port);
 		//permet d'arreter la connexion au tapiris
 		void disconnect();
-		//permet d'avtiver un piston avec un delay en ms
+		//permet d'avtiver un piston (1,2,3) avec un delay en ms
 		void activePiston(int piston,int delay);
-		//permet de déactiver un piston sert pour le debogage
+		//permet de dï¿½activer un piston sert pour le debogage
 		bool deactivatePiston(int piston);
 		//permet d'allumer le moteur du tapis
 		bool activeTapis();
@@ -60,14 +77,15 @@ class tapiris
 		void activeCapteur();
 
 		void deactivateCapteur();
-
+		//permet de sortir le mï¿½dicament ï¿½ la caisse associï¿½e(1,2,3)
 		void newDrug(int caisse);
-		//thread permmettant de ratracter un piston automatiquement
-		static DWORD WINAPI threadDpiston(LPVOID lpParam);
-		//thread permettant le mise en fonction automatique du tapiris
-		static DWORD WINAPI threadCapteur(LPVOID lpParam);
-		//thread permmettant d'activer un piston avec le numéro du piston et un delay en ms
-		static DWORD WINAPI threadApiston(LPVOID lpParam);
+
+		int etatReturn(int idx);
+		int test();
+		int test1();
+
+
+
 
 
 };
